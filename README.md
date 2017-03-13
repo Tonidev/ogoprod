@@ -1,1 +1,1 @@
-# ogoprod
+IDI NAHUY PIDOR SSANIY
