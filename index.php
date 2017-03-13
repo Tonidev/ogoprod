@@ -18,6 +18,11 @@
     <script src="js/sweetalert.min.js"></script>
 </head>
 <body background="backgrounds/0.jpg">
+
+<a href="" id="but" class="button"/>oGo Production</a>
+<div id="logotmp">
+    <img id="startlogo" src="img/logo.png" >
+</div>
 <img id="start" src="backgrounds/1.jpg" width="2000" height="1200" >
 </body>
 </html>
