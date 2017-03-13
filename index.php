@@ -19,7 +19,7 @@
 </head>
 <body background="backgrounds/0.jpg">
 
-<a href="" id="but" class="button"/>oGo Production</a>
+<a href="" onclik="join()" id="but" class="button"/>oGo Production</a>
 <div id="logotmp">
     <img id="startlogo" src="img/logo.png" >
 </div>
