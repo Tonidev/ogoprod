@@ -1,9 +1,15 @@
 <html>
 <head>
     <title>OGO-Prod.</title>
-<link rel="stylesheet" href="css/style.css">
+
     <script src="js/jq.js"></script>
+  <script src="js/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="css/sweetalert.css">
     <script>
+      function getSocTitle() {
+        return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a href="main.php" class="button1"/>ВХОД</a></div>';
+      }
+
         var backgi=1;
         setInterval(function(){backg()},8000);
         function backg()
@@ -14,15 +20,22 @@
             $("#start").animate({'opacity':'1'},800);});
         }
     </script>
-    <link rel="stylesheet" href="css/sweetalert.css">
-    <script src="js/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body background="backgrounds/0.jpg">
 
-<a href="" onclik="join()" id="but" class="button"/>oGo Production</a>
+<a href="" onclick="swal({
+  html : true,
+  title : getSocTitle(),
+  allowOutsideClick : true,
+  showConfirmButton: false
+}); return false;" id="but" class="button">oGo Production</a>
 <div id="logotmp">
     <img id="startlogo" src="img/logo.png" >
 </div>
 <img id="start" src="backgrounds/1.jpg" width="2000" height="1200" >
 </body>
 </html>
+<!--<img class="social" src="img/soc-vk.png"/>-->
+<!--<img class="social" src="img/soc-facebook.png"/>-->
+<!--<img class="social" src="img/soc-instagram.png"/>-->

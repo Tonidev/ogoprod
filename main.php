@@ -16,15 +16,14 @@
 </head>
 <body class="main">
 <div class="logo">
-
 </div>
 <div class="left-menu">
   <ul>
-    <li>sdsgsa eesr</li>
-    <li>sdsasdgsa eesr</li>
-    <li>sdssdfgsa eesr</li>
-    <li>sdsgsfsa eesr</li>
-    <li>sdsgerersa eesr</li>
+    <li>главная</li>
+    <li>порфолио</li>
+    <li>услуги</li>
+    <li>галерея</li>
+<!--    <li>sdsgerersa eesr</li>-->
   </ul>
 </div>
 <div class="content">
