@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/sweetalert.css">
     <script>
       function getSocTitle() {
-        return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a href="main.php" class="button1"/>ВХОД</a></div>';
+        return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a href="main.php" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
       }
 
         var backgi=1;

@@ -18,8 +18,9 @@ html,body
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius: 4px;
-    font:22px Arial, Helvetica, sans-serif;
+    font:17px Arial, Helvetica, sans-serif;
     font-weight:bold;
+    width: 145.5;
     position: absolute;
     color:#E5FFFF;
     background-color:#3BA4C7;
@@ -87,7 +88,7 @@ body.main .left-menu {
   height: 50%;
   min-height: 300px;
   width: 210px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.50);
   border-radius: 0 8px 8px 0;
 }
 
@@ -95,19 +96,23 @@ body.main .left-menu {
 {
 
   display: block;
-  right: 3%;
+  right: -37px;
   left: initial;
-  top: 72.5%;
-  width: 268px;
-  background: rgba(0, 9, 9, 0.60);
+  top: 72%;
+  width: 267px;
+  background: rgba(0, 9, 9, 0.01);
 }
 
 .sweet-alert[data-has-confirm-button=false][data-has-cancel-button=false] {
   padding-bottom: 11px;
 }
 
+.sweet-overlay {
+    opacity: 0;
+    display: none;
+}
 .social {
-  width: auto;
+  width: 216.2;
   height: auto;
   display: block;
   margin-top: 10px;
@@ -126,12 +131,12 @@ body.main .left-menu {
 
 .sweet-alert .button1 {
   text-decoration:none;
-  width:223px;
+  width:175px;
   display: inline-block;
   text-align:center;
   padding:10px ;
   margin-top: 10px;
-  border:solid 1px #004F54;
+  border:solid 1px #004F72;
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
   border-radius: 4px;
