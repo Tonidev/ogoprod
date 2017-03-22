@@ -277,6 +277,12 @@ body.main .left-menu {
     padding-left: 270px;
   }
 }
+@media (max-width: 1024px) {
+  .content {
+    width: 100%;
+    padding-left: 270px;
+  }
+}
 
 .photo {
   width : 100%;
