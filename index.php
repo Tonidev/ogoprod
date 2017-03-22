@@ -15,9 +15,12 @@
         function backg()
         {
             backgi=backgi%5+1;
-            $("#start").animate({'opacity':'0'},800,function(){
-            $("#start").attr('src', 'backgrounds/'+backgi+'.jpg');
-            $("#start").animate({'opacity':'1'},800);});
+            var $start = $("#start");
+            $start.animate({'opacity':'0'},800,function(){
+            $start.css('background-image', 'url(/backgrounds/'+backgi+'.jpg)');
+            $start.css('background-size', 'cover');
+            $start.css('background-position', 'center');
+            $start.animate({'opacity':'1'},800);});
         }
     </script>
   <link rel="stylesheet" href="css/style.css">
@@ -33,7 +36,8 @@
 <div id="logotmp">
     <img id="startlogo" src="img/logo.png" >
 </div>
-<img id="start" src="backgrounds/1.jpg" width="2000" height="1200" >
+<!--<img id="start" src="backgrounds/1.jpg" width="2000" height="1200" >-->
+<div id="start"  width="2000" height="1200" >
 </body>
 </html>
 <!--<img class="social" src="img/soc-vk.png"/>-->
