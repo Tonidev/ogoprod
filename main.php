@@ -18,13 +18,14 @@
 </head>
 <body class="main">
 <div class="logo">
+  <a href="/"></a>
 </div>
 <div class="left-menu">
   <ul>
-    <li><a class="main" href="main.php"><span></span>главная</a></li>
-    <li><a class="portfolio" href="main.php"><span></span>порфолио</a></li>
-    <li><a class="services" href="main.php"><span></span>услуги</a></li>
-    <li><a class="gallery" href="main.php"><span></span>галерея</a></li>
+    <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
+    <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
+    <li><a class="services" href="main.php"><span class="ico"></span><span class="text">услуги</span></a></li>
+    <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">галерея</span></a></li>
 <!--    <li>sdsgerersa eesr</li>-->
   </ul>
 </div>
@@ -45,9 +46,11 @@
   </div>
 
 </div>
+<!--
 <footer>
 
 </footer>
+-->
 </body>
 
 </html>

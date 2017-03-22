@@ -87,6 +87,12 @@ body.main .logo {
   color: white;
 }
 
+.main .logo a {
+  width: 200px;
+  height: 100%;
+  display: inline-block;
+}
+
 
 body.main {
   /*padding-top: 130px;*/
@@ -95,7 +101,7 @@ body.main {
   box-sizing: border-box;
   position: absolute;
   width: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
 }
 
 body.main footer {
@@ -225,7 +231,7 @@ body.main .left-menu {
   color: #7fe5ff;
 }
 
-.left-menu li a span {
+.left-menu li a span.ico {
   display: inline-block;
   width: 34px;
   background: wheat url("/img/menu/israel-religion-rounded-border-square-border-128.png") center no-repeat;
@@ -237,7 +243,7 @@ body.main .left-menu {
   transition: all 0.2s;
 }
 
-.left-menu li:hover a span {
+.left-menu li:hover a span.ico {
   width: 36px;
   height: 36px;
 }
@@ -271,16 +277,47 @@ body.main .left-menu {
   }
 }
 
-@media (max-width: 1426px) {
+@media (max-width: 1540px) {
   .content {
-    width: 100%;
-    padding-left: 270px;
+    width: auto;
+    margin-left: 270px;
+    margin-right: 10%;
   }
 }
 @media (max-width: 1024px) {
   .content {
     width: 100%;
-    padding-left: 270px;
+    padding-left: 90px;
+    margin: 0 auto;
+  }
+  
+@media (max-width: 768px) {
+  .content {
+    padding-right: 20px;
+    padding-left: 70px;
+  }
+
+  .left-menu ul {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .left-menu li {
+    padding-right: 0;
+    padding-left: 8px;
+  }
+
+}  
+
+  body.main .left-menu {
+    width: auto;
+  }
+
+  .left-menu li a span.text {
+    display: none;
+  }
+  .left-menu:hover li a span.text {
+    display: inline-block;
   }
 }
 
@@ -293,3 +330,19 @@ body.main .left-menu {
   max-width : 100%;
 }
 
+.photo-block {
+  margin-top: 2em;
+  background: white;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.description {
+  /* background: rgba(0,0,0,0.9); */
+  display: inline-block;
+  padding: 1em 1em;
+  text-align: justify;
+  width: 100%;
+  box-sizing: border-box;
+  /* color: white; */
+}
