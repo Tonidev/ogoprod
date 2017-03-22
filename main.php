@@ -8,7 +8,9 @@
 <html>
 <head>
   <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Title</title>
+<!--  <link rel="stylesheet" href="css/style.css">-->
   <script src="js/jq.js"></script>
   <script src="js/sweetalert.min.js"></script>
   <link rel="stylesheet" href="css/sweetalert.css">
@@ -19,10 +21,10 @@
 </div>
 <div class="left-menu">
   <ul>
-    <li>главная</li>
-    <li>порфолио</li>
-    <li>услуги</li>
-    <li>галерея</li>
+    <li><a class="main" href="main.php"><span></span>главная</a></li>
+    <li><a class="portfolio" href="main.php"><span></span>порфолио</a></li>
+    <li><a class="services" href="main.php"><span></span>услуги</a></li>
+    <li><a class="gallery" href="main.php"><span></span>галерея</a></li>
 <!--    <li>sdsgerersa eesr</li>-->
   </ul>
 </div>
