@@ -25,7 +25,7 @@
     </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body background="backgrounds/0.jpg">
+<body background="backgrounds/0.jpg" style="background-size: cover "  alt="" oncontextmenu="return false;">
 
 <a href="" onclick="swal({
   html : true,
@@ -34,12 +34,8 @@
   showConfirmButton: false
 }); return false;" id="but" class="button">oGo Production</a>
 <div id="logotmp">
-    <img id="startlogo" src="img/logo.png" >
+    <img id="startlogo" src="img/logo.png" alt="" oncontextmenu="return false;" >
 </div>
-<!--<img id="start" src="backgrounds/1.jpg" width="2000" height="1200" >-->
-<div id="start"  width="2000" height="1200" >
+<div id="start"  width="2000" height="1200" ></div>
 </body>
 </html>
-<!--<img class="social" src="img/soc-vk.png"/>-->
-<!--<img class="social" src="img/soc-facebook.png"/>-->
-<!--<img class="social" src="img/soc-instagram.png"/>-->
