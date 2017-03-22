@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>OGO-Prod.</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/jq.js"></script>
   <script src="js/sweetalert.min.js"></script>
   <link rel="stylesheet" href="css/sweetalert.css">
