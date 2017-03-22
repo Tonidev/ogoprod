@@ -14,6 +14,11 @@ html,body
   /* min-height: 100%; */
 }
 
+body {
+  background: url("/backgrounds/0.jpg") center;
+  background-size: cover;
+}
+
 #but{
     text-decoration:none;
     text-align:center;
@@ -162,4 +167,14 @@ body.main .left-menu {
   box-shadow:0 0 2px #bababa, inset 0 0 1px #FFFFFF;
   text-shadow: 0 0 20px #bababa;
   filter: dropshadow(color=#bababa, offx=0, offy=0);
+}
+
+
+@media (orientation: portrait) {
+  .sweet-alert {
+    right: calc(50% - 175px );
+  }
+  #but {
+    right: calc(50% - 96px);
+  }
 }

@@ -25,7 +25,7 @@
     </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body background="backgrounds/0.jpg" style="background-size: cover "  alt="" oncontextmenu="return false;">
+<body  oncontextmenu="return false;">
 
 <a href="" onclick="swal({
   html : true,
