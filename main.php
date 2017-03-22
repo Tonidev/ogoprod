@@ -30,19 +30,20 @@
 </div>
 <div class="content">
   <div class="photo-block">
-    <div class="photo"></div>
-    <div class="description"></div>
+    <div class="photo"><img src="/backgrounds/1.jpg"></div>
+    <div class="description">/backgrounds/1.jpg</div>
   </div>
 
   <div class="photo-block">
-    <div class="photo"></div>
-    <div class="description"></div>
+    <div class="photo"><img src="/backgrounds/2.jpg"></div>
+    <div class="description">/backgrounds/2.jpg</div>
   </div>
 
   <div class="photo-block">
-    <div class="photo"></div>
-    <div class="description"></div>
+    <div class="photo"><img src="/backgrounds/3.jpg"></div>
+    <div class="description">/backgrounds/3.jpg</div>
   </div>
+
 </div>
 <footer>
 
