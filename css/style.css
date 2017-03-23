@@ -285,7 +285,7 @@ body.main .left-menu {
   margin: 0 auto;
   min-height: 300px;
   background: rgba(0,0,0,0.6);
-  padding: 60px;
+  padding: 1px;
   box-sizing: border-box;
 }
 
@@ -346,6 +346,7 @@ body.main .left-menu {
   width : 100%;
 
 }
+
 
 .photo img {
   max-width : 100%;
