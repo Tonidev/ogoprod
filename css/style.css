@@ -348,5 +348,6 @@ body.main .left-menu {
   text-align: justify;
   width: 100%;
   box-sizing: border-box;
+    font-weight: bold;
   /* color: white; */
 }

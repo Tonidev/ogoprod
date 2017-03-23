@@ -30,18 +30,18 @@
 </div>
 <div class="content">
   <div class="photo-block">
-    <div class="photo"><img src="/backgrounds/1.jpg"></div>
-    <div class="description">/backgrounds/1.jpg</div>
+    <div class="photo"><img src="http://files.geometria.ru/pics/original/060/185/60185508.jpg"></div>
+    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
   </div>
 
   <div class="photo-block">
-    <div class="photo"><img src="/backgrounds/2.jpg"></div>
-    <div class="description">/backgrounds/2.jpg</div>
+    <div class="photo"><img src="http://files2.geometria.ru/pics/original/058/021/58021259.jpg"></div>
+    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
   </div>
 
   <div class="photo-block">
-    <div class="photo"><img src="/backgrounds/3.jpg"></div>
-    <div class="description">/backgrounds/3.jpg</div>
+    <div class="photo"><img src="http://files2.geometria.ru/pics/original/058/021/58021475.jpg"></div>
+    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
   </div>
 
 </div>
