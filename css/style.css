@@ -232,16 +232,33 @@ body.main .left-menu {
     text-shadow: 1px 1px 1px white, 0 0 1em white;
 }
 
+
+
 .left-menu li a span.ico {
-     display: inline-block;
-     width: 34px;
-     background-size: 100%;
-     height: 34px;
-     border-radius: 2px;
-     vertical-align: middle;
-     margin-right: 10px;
-     transition: all 0.2s;
- }
+  display: inline-block;
+  width: 34px;
+  background: transparent url("/img/menu/israel-religion-rounded-border-square-border-128.png") center no-repeat;
+  background-size: contain;
+  height: 34px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 10px;
+  transition: all 0.2s;
+}
+
+
+.left-menu li a.main span.ico {
+  background-image: url("/img/menu/ico6.png");
+}
+.left-menu li a.portfolio span.ico {
+  background-image: url("/img/menu/ico4.png");
+}
+.left-menu li a.services span.ico {
+  background-image: url("/img/menu/ico1.png");
+}
+.left-menu li a.gallery span.ico {
+  background-image: url("/img/menu/ico3.png");
+}
 
 .left-menu li:hover a span.ico {
   width: 36px;

@@ -15,6 +15,13 @@
   <script src="js/sweetalert.min.js"></script>
   <link rel="stylesheet" href="css/sweetalert.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://vk.com/js/api/openapi.js?142" type="text/javascript"></script>
+  <script type="text/javascript">
+    appid = 123456789;
+    VK.init({
+      apiId: appid
+    });
+  </script>
 </head>
 <body class="main">
 <div class="logo">
@@ -22,10 +29,17 @@
 </div>
 <div class="left-menu">
   <ul>
-    <li><a class="main" href="main.php"><img src="img/menu/ico6.png" style="width: 34px; height: 34px;" class="ico"><span class="text">главная</span></a></li>
+
+    <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
+    <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
+    <li><a class="services" href="main.php"><span class="ico"></span><span class="text">услуги</span></a></li>
+    <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">галерея</span></a></li>
+    <!--    <li>sdsgerersa eesr</li>-->
+
+    <!--<li><a class="main" href="main.php"><img src="img/menu/ico6.png" style="width: 34px; height: 34px;" class="ico"><span class="text">главная</span></a></li>
     <li><a class="portfolio" href="main.php"><img src="img/menu/ico4.png" style="width: 34px; height: 34px;" class="ico"><span class="text">портфолио</span></a></li>
     <li><a class="services" href="main.php"><img src="img/menu/ico1.png" style="width: 34px; height: 34px;" class="ico"><span class="text">услуги</span></a></li>
-    <li><a class="gallery" href="main.php"><img src="img/menu/ico3.png" style="width: 34px; height: 34px;" class="ico"><span class="text">галерея</span></a></li>
+    <li><a class="gallery" href="main.php"><img src="img/menu/ico3.png" style="width: 34px; height: 34px;" class="ico"><span class="text">галерея</span></a></li>-->
   </ul>
 </div>
 <div class="content">
