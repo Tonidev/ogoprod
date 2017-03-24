@@ -14,11 +14,11 @@
         setInterval(function(){backg()},8000);
         function backg()
         {
-            backgi=backgi%5+1;
+            backgi=backgi%3+1;
             var $start = $("#start");
             $start.animate({'opacity':'0'},800,function(){
             $start.css('background-image', 'url(/backgrounds/'+backgi+'.jpg)');
-            $start.css('background-size', 'cover');
+            $start.css('background-size', 'contain');
             $start.css('background-position', 'center');
             $start.animate({'opacity':'1'},800);});
         }
