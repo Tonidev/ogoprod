@@ -64,6 +64,18 @@
 
 </footer>
 -->
+<div id="photo_popup">
+  <div id="photo_popup_container">
+    <div id="photo_popup_image">
+      <span id="photo_popup_close">&times;</span>
+      <img id="photo_popup_img" src="http://files.geometria.ru/pics/original/060/185/60185508.jpg">
+      <div id="photo_popup_menu">
+        <div id="photo_popup_menu_btn">Комментарии</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>
