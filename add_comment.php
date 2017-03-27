@@ -41,7 +41,7 @@ require_once (__DIR__ . DIRECTORY_SEPARATOR .'safemysql.class.php');
 
 $db = new SafeMySQL(array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod'));
 
-$res = $db->query("INSERT INTO comment (id_photo, avatar, author, text) VALUES (?i, ?s, ?s, ?s)", $id_photo, $avatar, $author, $text);
+$res = $db->query("INSERT INTO comment (id_photo, avatar, author, text, vk_id) VALUES (?i, ?s, ?s, ?s, ?s)", $id_photo, $avatar, $author, $text, $vk_id);
 
 if(!$res) {
   die('error');

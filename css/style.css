@@ -544,6 +544,7 @@ div#photo_popup_comments_list {
 .comment .author,
 .comment .text {
  margin-left: 64px;
+  word-break: break-all;
 }
 
 .comment .text {
