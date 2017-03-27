@@ -79,10 +79,10 @@ body.main {
 body.main .logo {
   position: fixed;
   width: 100%;
-  height: 130px;
+  height: 1px;
   text-align: center;
-  background: transparent url("/img/logo.png")  no-repeat center center;
-  background-size: contain;
+  /*background: transparent url("/img/logo.png")  no-repeat center center;*/
+  /*background-size: contain;*/
   /*background-color: black;*/
   top: 0;
   color: white;
@@ -90,8 +90,13 @@ body.main .logo {
 
 .main .logo a {
   width: 200px;
-  height: 100%;
   display: inline-block;
+  height: 130px;
+  text-align: center;
+  background: transparent url("/img/logo.png")  no-repeat center center;
+  /*background-size: contain;*/
+  background-size: cover;
+
 }
 
 
@@ -165,7 +170,7 @@ body.main .left-menu {
   margin-bottom: 0;
 }
 
-
+#photo_popup .button1,
 .sweet-alert .button1 {
   text-decoration:none;
   width:175px;
@@ -192,6 +197,15 @@ body.main .left-menu {
   text-shadow: 0 0 20px #bababa;
   filter: dropshadow(color=#bababa, offx=0, offy=0);
 }
+
+#photo_popup .button1 {
+  width: auto;
+  font-size: 13pt;
+  margin-top: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
 
 
 .left-menu ul {
@@ -361,7 +375,7 @@ body.main .left-menu {
   padding: 4px;
 }
 .photo-block:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 
 .description {
@@ -381,6 +395,7 @@ body.main .left-menu {
 
 
 div#photo_popup {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -394,6 +409,8 @@ div#photo_popup {
   height: 100%;
   line-height: 100%;
   text-align: center;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #photo_popup_close {
@@ -425,6 +442,7 @@ div#photo_popup {
 #photo_popup_img {
   max-width: 100%;
   max-height: 100%;
+  height: 100%;
   padding: 3px;
   box-sizing: border-box;
   background: white;
@@ -433,10 +451,14 @@ div#photo_popup {
 
 #photo_popup_menu {
   width: 2em;
-  height: 10em;
-  background: blue;
+  height: 14em;
+  background: white;
   display: inline-block;
   vertical-align: middle;
+  text-align: left;
+  margin-left: -5px;
+  border-radius: 0 4pc 4pc 0;
+  cursor: pointer;
 }
 
 #photo_popup_menu_btn {
@@ -445,3 +467,104 @@ div#photo_popup {
   width: 12em;
   text-align: center;
 }
+
+#photo_popup_comments {
+  width: 394px;
+  background: white;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -426px;
+  top: 19px;
+  bottom: 19px;
+  position: absolute;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+
+div#photo_popup_comments {
+  width: 394px;
+  background: white;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -426px;
+  top: 19px;
+  bottom: 19px;
+  position: absolute;
+  padding: 1em;
+  box-sizing: border-box;
+  background: hsla(28, 31%, 97%, 1);
+  opacity: 0;
+}
+
+#photo_popup_comments > div {
+  background: white;
+}
+
+div#photo_popup_comments_header {
+  margin-bottom: 1em;
+  padding: 8px;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.comment .avatar {
+  width: 48px;
+  height: 48px;
+  background: url('https://pp.userapi.com/c630225/v630225317/3ad41/AXPVoyztzVk.jpg') center;
+  background-size: contain;
+  display: inline-block;
+  float : left;
+  margin: 0 8px;
+}
+
+.comment {
+  text-align: left;
+  padding : 8px
+
+}
+
+
+
+#photo_popup_comments_list:after,
+.comment:after {
+  content : ' ';
+  display: block;
+  clear : both;
+}
+
+
+div#photo_popup_comments_list {
+  margin-bottom: 1em;
+  max-height: calc( 100% - 200px);
+  overflow: auto;
+}
+
+
+.comment .author,
+.comment .text {
+ margin-left: 64px;
+}
+
+.comment .text {
+  margin-top: 4px;
+}
+
+.comment .author {
+  font-weight: 700;
+}
+
+#add_comment {
+  height: 120px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+#add_comment textarea {
+  max-width: 90%;
+  width: 90%;
+  height: 65px;
+  max-height: 65px;
+}
+
+
