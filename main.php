@@ -4,9 +4,13 @@
  * Time: 18:47
  */
 
-require_once (__DIR__ . DIRECTORY_SEPARATOR .'safemysql.class.php');
+if(!defined('BASE_DIR')) {
+  define('BASE_DIR', __DIR__ .DIRECTORY_SEPARATOR);
+}
+require_once (BASE_DIR . 'config.php');
 
-$db = new SafeMySQL(array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod'));
+$db = Db::i();
+
 $photos = $db->getAll("SELECT * FROM  photo WHERE status > 0");
 $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 ?>

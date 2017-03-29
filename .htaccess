@@ -1,0 +1,28 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+<IfModule mod_env.c>
+SetEnv HTTP_MOD_REWRITE On
+</IfModule>
+
+RewriteBase /
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^ogoprod.int/
+RewriteRule (.*) http://ogoprod.int/$1 [R=301,L]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ http://ogoprod.int/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^main/(.*)$ /main.php?$1 [L]
+RewriteRule ^admin$ /admin/ [L]
+RewriteRule ^admin/(.*)$ /admin.php?action=$1 [L]
+
+</IfModule>
+
+<IfModule mod_headers.c>
+	<FilesMatch "\.(ttf|ttc|otf|eot|woff|svg)$">
+		Header add Access-Control-Allow-Origin "*"
+	</FilesMatch>
+</IfModule>

@@ -370,9 +370,10 @@ body.main .left-menu {
 
 .photo-block {
   margin-top: 3em;
-  background: white;
+  /*background: white;*/
+  background: transparent;
   overflow: hidden;
-  padding: 4px;
+  /*padding: 4px;*/
 }
 .photo-block:first-child {
   margin-top: 0;
