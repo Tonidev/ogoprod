@@ -8,6 +8,7 @@ class Config {
   static $db_connection_string = array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod');
   public static $ADMIN_SHORT_SESSION_TIME = 60*15; //15 min
   public static $ADMIN_SESSION_TIME = 60*60*24*7; //1 week
+  public static $siteName = 'OGO Production';
 }
 
 

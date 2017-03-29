@@ -25,12 +25,15 @@ switch ($action) {
   case 'func':
     $action = 'index';
     break;
+  case 'logout' :
+    logout();
+    break;
 }
 
-$has_access = check_admin_granted();
-if(!$has_access && $action != 'login') {
+$login = check_admin_granted();
+if(!$login && $action != 'login') {
   redirect('/admin/login');
-} elseif ($has_access && $action == 'login') {
+} elseif ($login && $action == 'login') {
   $action = 'index';
 }
 

@@ -29,7 +29,7 @@
 <?php
 include ('header.php');
 ?>
-<div id="content" class="container">
+<div id="content" class="container-fluid">
   <?
   echo empty($admin_content) ? '' : $admin_content;
   ?>
