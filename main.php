@@ -36,7 +36,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 
     <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
     <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
-    <li><a class="services" href="main.php"><span class="ico"></span><span class="text">услуги</span></a></li>
+    <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
     <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">галерея</span></a></li>
     <!--    <li>sdsgerersa eesr</li>-->
 
