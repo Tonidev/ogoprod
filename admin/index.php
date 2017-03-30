@@ -5,161 +5,190 @@
  * Date: 29.03.17
  * Time: 17:21
  */
+
+$func = empty($_REQUEST['func']) ? null : $_REQUEST['func'];
+if (!empty($func)) {
+  if(!empty($_REQUEST['ajax'])) {
+    switch ($func) {
+      case 'editPromo':
+        $intParams = array('activated', 'paid', 'status');
+        if(!empty($_REQUEST['id']) && !empty($_REQUEST['param']) && isset($_REQUEST['value']) ) {
+          $holder = '?s';
+          if(in_array($_REQUEST['param'], $intParams)) {
+            $holder = '?i';
+            if(!is_numeric($_REQUEST['value'])) {
+              $_REQUEST['value'] = ($_REQUEST['value'] == 'false' || $_REQUEST['value'] == 'off')
+                  ? 0
+                  : 1;
+            }
+          }
+          $result = Db::i()->query("UPDATE ogoprod.promo_code SET ?n = $holder WHERE id = ?i", $_REQUEST['param'], intval($_REQUEST['value']), intval($_REQUEST['id']) );
+        }
+        if(empty($result) ) {
+          Helpers::jsonError();
+        } else {
+          Helpers::jsonOk();
+        }
+        break;
+    }
+    die();
+  }
+}
+
+
+$promos = Db::i()->getAll("SELECT * FROM promo_code WHERE status = 1 ORDER BY `activated` DESC, `date` DESC");
+$promo_statistics = array();
+
+$promo_services = Config::$PROMO_SERVICES;
+
+$promo_sources = Config::$PROMO_SOURCES;
+
 ?>
 
+<h1 class="page-header">Использованные промо</h1>
+<div class="table-responsive">
+  <table class="table table-striped used_promo">
+    <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Код</th>
+      <th>Имя</th>
+      <th>Телефон</th>
+      <th>Vk</th>
+      <th>Активирован</th>
+      <th>Оплачен</th>
+      <th>Удалить</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?
+    $totalstr = "Всего";
+    foreach ( $promos as $promo ) {
+      $date = date('m/Y', strtotime($promo['date']) );
+      $dates = array(
+          $date,
+          $totalstr
+      );
 
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h1 class="page-header">Dashboard</h1>
 
-      <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-          <h4>Label</h4>
-          <span class="text-muted">Something else</span>
-        </div>
+      $service_id = $promo['code'][Config::$SERVICE_POSITION];
+      $service_arr = empty($promo_services[ $service_id ])
+          ? array()
+          : $promo_services[$service_id];
+      $service = empty($service_arr['name']) ? ' Не указано' : '  ' .$service_arr['name'];
+      $service_discount = empty($service_arr['discount']) ? '' : $service_arr['discount'];
+      $services = array(
+          $service,
+          $totalstr
+      );
+
+      $source_id = $promo['code'][Config::$SOURCE_POSITION];
+      $source = empty($promo_sources[$source_id])
+          ? array()
+          : $promo_sources[$source_id];
+      $source = empty($source) ? ' Не указано' : '  '.$source;
+//      $source = empty($source_arr['name']) ? 'Не указано' : $source_arr['name'];
+//      $source_discount = empty($source_arr['discount']) ? '' : $source_arr['discount'];
+      $sources = array(
+          $source,
+          $totalstr
+      );
+
+      foreach ($dates as $date) {
+        foreach ($sources as $source) {
+          foreach ($services as $service) {
+            $promo_statistics[$date][$source][$service]['activated'] =
+                empty($promo_statistics[$date][$source][$service]['activated'])
+                    ? intval($promo['activated'])
+                    : $promo_statistics[$date][$source][$service]['activated'] + intval($promo['activated']);
+
+            $promo_statistics[$date][$source][$service]['paid'] =
+                empty($promo_statistics[$date][$source][$service]['paid'])
+                    ? intval($promo['paid'])
+                    : $promo_statistics[$date][$source][$service]['paid'] + intval($promo['paid']);
+
+            $promo_statistics[$date][$source][$service]['total'] =
+                empty($promo_statistics[$date][$source][$service]['total'])
+                    ? 1
+                    : $promo_statistics[$date][$source][$service]['total'] + 1;
+          }
+        }
+      }
+
+      ?>
+      <tr data-id="<?= $promo['id'] ?>">
+        <td><?= date('d/m H:i', strtotime($promo['date']) ) ?></td>
+        <td><?= $promo['code'] ?></td>
+        <td><?= $promo['name'] ?></td>
+        <td><?= $promo['phone'] ?></td>
+        <td><?= $promo['vk_id'] ?></td>
+        <td><input name="activated"
+                   type="checkbox"
+              <?= $promo['activated'] ? 'checked="checked" ' : '' ?>
+          >
+        </td>
+        <td><input name="paid"
+                   type="checkbox"
+              <?= $promo['paid'] ? 'checked="checked" ' : '' ?>
+          >
+        </td>
+        <td><button name="status" value="0" type="button">Удалить</button> </td>
+      </tr>
+    <? } ?>
+    </tbody>
+  </table>
+</div>
+
+
+<h2 class="sub-header">Статистика промо</h2>
+<div class="container-fluid">
+  <div class="row sub-header">
+    <div class="col-xs-1">
+      Месяц
+    </div>
+    <div class="col-xs-11">
+      Статистика
+    </div>
+  </div>
+  <?
+  ksort($promo_statistics);
+  foreach ($promo_statistics as $date => $p_sources) { ?>
+    <div class="row sub-header">
+      <div class="col-xs-1">
+        <?= $date ?>
       </div>
-
-      <h2 class="sub-header">Section title</h2>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1,001</td>
-            <td>Lorem</td>
-            <td>ipsum</td>
-            <td>dolor</td>
-            <td>sit</td>
-          </tr>
-          <tr>
-            <td>1,002</td>
-            <td>amet</td>
-            <td>consectetur</td>
-            <td>adipiscing</td>
-            <td>elit</td>
-          </tr>
-          <tr>
-            <td>1,003</td>
-            <td>Integer</td>
-            <td>nec</td>
-            <td>odio</td>
-            <td>Praesent</td>
-          </tr>
-          <tr>
-            <td>1,003</td>
-            <td>libero</td>
-            <td>Sed</td>
-            <td>cursus</td>
-            <td>ante</td>
-          </tr>
-          <tr>
-            <td>1,004</td>
-            <td>dapibus</td>
-            <td>diam</td>
-            <td>Sed</td>
-            <td>nisi</td>
-          </tr>
-          <tr>
-            <td>1,005</td>
-            <td>Nulla</td>
-            <td>quis</td>
-            <td>sem</td>
-            <td>at</td>
-          </tr>
-          <tr>
-            <td>1,006</td>
-            <td>nibh</td>
-            <td>elementum</td>
-            <td>imperdiet</td>
-            <td>Duis</td>
-          </tr>
-          <tr>
-            <td>1,007</td>
-            <td>sagittis</td>
-            <td>ipsum</td>
-            <td>Praesent</td>
-            <td>mauris</td>
-          </tr>
-          <tr>
-            <td>1,008</td>
-            <td>Fusce</td>
-            <td>nec</td>
-            <td>tellus</td>
-            <td>sed</td>
-          </tr>
-          <tr>
-            <td>1,009</td>
-            <td>augue</td>
-            <td>semper</td>
-            <td>porta</td>
-            <td>Mauris</td>
-          </tr>
-          <tr>
-            <td>1,010</td>
-            <td>massa</td>
-            <td>Vestibulum</td>
-            <td>lacinia</td>
-            <td>arcu</td>
-          </tr>
-          <tr>
-            <td>1,011</td>
-            <td>eget</td>
-            <td>nulla</td>
-            <td>Class</td>
-            <td>aptent</td>
-          </tr>
-          <tr>
-            <td>1,012</td>
-            <td>taciti</td>
-            <td>sociosqu</td>
-            <td>ad</td>
-            <td>litora</td>
-          </tr>
-          <tr>
-            <td>1,013</td>
-            <td>torquent</td>
-            <td>per</td>
-            <td>conubia</td>
-            <td>nostra</td>
-          </tr>
-          <tr>
-            <td>1,014</td>
-            <td>per</td>
-            <td>inceptos</td>
-            <td>himenaeos</td>
-            <td>Curabitur</td>
-          </tr>
-          <tr>
-            <td>1,015</td>
-            <td>sodales</td>
-            <td>ligula</td>
-            <td>in</td>
-            <td>libero</td>
-          </tr>
-          </tbody>
-        </table>
+      <div class="col-xs-11">
+        <div class="row sub-header">
+          <div class="col-xs-3">Партнер</div>
+          <div class="col-xs-9"></div>
+        </div>
+        <?
+        ksort($p_sources);
+        foreach($p_sources as $p_source => $p_services) { ?>
+          <div class="row sub-header">
+            <div class="col-xs-3"><?= $p_source ?></div>
+            <div class="col-xs-9">
+              <div class="row sub-header">
+                <div class="col-xs-3">Вид услуги</div>
+                <div class="col-xs-3">Оплачено</div>
+                <div class="col-xs-3">Активировано</div>
+                <div class="col-xs-3">Всего</div>
+              </div>
+              <?
+              ksort($p_services);
+              foreach($p_services as $p_service => $p_counts ) { ?>
+                <div class="row sub-header">
+                  <div class="col-xs-3"><?= $p_service ?></div>
+                  <div class="col-xs-3"><?= $p_counts['paid'] ?></div>
+                  <div class="col-xs-3"><?= $p_counts['activated'] ?></div>
+                  <div class="col-xs-3"><?= $p_counts['total'] ?></div>
+                </div>
+              <? } ?>
+            </div>
+          </div>
+        <? } ?>
       </div>
     </div>
+  <? } ?>
+
+</div>

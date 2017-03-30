@@ -35,8 +35,7 @@ function check_admin_granted() {
 }
 
 function redirect($url, $code = 301, $replace = true) {
-  header("Location : $url", $replace, $code);
-  die;
+  Helpers::redirect($url, $code, $replace);
 }
 
 

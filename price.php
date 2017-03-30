@@ -18,9 +18,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <html>
 <head>
   <script type="text/javascript">
-    function proverka(tel) {
-      tel.value = tel.value.replace(/[^\d,]/g, '');
-    }
+
   </script>
   <meta name="charset" content="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +38,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <body class="main">
 <script>
   jQuery("document").ready(function($) {
-    $('select').dropdown({});
+
   });
 </script>
 

@@ -652,4 +652,5 @@ div#photo_popup_comments_list {
   box-shadow:0 0 2px #bababa, inset 0 0 1px #FFFFFF;
   text-shadow: 0 0 20px #bababa;
   filter: dropshadow(color=#bababa, offx=0, offy=0);
+  margin-left: 20px;
 }

@@ -5,6 +5,7 @@
  * Date: 29.03.17
  * Time: 6:49
  */
+/** @var string $action */
 ?>
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
@@ -38,9 +39,12 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Фото <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Альбомы</a></li>
-        <li><a href="#">Промо</a></li>
+        <li <?= $action=='index' ? ' class="active" ': '' ?>>
+          <a href="/admin">Промо</a></li>
+        <li <?= $action=='photo' ? ' class="active" ': '' ?>>
+          <a href="/admin/photo">Фото</a></li>
+        <li <?= $action=='albums' ? ' class="active" ': '' ?>>
+        <a href="/admin/albums">Альбомы</a></li>
       </ul>
     </div>
 

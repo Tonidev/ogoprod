@@ -83,28 +83,17 @@ $(document).ready(function () {
               });
           }
         });
-/*
-        var avatar_url = 'https://api.vk.com/method/users.get?user_ids[]=' + uid + '&fields[]=photo_100';
-        $.ajax(
-          {
-            url : avatar_url,
-            success : function (data) {
-              console.dir(data);
-              try {
-                data = JSON.parse(data);
-              } catch(e) {
-
-              }
-            },
-            error : function (data, err) {
-              console.dir(data);
-            }
-          });
-*/
-
       }
     });
 
   } );
 
+  $('select').dropdown();
+
+
 });
+
+function proverka(tel) {
+  tel.value = tel.value.replace(/[^\d,]/g, '');
+}
+
