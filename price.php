@@ -52,31 +52,34 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
     <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
     <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">галерея</span></a></li>
-    <!--    <li>sdsgerersa eesr</li>-->
 
-    <!--<li><a class="main" href="main.php"><img src="img/menu/ico6.png" style="width: 34px; height: 34px;" class="ico"><span class="text">главная</span></a></li>
-    <li><a class="portfolio" href="main.php"><img src="img/menu/ico4.png" style="width: 34px; height: 34px;" class="ico"><span class="text">портфолио</span></a></li>
-    <li><a class="services" href="main.php"><img src="img/menu/ico1.png" style="width: 34px; height: 34px;" class="ico"><span class="text">услуги</span></a></li>
-    <li><a class="gallery" href="main.php"><img src="img/menu/ico3.png" style="width: 34px; height: 34px;" class="ico"><span class="text">галерея</span></a></li>-->
   </ul>
 </div>
 <div class="content">
   <div id="vvod">
-  <span class="pricetext">Промо-код : </span><input type="text" name="promo" style="border-radius: 5px; width: 146px; text-align: center">
+    <span class="pricetext">Промо-код : </span>
+    <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
+    <span id="discount_text" class="pricetext"></span>
   <div class="service">
-    <span class="pricetext">Вид услуги :</span> <select>
-      <option  value="1">Фото школа</option>
-      <option  value="2">Фото сессия</option>
+    <span class="pricetext">Вид услуги :</span>
+    <select name="service">
+      <? foreach( Config::$PROMO_SERVICES as $k => $s) { ?>
+        <option  value="<?= $k ?>"> <?= $s['name'] ?></option>
+      <? } ?>
     </select>
+    <span id="service_text" class="pricetext"></span>
   </div>
   <div class="fio">
-  <span class="pricetext"style="padding-right:1.95em;">Ф. И. О. : </span><input type="text" name="fio" style="text-align: center; border-radius: 5px; width: 146px;">
+    <span class="pricetext" style="padding-right:1.95em;">Ф. И. О. : </span>
+    <input type="text" name="name" style="text-align: center; border-radius: 5px; width: 146px;">
 </div>
   <div class="phone">
-    <span class="pricetext"style="padding-right:1.05em;">Телефон : </span><input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
+    <span class="pricetext" style="padding-right:1.05em;">Телефон : </span>
+    <input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
   </div>
 
-  <a href="price.php" style="margin-left:30px" class="send">Заказать</a> <a href="" class="send2">Вконтакте</a>
+    <a href="price.php" style="margin-left:30px" class="send">Заказать</a>
+    <a href="" class="send2">Вконтакте</a>
   </div>
 </div>
 <!--

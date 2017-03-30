@@ -654,3 +654,11 @@ div#photo_popup_comments_list {
   filter: dropshadow(color=#bababa, offx=0, offy=0);
   margin-left: 20px;
 }
+
+.sweet-alert .sa-icon.sa-success .sa-fix {
+  background-color: transparent;
+}
+
+.sweet-alert .sa-icon.sa-success::before, .sweet-alert .sa-icon.sa-success::after {
+  background-color: transparent;
+}
