@@ -70,7 +70,9 @@ $(document).ready(function () {
                       text: "Не удалось получить данные.",
                       type: "warning",
                       confirmButtonText: "OK",
-                      showCancelButton: false
+                      showCancelButton: false,
+                      allowOutsideClick : true
+
                     });
                   } else {
                     var $newComment = $(data);
@@ -78,33 +80,191 @@ $(document).ready(function () {
                   }
                 },
                 error : function (data, err) {
+                  swal({
+                    title: "Ошибка! :(",
+                    text: "Не удалось получить данные.",
+                    type: "warning",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick : true
+                  });
                   console.dir(data);
                 }
               });
           }
         });
-/*
-        var avatar_url = 'https://api.vk.com/method/users.get?user_ids[]=' + uid + '&fields[]=photo_100';
-        $.ajax(
-          {
-            url : avatar_url,
-            success : function (data) {
-              console.dir(data);
-              try {
-                data = JSON.parse(data);
-              } catch(e) {
-
-              }
-            },
-            error : function (data, err) {
-              console.dir(data);
-            }
-          });
-*/
-
       }
     });
 
-  } );
+  });
 
+  $('select').dropdown();
+
+  $('.main #vvod .send').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var data = {
+      ajax : 'ajax',
+      func : 'add_order'
+    };
+    $('#vvod input, #vvod select').each(function (i, el) {
+      var $el = $(el);
+      data[$el.attr('name')] = $el.val()
+    });
+    add_order_ajax(data);
+  });
+
+
+  $('.main #vvod .send2').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var data = {
+      ajax : 'ajax',
+      func : 'add_order'
+    };
+    $('#vvod input, #vvod select').each(function (i, el) {
+      var $el = $(el);
+      data[$el.attr('name')] = $el.val()
+    });
+    VK.Auth.login(function (vk_session) {
+      if(vk_session.session) {
+        var user = vk_session.session.user;
+        data.name = user.first_name + ' ' + user.last_name;
+        data.vk_id = user.id;
+        add_order_ajax(data);
+      }
+    });
+
+  });
+
+  $('.main #vvod input[name=code]').change(function(e) {
+    var $this = $(this);
+    var $select = $('#vvod select');
+    if($this.val().length < 4) {
+      $select.parent().show();
+      $select.find('option').show();
+      $('#service_text').text('');
+      $('#discount_text').text('');
+
+    } else {
+      var data = {
+        ajax : 'ajax',
+        func : 'checkCodeServices',
+        code : $this.val()
+      };
+      $.ajax({
+        url : '/add_order.php',
+        type : 'post',
+        data : data,
+        success : function (data) {
+          try {
+            data = JSON.parse(data);
+            if(typeof data.success != 'undefined' &&
+                data.success
+            ) {
+              if(typeof data.data != 'undefined') {
+                if(typeof data.data.all != 'undefined' && data.data.all) {
+                  $select.parent().show();
+                  $select.find('option').show();
+                  $('#service_text').text('');
+                  $('#discount_text').text('');
+                } else {
+                  $.each(data.data.services, function (i, el) {
+                    $select.val(el.id);
+                    $('#discount_text').text(el.discount);
+                    $select.dropdown("update");
+                    $select.parent().hide();
+                    $('#service_text').text(el.name);
+                  });
+                }
+              }
+            } else {
+              $select.parent().show();
+              $select.find('option').show();
+              $('#service_text').text('');
+              $('#discount_text').text('');
+
+            }
+          } catch (e) {
+            $select.parent().show();
+            $select.find('option').show();
+            $('#service_text').text('');
+            $('#discount_text').text('');
+
+          }
+        },
+        error : function (data, err) {
+          $select.show();
+          $select.find('option').show();
+        }
+      });
+    }
+  });
 });
+
+function proverka(tel) {
+  tel.value = tel.value.replace(/[^\d,]/g, '');
+}
+
+function add_order_ajax(data) {
+  $.ajax({
+    url : '/add_order.php',
+    data : data,
+    type : 'post',
+    success : function (data) {
+      try {
+        data = JSON.parse(data);
+        if(data.success) {
+          var msg = (typeof data.msg == 'undefined')
+            ? "Заявка успешно отправлена."
+            : data.msg;
+          swal({
+            title: "Успех!",
+            text: msg,
+            type: "success",
+            confirmButtonText: "OK",
+            showCancelButton: false,
+            allowOutsideClick : true
+          });
+        } else {
+          var msg = (typeof data.msg == 'undefined')
+            ? "Заявка успешно отправлена."
+            : data.text;
+          swal({
+            title: "Ошибка! :(",
+            text: msg,
+            type: "warning",
+            confirmButtonText: "OK",
+            allowOutsideClick : true,
+            showCancelButton: false
+          });
+        }
+
+      } catch (e) {
+        swal({
+          title: "Ошибка! :(",
+          text: "Не удалось получить данные.",
+          type: "warning",
+          confirmButtonText: "OK",
+          allowOutsideClick : true,
+          showCancelButton: false
+        });
+      }
+    },
+    error : function (data, err) {
+      swal({
+        title: "Ошибка! :(",
+        text: "Не удалось получить данные.",
+        type: "warning",
+        confirmButtonText: "OK",
+        allowOutsideClick : true,
+        showCancelButton: false
+      });
+      console.dir(data);
+    }
+  });
+
+}
+

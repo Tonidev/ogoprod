@@ -15,6 +15,8 @@ RewriteRule ^index\.php$ http://ogoprod.int/ [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{QUERY_STRING} Subject=(.*)
+RewriteRule ^main$ /main/%{QUERY_STRING} [L]
 RewriteRule ^main/(.*)$ /main.php?$1 [L]
 RewriteRule ^admin$ /admin/ [L]
 RewriteRule ^admin/(.*)$ /admin.php?action=$1 [L]

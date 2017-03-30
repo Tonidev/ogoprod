@@ -13,6 +13,7 @@ function login($login, $pass, $remember_me = false) {
     } else {
       $_SESSION['admin_granted'] = time() + ADMIN_SHORT_SESSION_TIME;
     }
+    $_SESSION['login'] = $login;
   }
 
   redirect('/admin');
@@ -23,17 +24,29 @@ function check_admin_granted() {
   $sid = session_id();
   if(
       empty($sid) ||
+      empty($_SESSION['login']) ||
       empty($_SESSION['admin_granted']) ||
       time() > $_SESSION['admin_granted']
   ) {
     return false;
   }
   $_SESSION['admin_granted'] = time() + ADMIN_SHORT_SESSION_TIME;
-
-  return true;
+  return $_SESSION['login'];
 }
 
 function redirect($url, $code = 301, $replace = true) {
-  header("Location : $url", $replace, $code);
-  die;
+  Helpers::redirect($url, $code, $replace);
+}
+
+
+function logout() {
+  $sid = session_id();
+  if(
+      empty($sid)
+  ) {
+    return false;
+  }
+  unset($_SESSION['login']);
+  unset($_SESSION['admin_granted']);
+  redirect('/admin');
 }

@@ -13,9 +13,13 @@ if(!defined('BASE_DIR')) {
 if(!defined('ADMIN_DIR')) {
   define('ADMIN_DIR', __DIR__ .DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR);
 }
+
+$no_layout = false;
+
 require_once(BASE_DIR . 'config.php');
 
 require_once (ADMIN_DIR . 'func.php');
+
 
 $action = empty($_REQUEST['action']) ? 'index' : $_REQUEST['action'];
 switch ($action) {
@@ -25,20 +29,17 @@ switch ($action) {
   case 'func':
     $action = 'index';
     break;
+  case 'logout' :
+    logout();
+    break;
 }
 
-$has_access = check_admin_granted();
-if(!$has_access && $action != 'login') {
+$login = check_admin_granted();
+if(!$login && $action != 'login') {
   redirect('/admin/login');
-} elseif ($has_access && $action == 'login') {
+} elseif ($login && $action == 'login') {
   $action = 'index';
 }
-
-
-
-//if(!is_dir(ADMIN_DIR)) {
-//  mkdir(ADMIN_DIR);
-//}
 
 
 if(!defined('ADMIN_LAYOUT_FILE')) {
@@ -48,7 +49,6 @@ if(!defined('ADMIN_LAYOUT_FILE')) {
 $action_file = ADMIN_DIR . $action . '.php';
 
 if(file_exists($action_file)) {
-  $no_layout = false;
   ob_start();
   include($action_file);
   $admin_content = ob_get_contents();
@@ -56,6 +56,11 @@ if(file_exists($action_file)) {
   if($no_layout) {
     echo $admin_content;
   } else {
+    include (ADMIN_DIR . 'layout.php');
+  }
+} else {
+  if(!$no_layout) {
+    $admin_content = "Файла {$action}.php пока нет, но вы держитесь, хорошего вам настроения и крепкого здоровья";
     include (ADMIN_DIR . 'layout.php');
   }
 }
