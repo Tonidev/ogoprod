@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `album` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11)   NOT NULL AUTO_INCREMENT,
   `id_photo` int(11) NOT NULL,
   `avatar` text,
   `author` text NOT NULL,

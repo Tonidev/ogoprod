@@ -17,17 +17,33 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript">
+    function proverka(tel) {
+      tel.value = tel.value.replace(/[^\d,]/g, '');
+    }
+  </script>
   <meta name="charset" content="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Title</title>
 <!--  <link rel="stylesheet" href="css/style.css">-->
   <script src="js/jq.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/touch.js"></script>
+  <script src="js/dropdown.js"></script>
+  <link rel="stylesheet" href="css/dropdown.css"/>
   <script src="js/sweetalert.min.js"></script>
+
   <link rel="stylesheet" href="css/sweetalert.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://vk.com/js/api/openapi.js?142" type="text/javascript"></script>
 </head>
 <body class="main">
+<script>
+  jQuery("document").ready(function($) {
+    $('select').dropdown({});
+  });
+</script>
+
 <div class="logo">
   <a href="/"></a>
 </div>
@@ -47,28 +63,24 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
   </ul>
 </div>
 <div class="content">
-
-  <? foreach(  $photos as $photo) { ?>
-    <div class="photo-block">
-      <div class="photo"><img src="<?= $photo['url'] ?>" data-id="<?= $photo['id'] ?>"></div>
-      <div class="description"><?= $photo['description']; //Фото №1 трататата тут типо описание и всё понятно ?></div>
-    </div>
-  <? } ?>
-
-  <!--
-
-  <div class="photo-block">
-    <div class="photo"><img src="http://files2.geometria.ru/pics/original/058/021/58021259.jpg"></div>
-    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
+  <div id="vvod">
+  <span class="pricetext">Промо-код : </span><input type="text" name="promo" style="border-radius: 5px; width: 146px; text-align: center">
+  <div class="service">
+    <span class="pricetext">Вид услуги :</span> <select>
+      <option  value="1">Фото школа</option>
+      <option  value="2">Фото сессия</option>
+    </select>
+  </div>
+  <div class="fio">
+  <span class="pricetext"style="padding-right:1.95em;">Ф. И. О. : </span><input type="text" name="fio" style="text-align: center; border-radius: 5px; width: 146px;">
+</div>
+  <div class="phone">
+    <span class="pricetext"style="padding-right:1.05em;">Телефон : </span><input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
   </div>
 
-  <div class="photo-block">
-    <div class="photo"><img src="http://files2.geometria.ru/pics/original/058/021/58021475.jpg"></div>
-    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
-  </div>-->
-
+  <a href="price.php" style="margin-left:30px" class="send">Заказать</a> <a href="" class="send2">Вконтакте</a>
+  </div>
 </div>
-
 <!--
 <footer>
 

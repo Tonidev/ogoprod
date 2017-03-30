@@ -568,5 +568,88 @@ div#photo_popup_comments_list {
   height: 65px;
   max-height: 65px;
 }
+.fs-dropdown-bottom .fs-dropdown-options {
+  bottom:auto !important;
+}
+.fs-dropdown { width: 150px; text-align:center;}
+  .fs-dropdown-selected {text-indent: 1.5em; border-width: 1px; border-radius: 4px; font-size: 12pt;}
 
-
+  .fs-dropdown-options { border-width: 0 2px 2px; padding: 1%; }
+  .fs-dropdown-item { text-indent: 1.5em; border-radius: 2px !important; border: none; margin: 0 0 1%; }
+  .fs-dropdown-item:hover {
+    background: none repeat scroll 0% 0% #EEE !important;
+  }
+.pricetext
+{
+  color: white;
+  font-size: 14pt;
+  font-family: Warface;
+}
+.service
+{
+  margin-top: 0.5em;
+}
+.fio
+{
+  margin-top: 0.5em;
+}
+.phone
+{
+  margin-top: 0.5em;
+}
+.send
+{
+  text-decoration:none;
+  width:80px;
+  height: 21px;
+  display: inline-block;
+  text-align:center;
+  padding:1px ;
+  margin-top: 15px;
+  border:solid 1px #004F72;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius: 4px;
+  font: 15px Arial, Helvetica, sans-serif;
+  color:#E5FFFF;
+  background-color:#90A4AE;
+  background-image: -moz-linear-gradient(top, #3e8f3e 0%, #3e8f3e 100%);
+  background-image: -webkit-linear-gradient(top, #3e8f3e 0%,#3e8f3e 100%);
+  background-image: -o-linear-gradient(top, #3e8f3e 0%, #3e8f3e 100%);
+  background-image: -ms-linear-gradient(top, #3e8f3e 0% ,#3e8f3e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1982A5', endColorstr='#1982A5',GradientType=0 );
+  background-image: linear-gradient(top, #3BA4C7 0% ,#1982A5 100%);
+  -webkit-box-shadow:0 0 2px #bababa, inset 0 0 1px #ffffff;
+  -moz-box-shadow: 0 0 2px #bababa,  inset 0 0 1px #ffffff;
+  box-shadow:0 0 2px #bababa, inset 0 0 1px #FFFFFF;
+  text-shadow: 0 0 20px #bababa;
+  filter: dropshadow(color=#bababa, offx=0, offy=0);
+}
+.send2
+{
+  text-decoration:none;
+  width:80px;
+  height: 21px;
+  display: inline-block;
+  text-align:center;
+  padding:1px ;
+  margin-top: 15px;
+  border:solid 1px #004F72;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius: 4px;
+  font: 15px Arial, Helvetica, sans-serif;
+  color:#E5FFFF;
+  background-color:#90A4AE;
+  background-image: -moz-linear-gradient(top, #3BA4C7 0%, #1982A5 100%);
+  background-image: -webkit-linear-gradient(top, #3BA4C7 0%,#1982A5 100%);
+  background-image: -o-linear-gradient(top, #3BA4C7 0%, #1982A5 100%);
+  background-image: -ms-linear-gradient(top, #3BA4C7 0% ,#1982A5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1982A5', endColorstr='#1982A5',GradientType=0 );
+  background-image: linear-gradient(top, #3BA4C7 0% ,#1982A5 100%);
+  -webkit-box-shadow:0 0 2px #bababa, inset 0 0 1px #ffffff;
+  -moz-box-shadow: 0 0 2px #bababa,  inset 0 0 1px #ffffff;
+  box-shadow:0 0 2px #bababa, inset 0 0 1px #FFFFFF;
+  text-shadow: 0 0 20px #bababa;
+  filter: dropshadow(color=#bababa, offx=0, offy=0);
+}
