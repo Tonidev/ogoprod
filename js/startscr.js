@@ -22,9 +22,15 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
+    var src = $this.attr('href');
+    $('#photo_popup_img').attr('src', src);
     $('#photo_popup_comments').css('opacity', 0);
-    $('#photo_popup').data('id_photo', $this.data('id'));
-    $('#photo_popup').show();
+    $photo_popup = $('#photo_popup');
+    var  id_photo = $this.data('id');
+    $photo_popup.data('id_photo', id_photo);
+    $photo_popup.find('.comment').hide();
+    $photo_popup.find('.comment[data-id_photo=' + id_photo + ']').show();
+    $photo_popup.show();
   });
 
   $('#photo_popup_menu').click(function(e) {
