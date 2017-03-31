@@ -11,7 +11,7 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 
-$photos = $db->getAll("SELECT * FROM  photo WHERE status > 0");
+$photos = $db->getAll("SELECT * FROM  photo WHERE status >= 0");
 $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 ?>
 <!DOCTYPE html>

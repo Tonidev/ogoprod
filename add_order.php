@@ -15,6 +15,7 @@ $code = empty($_REQUEST['code']) ? null : mb_strtoupper($_REQUEST['code']);
 $vk_id = empty($_REQUEST['vk_id']) ? '' : $_REQUEST['vk_id'];
 $email = empty($_REQUEST['email']) ? null : $_REQUEST['email'];
 $phone = empty($_REQUEST['phone']) ? '' : $_REQUEST['phone'];
+$service  = empty($_REQUEST['service']) ? '_' : $_REQUEST['service'];
 $ip = Helpers::get_client_ip();
 
 $func = empty($_REQUEST['func']) ? null : $_REQUEST['func'];
@@ -53,12 +54,37 @@ if (!empty($func)) {
             (!empty($phone) || !empty($vk_id))
         ) {
           if(empty($code)) {
-            $code = '____' . date('d-m-Y H:i:s');
+            $code = $service . '___' . date('d-m-Y H:i:s');
+          } else {
+            $existed = Db::i()->getRow("
+SELECT * 
+FROM promo_code 
+WHERE `code` = ?s 
+  AND status = 1
+  AND ( 
+    phone = ?s 
+    OR vk_id = ?s 
+    OR `name` = ?s 
+    OR `name` IS NULL 
+    )
+ORDER BY 
+  vk_id DESC,
+  phone DESC,
+  `name` DESC", $code, $phone, $vk_id, $name);
+            if(!empty($existed)) {
+              if(!empty($existed['name'])) {
+                Helpers::jsonError($existed['activated'] ? 'Промокод уже был использован' : 'Промокод не найден');
+                die();
+              }
+            } else {
+              Helpers::jsonError('Промокод не найден');
+              die();
+            }
           }
           $activated = 1;
           $status = 1;
           $paid = 0;
-          $result = Db::i()->query("INSERT INTO ogoprod.promo_code(code, email, phone, `name`, activated, paid, vk_id, status, ip) VALUES (?s, ?s, ?s, ?s, ?i, ?i, ?s, ?i, ?s)", $code, $email, $phone, $name, $activated, $paid, $vk_id, $status, $ip);
+          $result = Db::i()->query("INSERT INTO promo_code(`code`, email, phone, `name`, activated, paid, vk_id, `status`, ip) VALUES (?s, ?s, ?s, ?s, ?i, ?i, ?s, ?i, ?s)", $code, $email, $phone, $name, $activated, $paid, $vk_id, $status, $ip);
           if(!empty($result) ) {
             Helpers::jsonOk("Заявка успешно отправлена");
           } else {
@@ -72,6 +98,7 @@ if (!empty($func)) {
     die();
   }
 }
+die();
 ?>
 <html>
 <body>

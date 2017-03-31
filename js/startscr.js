@@ -147,7 +147,6 @@ $(document).ready(function () {
       $select.find('option').show();
       $('#service_text').text('');
       $('#discount_text').text('');
-
     } else {
       var data = {
         ajax : 'ajax',
@@ -185,7 +184,6 @@ $(document).ready(function () {
               $select.find('option').show();
               $('#service_text').text('');
               $('#discount_text').text('');
-
             }
           } catch (e) {
             $select.parent().show();
