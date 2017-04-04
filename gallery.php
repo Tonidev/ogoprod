@@ -54,19 +54,19 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
     <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
     <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">альбомы</span></a></li>
-   </ul>
+  </ul>
 </div>
 <div class="content">
   <div class="albumslist">
 
 
-      <div class="album-block">
-        <a href="index.php">
+    <div class="album-block">
+      <a href="index.php">
         <div class="photo" STYLE="width:90%;">
-        <img class="album-img" src="albums/1/OGO_4182.jpg">
-        <div class="album-line"><span class="album-text">Фото отчет 01.01.1922</span></div>
-      </div>
-          </a>
+          <img class="album-img" src="albums/1/OGO_4182.jpg">
+          <div class="album-line"><span class="album-text">Фото отчет 01.01.1922</span></div>
+        </div>
+      </a>
     </div>
 
     <div class="album-block">

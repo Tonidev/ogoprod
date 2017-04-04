@@ -721,3 +721,13 @@ div#photo_popup_comments_list {
     display: none;
   }
 }
+
+.mini-img
+{
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  margin: 4px 0;
+  float: left;
+margin: 6px;
+}
