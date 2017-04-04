@@ -142,3 +142,7 @@ body {
   transition: all 1s;
   transform: scale(1.6);
 }
+
+.toggle_next {
+  cursor: pointer;
+}

@@ -11,7 +11,7 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 
-$photos = $db->getAll("SELECT * FROM  photo WHERE status > 0");
+$photos = $db->getAll("SELECT * FROM  photo WHERE status >= 0");
 $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 ?>
 <!DOCTYPE html>
@@ -38,20 +38,27 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
     <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
     <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">галерея</span></a></li>
-    <!--    <li>sdsgerersa eesr</li>-->
 
-    <!--<li><a class="main" href="main.php"><img src="img/menu/ico6.png" style="width: 34px; height: 34px;" class="ico"><span class="text">главная</span></a></li>
-    <li><a class="portfolio" href="main.php"><img src="img/menu/ico4.png" style="width: 34px; height: 34px;" class="ico"><span class="text">портфолио</span></a></li>
-    <li><a class="services" href="main.php"><img src="img/menu/ico1.png" style="width: 34px; height: 34px;" class="ico"><span class="text">услуги</span></a></li>
-    <li><a class="gallery" href="main.php"><img src="img/menu/ico3.png" style="width: 34px; height: 34px;" class="ico"><span class="text">галерея</span></a></li>-->
+
   </ul>
 </div>
 <div class="content">
 
   <? foreach(  $photos as $photo) { ?>
     <div class="photo-block">
-      <div class="photo"><img src="<?= $photo['url'] ?>" data-id="<?= $photo['id'] ?>"></div>
-      <div class="description"><?= $photo['description']; //Фото №1 трататата тут типо описание и всё понятно ?></div>
+      <div class="photo">
+        <img class="mobile-hide"
+             href="<?= $photo['url'] ?>"
+             src="<?= $photo['url'] ?>"
+             data-id="<?= $photo['id'] ?>">
+        <img class="desktop-hide"
+             href="<?= $photo['url'] ?>"
+             src="<?= empty($photo['url_mini'])
+                 ? $photo['url']
+                 : $photo['url_mini'] ?>"
+             data-id="<?= $photo['id'] ?>">
+      </div>
+      <div class="description"><?= $photo['description'] ?></div>
     </div>
   <? } ?>
 
@@ -89,20 +96,10 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
         <div id="photo_popup_comments_header">Это не мнение, я просто правду говорю</div>
         <div id="photo_popup_comments_list">
           <? foreach( $comments as $comment) { ?>
-            <div class="comment">
+            <div class="comment" data-id_photo="<?= $comment['id_photo'] ?>">
               <div class="avatar" style="background-image: url('<?= $comment['avatar']?>')"></div>
               <div class="author"><?= $comment['author']?></div>
               <div class="text"><?= $comment['text']?></div>
-            </div>
-
-          <? } ?>
-          <? for($i = 10; $i < 10; $i++) { ?>
-            <div class="comment">
-              <div class="avatar"></div>
-              <div class="author">Дмитрiй Безпалюкъ</div>
-              <div class="text">Это не мнение, я просто правду говорю.
-                -Уметь надо мнения выслушивать.
-                😄</div>
             </div>
           <? } ?>
         </div>

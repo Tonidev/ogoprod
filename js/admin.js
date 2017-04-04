@@ -2,26 +2,47 @@
  * Created by shikon on 30.03.17.
  */
 $(document).ready(function () {
-  $('.used_promo input, .used_promo button').click(function() {
+  $('.used_promo button').click(editPromoHandler);
+  $('.used_promo input').change(editPromoHandler);
+
+  $('.add_promo button').click(function() {
     var $this = $(this);
-    if($this.is(':checkbox')) {
-      var value = $this.is(':checked');
-    } else {
-      value = $this.val();
-    }
-    var name = $this.attr('name');
-    var id = $this.parents('tr').data('id');
+    var $input = $this.parents('tr').find('input[name=code]');
     var data = {
       ajax : 'ajax',
-      func : 'editPromo',
-      id : id,
-      param : name,
-      value : value
+      func : 'addPromo',
+      code : $input.val()
     };
-    stdAjax(data, null, $this);
+    stdAjax(data, null, $input);
+  });
+
+  $('.toggle_next').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    $this.next().toggle();
   } );
+
 });
 
+function editPromoHandler() {
+  var $this = $(this);
+  if($this.is(':checkbox')) {
+    var value = $this.is(':checked');
+  } else {
+    value = $this.val();
+  }
+  var name = $this.attr('name');
+  var id = $this.parents('tr').data('id');
+  var data = {
+    ajax : 'ajax',
+    func : 'editPromo',
+    id : id,
+    param : name,
+    value : value
+  };
+  stdAjax(data, null, $this);
+}
 
 function stdAjax(data, url, $object, err_cb) {
   if(typeof data == 'undefined') {
@@ -61,12 +82,17 @@ function stdAjax(data, url, $object, err_cb) {
             .addClass('hell-orange')
             .addClass('glyphicon-thumbs-down');
           if(typeof err_cb == 'function') {
-            err_cb(data, $object, $indicator);
+            err_cb(data, $object, $indicator, ans);
           } else {
-            stdErrorCb(data, $object, $indicator);
+            stdErrorCb(data, $object, $indicator, ans);
           }
         }
       } catch (e) {
+        $icon
+          .removeClass('spinning')
+          .removeClass('glyphicon-repeat')
+          .addClass('hell-orange')
+          .addClass('glyphicon-thumbs-down');
         swal({
           title: "Ошибка! :(",
           text: "Некорректный ответ сервера",
@@ -76,9 +102,9 @@ function stdAjax(data, url, $object, err_cb) {
           allowOutsideClick : true
         });
         if(typeof err_cb == 'function') {
-          err_cb(data, $object, $indicator);
+          err_cb(data, $object, $indicator, ans);
         } else {
-          stdErrorCb(data, $object, $indicator);
+          stdErrorCb(data, $object, $indicator, ans);
         }
       }
     },
@@ -92,9 +118,9 @@ function stdAjax(data, url, $object, err_cb) {
         allowOutsideClick : true
       });
       if(typeof err_cb == 'function') {
-        err_cb(data, $object, $indicator);
+        err_cb(data, $object, $indicator, ans);
       } else {
-        stdErrorCb(data, $object, $indicator);
+        stdErrorCb(data, $object, $indicator, ans);
       }
       console.dir(ans);
       console.dir(err);
@@ -103,9 +129,13 @@ function stdAjax(data, url, $object, err_cb) {
 
 }
 
-function stdErrorCb(data, $object, $indicator) {
+function stdErrorCb(data, $object, $indicator, ans) {
   if(typeof $object != 'undefined') {
     $object = $($object);
+    if(typeof ans != 'undefined' &&
+      typeof ans.text != 'undefined') {
+      $indicator.attr('title', ans.text);
+    }
     $indicator.hover(
       function () {
         $object.addClass('error-grow');

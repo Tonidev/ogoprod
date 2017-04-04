@@ -91,8 +91,11 @@ class Helpers {
     return self::jsonAnswer(0, $msg, $data, $echo, $htmlentities);
   }
 
-  public static function redirect($url, $code = 301, $replace = true)
+  public static function redirect($url = null, $code = 301, $replace = true)
   {
+    if(empty($url)) {
+      $url = $_SERVER['REQUEST_URI'];
+    }
     header("Location : $url", $replace, $code);
     die;
   }

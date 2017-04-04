@@ -22,7 +22,33 @@ if (!empty($func)) {
                   : 1;
             }
           }
-          $result = Db::i()->query("UPDATE ogoprod.promo_code SET ?n = $holder WHERE id = ?i", $_REQUEST['param'], intval($_REQUEST['value']), intval($_REQUEST['id']) );
+          if($_REQUEST['param'] == 'code') {
+            $_REQUEST['value'] = strtoupper($_REQUEST['value']);
+          }
+          $result = Db::i()->query("
+UPDATE promo_code SET ?n = $holder WHERE id = ?i", $_REQUEST['param'], $_REQUEST['value'], intval($_REQUEST['id']) );
+        }
+        if(empty($result) ) {
+          Helpers::jsonError();
+        } else {
+          Helpers::jsonOk();
+        }
+        break;
+      case 'addPromo':
+        if(!empty($_REQUEST['code']) ) {
+          $_REQUEST['code'] = strtoupper($_REQUEST['code']);
+          $existing = Db::i()->getRow("
+SELECT * FROM promo_code WHERE `code` LIKE ?s AND `name` IS NULL ", $_REQUEST['code']);
+          if(!empty($existing['id'])) {
+            $result = Db::i()->query("
+UPDATE promo_code SET `status` = 1 WHERE id = ?i", $existing['id']);
+          } else {
+            $result = Db::i()->query("
+INSERT INTO promo_code
+(`code`, email, phone, `name`, vk_id, ip, activated, paid, `status`) VALUES 
+( ?s,     NULL,   NULL ,    NULL,     NULL,   NULL, 0,          0,    1) 
+", $_REQUEST['code']);
+          }
         }
         if(empty($result) ) {
           Helpers::jsonError();
@@ -45,7 +71,7 @@ $promo_sources = Config::$PROMO_SOURCES;
 
 ?>
 
-<h1 class="page-header">Использованные промо</h1>
+<h1 class="toggle_next page-header">Использованные промо</h1>
 <div class="table-responsive">
   <table class="table table-striped used_promo">
     <thead>
@@ -114,14 +140,73 @@ $promo_sources = Config::$PROMO_SOURCES;
           }
         }
       }
-
+      if(empty($promo['name'])) {
+        continue;
+      }
       ?>
       <tr data-id="<?= $promo['id'] ?>">
         <td><?= date('d/m H:i', strtotime($promo['date']) ) ?></td>
         <td><?= $promo['code'] ?></td>
         <td><?= $promo['name'] ?></td>
         <td><?= $promo['phone'] ?></td>
-        <td><?= $promo['vk_id'] ?></td>
+        <td><a href="//vk.com/id<?= $promo['vk_id'] ?>"><?= $promo['vk_id'] ?></a></td>
+        <td><input name="activated"
+                   type="checkbox"
+              <?= $promo['activated'] ? 'checked="checked" ' : '' ?>
+          >
+        </td>
+        <td><input name="paid"
+                   type="checkbox"
+              <?= $promo['paid'] ? 'checked="checked" ' : '' ?>
+          >
+        </td>
+        <td><button name="status" value="0" type="button">Удалить</button> </td>
+      </tr>
+    <? } ?>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="toggle_next sub-header">Доступные промо</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Код</th>
+      <th>Имя</th>
+      <th>Телефон</th>
+      <th>Vk</th>
+      <th>Активирован</th>
+      <th>Оплачен</th>
+      <th>Удалить</th>
+    </tr>
+    </thead>
+    <tbody class="add_promo">
+    <tr data-id="0">
+      <td></td>
+      <td><input name="code" value=""></td>
+      <td><input name="name" type="hidden" value=""></td>
+      <td><input name="phone" type="hidden" value=""></td>
+      <td><input name="vk_id" type="hidden" value=""></td>
+      <td><input name="activated" type="hidden" value="0"></td>
+      <td><input name="paid" type="hidden" value="0"></td>
+      <td><button name="status" value="1" type="button">Добавить</button> </td>
+    </tr>
+    </tbody>
+    <tbody class="used_promo">
+    <?
+    foreach ( $promos as $promo ) {
+      if(!empty($promo['name'])) {
+        continue;
+      }
+      ?>
+      <tr data-id="<?= $promo['id'] ?>">
+        <td><?= date('d/m H:i', strtotime($promo['date']) ) ?></td>
+        <td><input name="code" value="<?= $promo['code'] ?>"></td>
+        <td><input name="name"  type="hidden" value="<?= $promo['name'] ?>"></td>
+        <td><input name="phone"  type="hidden" value="<?= $promo['phone'] ?>"></td>
+        <td><input name="vk_id"  type="hidden" value="<?= $promo['vk_id'] ?>"></td>
         <td><input name="activated"
                    type="checkbox"
               <?= $promo['activated'] ? 'checked="checked" ' : '' ?>
@@ -140,7 +225,7 @@ $promo_sources = Config::$PROMO_SOURCES;
 </div>
 
 
-<h2 class="sub-header">Статистика промо</h2>
+<h2 class="toggle_next sub-header">Статистика промо</h2>
 <div class="container-fluid">
   <div class="row sub-header">
     <div class="col-xs-1">
