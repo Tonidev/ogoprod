@@ -18,7 +18,7 @@ $(document).ready(function () {
     $('#photo_popup_menu').removeClass('opened');
   });
 
-  $('.photo img').click(function(e) {
+  $('.photo:not(.gallery-photo) img').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);

@@ -33,9 +33,11 @@
   allowOutsideClick : true,
   showConfirmButton: false
 }); return false;" id="but" class="button">oGo Production</a>
+<DIV id="logobg" >
 <div id="logotmp">
     <img id="startlogo" src="img/logo.png" alt="" oncontextmenu="return false;" >
 </div>
+</DIV>
 <div id="start"  width="2000" height="1200" ></div>
 </body>
 </html>

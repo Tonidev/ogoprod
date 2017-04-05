@@ -24,8 +24,13 @@ html,body
   min-height: 100%;
 }
 
+#logobg
+{
+  background: url("/backgrounds/0.jpg") center;);
+}
+
 body {
-  background: url("/backgrounds/0.jpg") center;
+
   background-size: cover;
   background-attachment: fixed;
 }
@@ -724,10 +729,17 @@ div#photo_popup_comments_list {
 
 .mini-img
 {
+  border-radius: 3px;
   background-size: cover;
   width: 200px;
   height: 200px;
   margin: 4px 0;
   float: left;
-margin: 6px;
+  margin: 6px;
+  border-color: #90A4AE;
+  border-style: ridge;
+}
+
+.photo.gallery-photo {
+  width:90%;
 }

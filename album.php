@@ -53,22 +53,28 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
         <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
         <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
         <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
-        <li><a class="gallery" href="main.php"><span class="ico"></span><span class="text">альбомы</span></a></li>
+        <li><a class="gallery" href="gallery.php"><span class="ico"></span><span class="text">альбомы</span></a></li>
     </ul>
 </div>
 <div class="content">
     <div class="album">
         <div class="albumini">
                     <div class="mini-img" style="background-image: url('albums/1/OGO_4182.jpg');"></div>
-                    <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4145.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4159.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4168.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4247.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4266.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_8896.jpg');"></div>
             <div class="mini-img" style="background-image: url('albums/1/OGO_4182.jpg');"></div>
             <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
-            <div class="mini-img" style="background-image: url('albums/1/OGO_4182.jpg');"></div>
-            <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
-            <div class="mini-img" style="background-image: url('albums/1/OGO_4182.jpg');"></div>
-            <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
-            <div class="mini-img" style="background-image: url('albums/1/OGO_4182.jpg');"></div>
-            <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4145.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4159.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4168.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4247.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_4266.jpg');"></div>
+            <div class="mini-img" style="background-image: url('albums/1/OGO_8896.jpg');"></div>
             </div>
         </div>
 
