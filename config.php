@@ -5,9 +5,9 @@ require_once (BASE_DIR .'safemysql.class.php');
 
 class Config {
 
-  static $db_connection_string = array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod');
-  public static $ADMIN_SHORT_SESSION_TIME = 60*15; //15 min
-  public static $ADMIN_SESSION_TIME = 60*60*24*7; //1 week
+  static $db_connection_string = array('user' => 'root', 'pass' => '1204', 'db' => 'ogoprod');
+  public static $ADMIN_SHORT_SESSION_TIME = 900; //15 min
+  public static $ADMIN_SESSION_TIME = 1468800; //1 week
   public static $siteName = 'OGO Production';
 
   public static $SERVICE_POSITION = 0;
