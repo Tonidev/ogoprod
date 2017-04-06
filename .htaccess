@@ -26,8 +26,8 @@ RewriteRule ^portfolio$ /portfolio/%{QUERY_STRING} [L]
 RewriteRule ^portfolio/(.*)$ /portfolio.php?$1 [L]
 RewriteRule ^main$ /main/%{QUERY_STRING} [L]
 RewriteRule ^main/(.*)$ /main.php?$1 [L]
-RewriteRule ^admin$ /admin/ [L]
-RewriteRule ^admin/(.*)$ /admin.php?action=$1 [L]
+RewriteRule ^admin$ /admin/%{QUERY_STRING} [L]
+RewriteRule ^admin/(.*)$ /admin.php?action=$1&%{QUERY_STRING} [L]
 
 </IfModule>
 
