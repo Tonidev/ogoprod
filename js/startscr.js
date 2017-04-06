@@ -234,7 +234,7 @@ function add_order_ajax(data) {
           });
         } else {
           var msg = (typeof data.msg == 'undefined')
-            ? "Заявка успешно отправлена."
+            ? "Заявка не отправлена."
             : data.text;
           swal({
             title: "Ошибка! :(",
@@ -245,7 +245,6 @@ function add_order_ajax(data) {
             showCancelButton: false
           });
         }
-
       } catch (e) {
         swal({
           title: "Ошибка! :(",

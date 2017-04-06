@@ -16,14 +16,55 @@ $(document).ready(function () {
     stdAjax(data, null, $input);
   });
 
-  $('.toggle_next').click(function(e) {
+  initButtons();
+
+});
+
+function initButtons() {
+
+  $('.albums-form button').off('click').on('click' , function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var $panel = $this.parents('.albums-form');
+    var $form = $this.parents('form');
+    var data = $form.serializeArray();
+    data.push({name : 'ajax', value :'ajax'});
+    if($this.hasClass('add')) {
+      stdAjax(data, null, $this, null, function (data) {
+        var $clone  = $panel.clone();
+        $clone.find('input[name=id]').val(data.id);
+        $clone.find('.panel-heading').children().toggleClass('hidden');
+        $clone.find('input[name=func]').val('edit');
+        $clone.find('button.add').removeClass('add').addClass('edit').text('Зберегти');
+        $clone.appendTo($('.album-list-panel'));
+        initButtons();
+      });
+    } else {
+      stdAjax(data, null, $this, null, function (data) {
+        $panel.find('.panel-title').text(data.name);
+      });
+    }
+  });
+
+
+  $('.toggle_next').off('click').on('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
     $this.next().toggle();
   } );
 
-});
+  $('.toggle_siblings').off('click').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    $this.prev().toggle();
+    $this.next().toggle();
+  } );
+
+
+}
 
 function editPromoHandler() {
   var $this = $(this);
@@ -44,7 +85,7 @@ function editPromoHandler() {
   stdAjax(data, null, $this);
 }
 
-function stdAjax(data, url, $object, err_cb) {
+function stdAjax(data, url, $object, err_cb, success_cb) {
   if(typeof data == 'undefined') {
     data = {ajax : 'ajax'};
   }
@@ -75,6 +116,14 @@ function stdAjax(data, url, $object, err_cb) {
           setTimeout(function () {
             $indicator.remove();
           }, 2000);
+
+          if(typeof success_cb == 'function') {
+            if(typeof ans.data == 'undefined') {
+              ans.data = null;
+            }
+            success_cb(ans.data);
+          }
+
         } else {
           $icon
             .removeClass('spinning')

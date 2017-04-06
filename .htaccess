@@ -16,6 +16,14 @@ RewriteRule ^index\.php$ http://ogoprod.int/ [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{QUERY_STRING} Subject=(.*)
+RewriteRule ^gallery$ /gallery/%{QUERY_STRING} [L]
+RewriteRule ^gallery/(.*)$ /gallery.php?$1 [L]
+RewriteRule ^album$ /album/%{QUERY_STRING} [L]
+RewriteRule ^album/(\d*)(.*)$ /album.php?id=$1&$2 [L]
+RewriteRule ^price$ /price/%{QUERY_STRING} [L]
+RewriteRule ^price/(.*)$ /price.php?$1 [L]
+RewriteRule ^portfolio$ /portfolio/%{QUERY_STRING} [L]
+RewriteRule ^portfolio/(.*)$ /portfolio.php?$1 [L]
 RewriteRule ^main$ /main/%{QUERY_STRING} [L]
 RewriteRule ^main/(.*)$ /main.php?$1 [L]
 RewriteRule ^admin$ /admin/ [L]

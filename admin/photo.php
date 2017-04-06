@@ -154,7 +154,7 @@ if (!empty($func)) {
             }
           }
         }
-        Helpers::redirect('/admin/photoes');
+        Helpers::redirect('/admin/photos');
         break;
 
     }
@@ -163,7 +163,7 @@ if (!empty($func)) {
 }
 
 $photos = Db::i()->getAll("SELECT * FROM photo ORDER BY timestamp");
-$albums = Db::i()->getAll("SELECT * FROM album WHERE status = 1");
+$albums = Db::i()->getAll("SELECT * FROM album WHERE status >= 0");
 ?>
 
 <? if(true) { ?>
@@ -185,10 +185,19 @@ $albums = Db::i()->getAll("SELECT * FROM album WHERE status = 1");
       <div class="form-group">
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="status" id="status"   value="1">
+            <input type="checkbox" name="status" id="status"  checked="checked"  value="1">
             Опублікувати одразу
           </label>
         </div>
+      </div>
+      <div class="form-group">
+        <label for="id_album">Альбом</label>
+        <select class="form-control" name="id_album" id="id_album">
+          <option value="0">Без альбому</option>
+          <? foreach( $albums as $album) { ?>
+            <option value="<?= $album['id'] ?>"><?= $album['name'] ?></option>
+          <? } ?>
+        </select>
       </div>
       <div class="form-group">
         <button class="btn btn-default" type="submit">Вперед</button>

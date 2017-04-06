@@ -143,6 +143,35 @@ body {
   transform: scale(1.6);
 }
 
+.toggle_siblings,
 .toggle_next {
   cursor: pointer;
+}
+
+.album-image-form {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-height: 275px;
+}
+
+.parent_size {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.album-photo {
+  min-height: 200px;
+  background: transparent center no-repeat;
+  background-size: contain;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.loose-hidden {
+  display: none;
 }

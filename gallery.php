@@ -11,32 +11,29 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 
-$photos = $db->getAll("SELECT * FROM  photo WHERE status > 0");
-$comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
+$albums = $db->getAll("
+SELECT a.* , p.url, p.url_mini
+FROM album a 
+JOIN (
+  SELECT * FROM photo a 
+  INNER JOIN (
+    SELECT id_album as ida , MAX(`status`) as sta 
+    FROM photo 
+    GROUP BY id_album
+    ) b
+    ON a.id_album = b.ida
+    AND a.status = b.sta
+  ) p
+  ON p.id_album = a.id
+  AND p.status > 0
+  AND a.status = ?i
+GROUP BY a.id
+ORDER BY a.date DESC ", Config::$ALBUM_STATUS_PUBLISHED);
+
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-  <script type="text/javascript">
-    function proverka(tel) {
-      tel.value = tel.value.replace(/[^\d ]/g, '');
-    }
-  </script>
-  <meta name="charset" content="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-  <!--  <link rel="stylesheet" href="css/style.css">-->
-  <script src="js/jq.js"></script>
-  <script src="js/core.js"></script>
-  <script src="js/touch.js"></script>
-  <script src="js/dropdown.js"></script>
-  <link rel="stylesheet" href="css/dropdown.css"/>
-  <script src="js/sweetalert.min.js"></script>
-
-  <link rel="stylesheet" href="css/sweetalert.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://vk.com/js/api/openapi.js?142" type="text/javascript"></script>
-</head>
+<? include('header.php') ; ?>
 <body class="main">
 <script>
   jQuery("document").ready(function($) {
@@ -47,35 +44,25 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <div class="logo">
   <a href="/"></a>
 </div>
-<div class="left-menu">
-  <ul>
-
-    <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
-    <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
-    <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
-    <li><a class="gallery" href="gallery.php"><span class="ico"></span><span class="text">альбомы</span></a></li>
-  </ul>
-</div>
+<? include 'left_menu.php'; ?>
 <div class="content">
   <div class="albumslist">
 
-    <a href="album.php">
-    <div class="album-block">
-        <div class="photo gallery-photo">
-          <img class="album-img" src="albums/1/OGO_4182.jpg">
-          <div class="album-line"><span class="album-text">Фото отчет 01.01.1922</span></div>
+    <? foreach ( $albums as $album) { ?>
+      <a href="/album/<?= $album['id'] ?>">
+        <div class="album-block">
+          <div class="photo gallery-photo">
+            <img class="album-img" src="<?= $album['url_mini'] ?>">
+            <div class="album-line"><span class="album-text"><?= $album['name'] ?></span></div>
+          </div>
         </div>
-    </div>
-    </a>
-
+      </a>
+    <? } ?>
 
   </div>
 </div>
-<!--
-<footer>
 
-</footer>
--->
+
 <script type="text/javascript">
   appid = 5941079;
   VK.init({

@@ -16,27 +16,9 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 ?>
 <!DOCTYPE html>
 <html>
+<? include ('header.php');?>
 <head>
-    <script type="text/javascript">
-        function proverka(tel) {
-            tel.value = tel.value.replace(/[^\d ]/g, '');
-        }
-    </script>
-    <meta name="charset" content="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link rel="stylesheet" href="css/sweetalert.css">
-    <link rel="stylesheet" href="/js/slick/slick.css">
-    <link rel="stylesheet" href="/js/slick/slick-theme.css">
-    <link rel="stylesheet" href="css/dropdown.css"/>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jq.js"></script>
-    <script src="js/core.js"></script>
-    <script src="js/touch.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="/js/slick/slick.min.js"></script>
-    <script src="js/sweetalert.min.js"></script>
-    <script src="https://vk.com/js/api/openapi.js?142" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body class="main">
 <script>
@@ -48,15 +30,8 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <div class="logo">
     <a href="/"></a>
 </div>
-<div class="left-menu">
-    <ul>
 
-        <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
-        <li><a class="portfolio" href="portfolio.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
-        <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
-        <li><a class="gallery" href="gallery.php"><span class="ico"></span><span class="text">альбомы</span></a></li>
-    </ul>
-</div>
+<? include ('left_menu.php'); ?>
 
 <div class="content">
 
@@ -76,23 +51,50 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
                     <div class="port-line"><span class="port-text">Арчил Сванидзе</span></div>
                 </div>
             </div>
-<div class="center">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
-    <img src="albums/1/OGO_8896.jpg">
+
+<!--      TODO make protfolio albums-->
+<div class="port1">
+    <div><img  src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
+    <div><img src="albums/1/OGO_8896.jpg"></div>
 </div>
 
 </div>
 
 <script type="text/javascript">
-    $('.center').slick({
+  $('.port1').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+    $('.port2').slick({
         centerMode: true,
         centerPadding: '60px',
         slidesToShow: 1,

@@ -16,35 +16,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="charset" content="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Title</title>
-<!--  <link rel="stylesheet" href="css/style.css">-->
-  <script src="js/jq.js"></script>
-  <script src="js/sweetalert.min.js"></script>
-  <link rel="stylesheet" href="css/sweetalert.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://vk.com/js/api/openapi.js?142" type="text/javascript"></script>
-  <script>
-    function getSocTitle() {
-      return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a href="main.php" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
-    }
-
-    var backgi=1;
-    setInterval(function(){backg()},8000);
-    function backg()
-    {
-      backgi=backgi%3+1;
-      var $start = $("#start");
-      $start.animate({'opacity':'0'},800,function(){
-        $start.css('background-image', 'url(/backgrounds/'+backgi+'.jpg)');
-        $start.css('background-size', 'contain');
-        $start.css('background-position', 'center');
-        $start.animate({'opacity':'1'},800);});
-    }
-  </script>
-</head>
+<? include ("header.php");?>
 <body class="main">
 <DIV id="logobg">
   <div id="logotmp">
@@ -54,17 +26,9 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <div class="logo">
   <a href="/"></a>
 </div>
-<div class="left-menu">
-  <ul>
 
-    <li><a class="main" href="main.php"><span class="ico"></span><span class="text">главная</span></a></li>
-    <li><a class="portfolio" href="main.php"><span class="ico"></span><span class="text">порфолио</span></a></li>
-    <li><a class="services" href="price.php"><span class="ico"></span><span class="text">услуги</span></a></li>
-    <li><a class="gallery" href="gallery.php"><span class="ico"></span><span class="text">альбомы</span></a></li>
+<? include 'left_menu.php'; ?>
 
-
-  </ul>
-</div>
 <div class="content">
 
   <? foreach(  $photos as $photo) { ?>
@@ -85,25 +49,9 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     </div>
   <? } ?>
 
-  <!--
-
-  <div class="photo-block">
-    <div class="photo"><img src="http://files2.geometria.ru/pics/original/058/021/58021259.jpg"></div>
-    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
-  </div>
-
-  <div class="photo-block">
-    <div class="photo"><img src="http://files2.geometria.ru/pics/original/058/021/58021475.jpg"></div>
-    <div class="description">Фото №1 трататата тут типо описание и всё понятно</div>
-  </div>-->
 
 </div>
 
-<!--
-<footer>
-
-</footer>
--->
 
 <div id="photo_popup" data-image="">
   <div id="photo_popup_container">
@@ -135,6 +83,22 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
   </div>
 </div>
 <script type="text/javascript">
+  function getSocTitle() {
+    return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a href="main.php" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
+  }
+
+  var backgi=1;
+  setInterval(function(){backg()},8000);
+  function backg()
+  {
+    backgi=backgi%3+1;
+    var $start = $("#start");
+    $start.animate({'opacity':'0'},800,function(){
+      $start.css('background-image', 'url(/backgrounds/'+backgi+'.jpg)');
+      $start.css('background-size', 'contain');
+      $start.css('background-position', 'center');
+      $start.animate({'opacity':'1'},800);});
+  }
   appid = 5941079;
   VK.init({
     apiId: appid

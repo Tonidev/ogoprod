@@ -29,7 +29,7 @@
 </head>
 <body class="<?= $action ?>">
 <?php
-include ('header.php');
+include (ADMIN_DIR . 'header.php');
 ?>
 <div id="content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 <?= $action ?>">
   <?
@@ -38,7 +38,7 @@ include ('header.php');
 </div>
 
 <?php
-include ('footer.php');
+include (ADMIN_DIR . 'footer.php');
 ?>
 </body>
 </html>

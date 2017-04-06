@@ -6,6 +6,9 @@
  * Time: 17:21
  */
 
+//TODO name editable
+
+
 $func = empty($_REQUEST['func']) ? null : $_REQUEST['func'];
 if (!empty($func)) {
   if(!empty($_REQUEST['ajax'])) {

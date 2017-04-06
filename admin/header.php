@@ -41,10 +41,16 @@
       <ul class="nav nav-sidebar">
         <li <?= $action=='index' ? ' class="active" ': '' ?>>
           <a href="/admin">Промо</a></li>
+
         <li <?= $action=='photo' ? ' class="active" ': '' ?>>
-          <a href="/admin/photo">Фото</a></li>
+          <a href="/admin/photo">Залити фото</a></li>
+
+        <li <?= $action=='photos' ? ' class="active" ': '' ?>>
+          <a href="/admin/photos">Фото</a></li>
+
         <li <?= $action=='albums' ? ' class="active" ': '' ?>>
-        <a href="/admin/albums">Альбомы</a></li>
+        <a href="/admin/albums">Альбоми</a></li>
+
       </ul>
     </div>
 

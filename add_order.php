@@ -33,11 +33,25 @@ if (!empty($func)) {
           if(!empty(Config::$PROMO_SERVICES[$service_key]) ) {
             $promo_service  = Config::$PROMO_SERVICES[$service_key];
             $promo_service['id'] = $service_key;
-            Helpers::jsonOk('OK', array(
-                    'all' => false,
-                    'services' => array($promo_service)
-                )
-            );
+            $existed = Db::i()->getRow("
+SELECT * 
+FROM promo_code 
+WHERE `code` = ?s 
+  AND status = 1
+  AND `name` IS NULL ", $code);
+            if(empty($existed) ) {
+              Helpers::jsonOk('OK', array(
+                      'all' => false,
+                      'services' => false
+                  )
+              );
+            } else {
+              Helpers::jsonOk('OK', array(
+                      'all' => false,
+                      'services' => array($promo_service)
+                  )
+              );
+            }
           } else {
             Helpers::jsonOk('OK', array(
                     'all' => false,
@@ -53,6 +67,9 @@ if (!empty($func)) {
             $name &&
             (!empty($phone) || !empty($vk_id))
         ) {
+          $activated = 1;
+          $status = 1;
+          $paid = 0;
           if(empty($code)) {
             $code = $service . '___' . date('d-m-Y H:i:s');
           } else {
@@ -81,9 +98,7 @@ ORDER BY
               die();
             }
           }
-          $activated = 1;
-          $status = 1;
-          $paid = 0;
+
           $result = Db::i()->query("INSERT INTO promo_code(`code`, email, phone, `name`, activated, paid, vk_id, `status`, ip) VALUES (?s, ?s, ?s, ?s, ?i, ?i, ?s, ?i, ?s)", $code, $email, $phone, $name, $activated, $paid, $vk_id, $status, $ip);
           if(!empty($result) ) {
             Helpers::jsonOk("Заявка успешно отправлена");
