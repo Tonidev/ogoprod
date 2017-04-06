@@ -33,6 +33,7 @@ html,body
 
 body {
 
+  background: url("/backgrounds/0.jpg") center;);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -821,4 +822,25 @@ box-sizing: border-box;
 
 .port1 .slick-slide.slick-current img {
   transform : scale(1);
+}
+
+@media (max-width: 767px) {
+  .album-line {
+    z-index: 999;
+    height: 46px;
+    margin-top: -50px;
+    background: rgba(0,0,0,0.75);
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    border-radius: 0 0 10px 10px;
+  }
+  .album-text {
+    color: white;
+    vertical-align: middle;
+    line-height: 47px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: Warface;
+  }
 }
