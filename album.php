@@ -11,7 +11,16 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 $id_album = empty($_REQUEST['id']) ? -1 : intval($_REQUEST['id']);
-$photos = $db->getAll("SELECT * FROM  photo WHERE status > 0 AND id_album = ?i", $id_album);
+$chpu = empty($_REQUEST['chpu']) ? '' : $_REQUEST['chpu'];
+$photos = $db->getAll("
+SELECT p.*, a.name as album
+FROM  photo p 
+JOIN album a 
+  ON (p.id_album = ?i OR a.chpu LIKE ?s)
+  AND a.id = p.id_album
+  AND a.status = ?i
+WHERE p.status > 0  
+ORDER BY p.position ASC", $id_album, $chpu, Config::$ALBUM_STATUS_PUBLISHED);
 
 ?>
 <!DOCTYPE html>

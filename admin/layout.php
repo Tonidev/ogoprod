@@ -25,13 +25,17 @@
   <script type="text/javascript" src="/css/bootstrap/js/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="/css/bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="/js/sweetalert.min.js"></script>
+  <script type="text/javascript" src="/js/liTranslit/jquery.liTranslit.js"></script>
   <script type="text/javascript" src="/js/admin.js"></script>
 </head>
 <body class="<?= $action ?>">
 <?php
 include (ADMIN_DIR . 'header.php');
 ?>
-<div id="content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 <?= $action ?>">
+<div id="content" class="col-sm-9 col-sm-offset-3
+col-md-10 col-md-offset-2
+col-lg-11 col-lg-offset-1
+<?= $action ?>">
   <?
   echo empty($admin_content) ? '' : $admin_content;
   ?>

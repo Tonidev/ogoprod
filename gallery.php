@@ -49,7 +49,7 @@ ORDER BY a.date DESC ", Config::$ALBUM_STATUS_PUBLISHED);
   <div class="albumslist">
 
     <? foreach ( $albums as $album) { ?>
-      <a href="/album/<?= $album['id'] ?>">
+      <a href="/album/<?= empty($album['chpu']) ? $album['id'] : $album['chpu'] ?>">
         <div class="album-block">
           <div class="photo gallery-photo">
             <img class="album-img" src="<?= $album['url_mini'] ?>">

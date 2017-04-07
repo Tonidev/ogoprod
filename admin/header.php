@@ -37,7 +37,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
+    <div class="col-sm-3 col-md-2 col-lg-1 sidebar">
       <ul class="nav nav-sidebar">
         <li <?= $action=='index' ? ' class="active" ': '' ?>>
           <a href="/admin">Промо</a></li>

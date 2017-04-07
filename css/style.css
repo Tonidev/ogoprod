@@ -740,6 +740,7 @@ div#photo_popup_comments_list {
   margin: 6px;
   border-color: #90A4AE;
   border-style: ridge;
+  background-position: top center;
 }
 
 .photo.gallery-photo {
@@ -843,4 +844,12 @@ box-sizing: border-box;
     font-size: 20px;
     font-family: Warface;
   }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.inline-block {
+  display: inline-block;
 }

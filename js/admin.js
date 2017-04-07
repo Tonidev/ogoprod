@@ -16,23 +16,62 @@ $(document).ready(function () {
     stdAjax(data, null, $input);
   });
 
+  $(window).on('mouseup', function(e) {
+    if(typeof window.position_increase_interval != 'undefined') {
+      clearInterval(window.position_increase_interval);
+      delete window.position_increase_interval;
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if(typeof window.position_decrease_interval != 'undefined') {
+      clearInterval(window.position_decrease_interval);
+      delete window.position_decrease_interval;
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    if(typeof window.positioned_panel == 'undefined') {
+      return;
+    }
+    var $panel = window.positioned_panel;
+    delete window.positioned_panel;
+    var $album = $panel.parents('.album-list');
+    var indexes = [];
+    $album.find('.album-item').each(function (i, el) {
+      var $el = $(el);
+      indexes.push({
+        id : $el.find('input[name=id]').val(),
+        position : $el.index()
+      });
+    });
+    var data = {
+      ajax : 'ajax',
+      func : 'updatePositions',
+      indexes : indexes
+    };
+    stdAjax(data, null, $panel);
+    initButtons();
+  });
+
+
   initButtons();
 
 });
 
 function initButtons() {
 
-  $('.albums-form button').off('click').on('click' , function(e) {
+  $('.albums-form button').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
     var $panel = $this.parents('.albums-form');
     var $form = $this.parents('form');
     var data = $form.serializeArray();
-    data.push({name : 'ajax', value :'ajax'});
-    if($this.hasClass('add')) {
+    data.push({name: 'ajax', value: 'ajax'});
+    data.push({name: $this.attr('name'), value: $this.val()});
+    if ($this.hasClass('add')) {
       stdAjax(data, null, $this, null, function (data) {
-        var $clone  = $panel.clone();
+        var $clone = $panel.clone();
         $clone.find('input[name=id]').val(data.id);
         $clone.find('.panel-heading').children().toggleClass('hidden');
         $clone.find('input[name=func]').val('edit');
@@ -40,30 +79,83 @@ function initButtons() {
         $clone.appendTo($('.album-list-panel'));
         initButtons();
       });
-    } else {
+    } else if ($this.val() == 'edit') {
       stdAjax(data, null, $this, null, function (data) {
+        $panel.find('.badge.date').text(data.date);
         $panel.find('.panel-title').text(data.name);
+      });
+    } else if ($this.val() == 'delete') {
+      stdAjax(data, null, $this, null, function (data) {
+        $panel.remove();
       });
     }
   });
 
 
-  $('.toggle_next').off('click').on('click', function(e) {
+  $('.toggle_next').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
     $this.next().toggle();
-  } );
+  });
 
-  $('.toggle_siblings').off('click').on('click', function(e) {
+  $('.toggle_siblings').off('click').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
     $this.prev().toggle();
     $this.next().toggle();
-  } );
+  });
+  $('.toggle_parent_siblings').off('click').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    $this.parent().prev().toggle();
+    $this.parent().next().toggle();
+  });
 
+  $('.position-increase, .position-decrease').off('mousedown').on('mousedown', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var $panel = $this.parents('.album-item');
+    var $album = $this.parents('.album-list');
+    window.positioned_panel = $panel;
+    if ($this.hasClass('position-increase')) {
+      $panel.insertAfter($panel.next());
+      window.position_increase_interval = setInterval(function () {
+        $panel.insertAfter($panel.next());
+      }, 300);
+    } else {
+      $panel.insertBefore($panel.prev());
+      window.position_decrease_interval = setInterval(function () {
+        $panel.insertBefore($panel.prev());
+      }, 300);
+    }
+  });
 
+  $('.album-item .actions button').off('click').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var $form = $this.parents('form');
+    var $panel = $this.parents('.album-item');
+    var data = $form.serializeArray();
+    data.push({name: 'ajax', value: 'ajax'});
+    data.push({name: $this.attr('name'), value: $this.val()});
+    stdAjax(data, null, $this, null, function (ans) {
+      if ($this.val() == 'delete') {
+        $panel.remove();
+      }
+    });
+  });
+
+  $('.albums-form').each(function (i, el) {
+    $(el).find('input[name=name]').liTranslit({
+      elAlias: $(el).find('input[name=chpu]'),
+      reg: '"ё"="yo"'
+    });
+  });
 }
 
 function editPromoHandler() {
