@@ -11,8 +11,21 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 
-$photos = $db->getAll("SELECT * FROM  photo WHERE status > 0 AND (id_album = 0 OR id_album IS NULL) ORDER BY position ASC");
-$comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
+$photos = $db->getAll("
+SELECT * 
+FROM  photo 
+WHERE status > 0 
+  AND (id_album = 0 OR id_album IS NULL) 
+ORDER BY position ASC");
+
+$comments = $db->getAll("
+SELECT c.* 
+FROM  comment c 
+JOIN photo p
+  ON c.`status` > 0
+  AND (p.id_album = 0 OR p.id_album IS NULL) 
+  AND c.id_photo = p.id
+");
 ?>
 <!DOCTYPE html>
 <html>

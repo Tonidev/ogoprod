@@ -18,7 +18,7 @@ $(document).ready(function () {
     $('#photo_popup_menu').removeClass('opened');
   });
 
-  $('.photo:not(.gallery-photo) img').click(function(e) {
+  $('.photo:not(.gallery-photo) img, .albumini .mini-img, .port1 img').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
@@ -83,6 +83,7 @@ $(document).ready(function () {
                   } else {
                     var $newComment = $(data);
                     $newComment.appendTo("#photo_popup_comments_list");
+                    $('#add_comment textarea').val('');
                   }
                 },
                 error : function (data, err) {
@@ -120,7 +121,6 @@ $(document).ready(function () {
     });
     add_order_ajax(data);
   });
-
 
   $('.main #vvod .send2').click(function(e) {
     e.preventDefault();

@@ -49,7 +49,7 @@ if(!$res) {
 ?>
 
 
-<div class="comment">
+<div class="comment" data-id_photo="<?= $id_photo ?>">
   <div class="avatar" style="background-image: url('<?= $avatar ?>')"></div>
   <div class="author"><?= $author ?></div>
   <div class="text"><?= $text ?></div>

@@ -22,6 +22,22 @@ JOIN album a
 WHERE p.status > 0  
 ORDER BY p.position ASC", $id_album, $chpu, Config::$ALBUM_STATUS_PUBLISHED);
 
+
+$comments = array();
+if(!empty($photos)) {
+  $ida = $photos[0]['id_album'];
+  $comments = $db->getAll("
+SELECT c.* 
+FROM  comment c 
+JOIN photo p
+  ON c.`status` > 0
+  AND (p.id_album = ?i)
+  AND c.id_photo = p.id
+", $ida);
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,25 +59,39 @@ ORDER BY p.position ASC", $id_album, $chpu, Config::$ALBUM_STATUS_PUBLISHED);
   <div class="album">
     <div class="albumini">
       <? foreach ( $photos as $photo) { ?>
-        <div class="mini-img" href="<?= $photo['url'] ?>" style="background-image: url('<?= $photo['url_mini'] ?>');"></div>
+        <div class="mini-img" href="<?= $photo['url'] ?>" data-id="<?= $photo['id'] ?>" style="background-image: url('<?= $photo['url_mini'] ?>');"></div>
       <? } ?>
-<!--
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4145.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4159.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4168.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4247.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4266.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_8896.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4182.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4044.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4145.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4159.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4168.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4247.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_4266.jpg');"></div>
-      <div class="mini-img" style="background-image: url('albums/1/OGO_8896.jpg');"></div>
--->
+
+    </div>
+  </div>
+</div>
+
+<div id="photo_popup" data-image="">
+  <div id="photo_popup_container">
+    <div id="photo_popup_image">
+      <span id="photo_popup_close">&times;</span>
+      <img id="photo_popup_img" src="/backgrounds/3.jpg">
+      <div id="photo_popup_menu">
+        <? if(false) { ?>
+          <div id="photo_popup_menu_btn">Комментарии</div>
+        <? } ?>
+      </div>
+      <div id="photo_popup_comments">
+        <div id="photo_popup_comments_header">Это не мнение, я просто правду говорю</div>
+        <div id="photo_popup_comments_list">
+          <? foreach( $comments as $comment) { ?>
+            <div class="comment" data-id_photo="<?= $comment['id_photo'] ?>">
+              <div class="avatar" style="background-image: url('<?= $comment['avatar']?>')"></div>
+              <div class="author"><?= $comment['author']?></div>
+              <div class="text"><?= $comment['text']?></div>
+            </div>
+          <? } ?>
+        </div>
+        <div id="add_comment">
+          <textarea name="comment"></textarea>
+          <button class="button1" type="button">Отправить комментарий</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

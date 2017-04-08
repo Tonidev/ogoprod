@@ -410,6 +410,7 @@ div#photo_popup {
   bottom: 0;
   right: 0;
   background: rgba(0,3,6,0.795);
+  z-index: 1000;
 }
 
 #photo_popup_container {
@@ -814,15 +815,23 @@ box-sizing: border-box;
 
 .port1 .slick-slide {
   outline: none;
+  filter: brightness(55%);
+  height: 600px;
 }
 
 .port1 .slick-slide img {
-  transition : all 0.2s;
-  transform : scale(0.97);
+  transition : all 0.5s;
+   /*transform : scale(0.97);*/
+  border: 15px solid transparent;
+}
+
+.port1 .slick-slide.slick-current  {
+  filter : brightness(100%);
 }
 
 .port1 .slick-slide.slick-current img {
-  transform : scale(1);
+  /*transform : scale(1);*/
+  border: none;
 }
 
 @media (max-width: 767px) {
