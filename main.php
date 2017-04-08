@@ -30,7 +30,26 @@ JOIN photo p
 <!DOCTYPE html>
 <html>
 <? include ("header.php");?>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
 <body class="main">
+<div class="vova1">
+  <div class="vova2">
+
+    <a href="" onclick="swal({
+  html : true,
+  title : getSocTitle(),
+  allowOutsideClick : true,
+  showConfirmButton: false
+}); return false;" id="but" class="button">oGo Production</a>
+
+    <div id="start"  width="2000" height="1200" ></div>
+
+
+  </div>
+</div>
+
 <DIV id="logobg">
   <div id="logotmp">
     <div id="start"  width="2000" height="1200" ></div>
@@ -95,9 +114,10 @@ JOIN photo p
     </div>
   </div>
 </div>
-<script type="text/javascript">
+
+<script>
   function getSocTitle() {
-    return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a href="main.php" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
+    return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
   }
 
   var backgi=1;
@@ -112,11 +132,8 @@ JOIN photo p
       $start.css('background-position', 'center');
       $start.animate({'opacity':'1'},800);});
   }
-  appid = 5941079;
-  VK.init({
-    apiId: appid
-  });
 </script>
+
 <script src="/js/startscr.js"></script>
 </body>
 

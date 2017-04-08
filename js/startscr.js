@@ -286,3 +286,12 @@ function add_order_ajax(data) {
 
 }
 
+function entermain()
+{
+  $('body.main .content').show();
+  $('.vova1').animate({'opacity':'0'},300, function(){
+    $('.vova1').hide();
+  });
+
+  $('.sweet-alert').remove();
+}

@@ -31,6 +31,7 @@ html,body
   background: url("/backgrounds/0.jpg") center;);
 }
 
+
 body {
 
   background: url("/backgrounds/0.jpg") center;);
@@ -94,6 +95,7 @@ body.main .logo {
   /*background-color: black;*/
   top: 0;
   color: white;
+  z-index: 6666;
 }
 
 .main .logo a {
@@ -312,7 +314,10 @@ body.main .left-menu {
   box-sizing: border-box;
 }
 
-
+body.main .content
+{
+  display: none;
+}
 
 
 @media (max-width: 1652px) {
@@ -900,4 +905,30 @@ display: inline-block;
   width: 33px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.vova1 {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,3,6,0.795);
+  z-index: 255;
+}
+
+.vova2 {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+  text-align: center;
+  margin:0;
+  padding:0;
+  min-height: 100%;
+  z-index: 6666;
+  background: url("/backgrounds/0.jpg") center;);
+  background-size: cover;
+  background-attachment: fixed;
 }
