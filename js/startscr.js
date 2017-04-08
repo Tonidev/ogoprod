@@ -1,5 +1,20 @@
 $(document).ready(function () {
 
+  $('.port_album').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    $('.port-popup[data-status=' + $this.data('status') + ']').show();
+  });
+
+
+  $('.port_popup_close').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    $('.port-popup').hide();
+  });
+
   $('#photo_popup').click(function(e) {
     e.preventDefault();
     e.stopPropagation();

@@ -5,6 +5,11 @@
  * Date: 27.03.17
  * Time: 1:36
  */
+if(!defined('BASE_DIR')) {
+  define('BASE_DIR', __DIR__ .DIRECTORY_SEPARATOR);
+}
+require_once (BASE_DIR . 'config.php');
+
 
 if(empty($_REQUEST['avatar'])) {
   die('error');
@@ -39,7 +44,7 @@ if(empty($_REQUEST['text'])) {
 
 require_once (__DIR__ . DIRECTORY_SEPARATOR .'safemysql.class.php');
 
-$db = new SafeMySQL(array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod'));
+$db = new SafeMySQL(Config::$db_connection_string);
 
 $res = $db->query("INSERT INTO comment (id_photo, avatar, author, text, vk_id) VALUES (?i, ?s, ?s, ?s, ?s)", $id_photo, $avatar, $author, $text, $vk_id);
 

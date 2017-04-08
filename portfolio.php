@@ -14,11 +14,11 @@ $db = Db::i();
 
 $photos = $db->getAll("
 SELECT p.*, a.name as album, a.status as album_status
-FROM  photo p 
-JOIN album a 
+FROM  photo p
+JOIN album a
   ON a.id = p.id_album
   AND ( a.status = ?i OR a.status = ?i)
-WHERE p.status > 0  
+WHERE p.status > 0
 ORDER BY p.position ASC", Config::$ALBUM_STATUS_PORTFOLIO_VADIM, Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL);
 
 $comments = array();
@@ -33,8 +33,8 @@ if(!empty($photos)) {
   $id_album_sql = join(', ', $portfolio_album_ids);
 
   $comments = $db->getAll("
-SELECT c.* 
-FROM  comment c 
+SELECT c.*
+FROM  comment c
 JOIN photo p
   ON c.`status` > 0
   AND p.id_album IN ( ?p )
@@ -49,6 +49,10 @@ JOIN photo p
 <? include ('header.php');?>
 <head>
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  <style type="text/css">
+    #port_popup_close {
+    }
+  </style>
 </head>
 <body class="main">
 <script>
@@ -68,14 +72,14 @@ JOIN photo p
   <div class="port_block">
 
 
-    <div class="port_album">
+    <div class="port_album" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_VADIM ?>">
       <div class="port_photo">
         <img class="port_img" src="img/VAD.jpg">
         <div class="port-line"><span class="port-text">Вадим Оголяр</span></div>
       </div>
     </div>
 
-    <div class="port_album">
+    <div class="port_album" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL ?>">
       <div class="port_photo">
         <img class="port_img" src="img/AR.jpg">
         <div class="port-line"><span class="port-text">Арчил Сванидзе</span></div>
@@ -83,35 +87,47 @@ JOIN photo p
     </div>
 
     <!--      TODO make protfolio albums-->
-    <div class="port1">
+    <div class="port-popup" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_VADIM ?>">
+      <div class="port-container">
+        <div class="port-incontainer">
+          <span class="port_popup_close">&times;</span>
+    <div class="port1" >
       <? foreach ( $photos as $photo) {
-        if($photo['album_status'] != Config::$ALBUM_STATUS_PORTFOLIO_VADIM)
+          if($photo['album_status'] != Config::$ALBUM_STATUS_PORTFOLIO_VADIM)
           continue;
-        ?>
-        <div>
-          <img href="<?= $photo['url'] ?>"
-               src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>"
-               data-id="<?= $photo['id'] ?>"
-          >
+          ?>
+          <div>
+            <img href="<?= $photo['url'] ?>"
+                 src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>"
+                 data-id="<?= $photo['id'] ?>"
+            >
         </div>
       <? } ?>
     </div>
-
-    <div class="port1">
-      <? foreach ( $photos as $photo) {
-        if($photo['album_status'] != Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL)
-          continue;
-        ?>
-        <div>
-          <img href="<?= $photo['url'] ?>"
-               src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>"
-               data-id="<?= $photo['id'] ?>"
-          >
         </div>
-      <? } ?>
+      </div>
     </div>
 
-  </div>
+    <div class="port-popup" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL ?>">
+      <div class="port-container">
+        <div class="port-incontainer">
+          <span class="port_popup_close">&times;</span>
+          <div class="port1" >
+            <? foreach ( $photos as $photo) {
+              if($photo['album_status'] != Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL)
+                continue;
+              ?>
+              <div>
+                <img href="<?= $photo['url'] ?>"
+                     src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>"
+                     data-id="<?= $photo['id'] ?>"
+                >
+              </div>
+            <? } ?>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   <div id="photo_popup" data-image="">
