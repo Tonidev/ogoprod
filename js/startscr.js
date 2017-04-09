@@ -43,6 +43,7 @@ $(document).ready(function () {
     $photo_popup = $('#photo_popup');
     var  id_photo = $this.data('id');
     $photo_popup.data('id_photo', id_photo);
+    $photo_popup.find('#photo_popup_comments_header').text(LANG['photo_'+ id_photo] );
     $photo_popup.find('.comment').hide();
     $photo_popup.find('.comment[data-id_photo=' + id_photo + ']').show();
     $photo_popup.show();

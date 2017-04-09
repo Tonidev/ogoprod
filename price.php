@@ -57,13 +57,8 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 </div>
 
 
-<script type="text/javascript">
-  appid = 5941079;
-  VK.init({
-    apiId: appid
-  });
-</script>
-<script src="/js/startscr.js"></script>
+<? include 'footer.php'; ?>
+
 </body>
 
 </html>

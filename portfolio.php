@@ -27,6 +27,7 @@ if(!empty($photos)) {
   $portfolio_album_ids = array();
 
   foreach ($photos as $photo) {
+    Helpers::addTrans('photo_' . $photo['id'], $photo['description']);
     $portfolio_album_ids[$photo['id_album']] = $photo['id_album'];
   }
 
@@ -195,12 +196,11 @@ JOIN photo p
      ]
      });
      */
-    appid = 5941079;
-    VK.init({
-      apiId: appid
-    });
   </script>
-  <script src="/js/startscr.js"></script>
+
+  <? include 'footer.php'; ?>
+
+
 </body>
 
 </html>

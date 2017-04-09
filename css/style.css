@@ -515,9 +515,10 @@ div#photo_popup_comments {
 
 div#photo_popup_comments_header {
   margin-bottom: 1em;
-  padding: 8px;
+  /*padding: 8px;*/
   height: 48px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .comment .avatar {

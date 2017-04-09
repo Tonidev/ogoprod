@@ -21,10 +21,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <? if(empty($login)) { ?>
-          <li><a href="/admin/login">Войти</a></li>
+          <li><a href="/admin/login">Увійти</a></li>
         <? } ?>
         <li><a href="#"><?= $login ?></a></li>
-        <li><a href="/admin/logout">Выйти</a></li>
+        <li><a href="/admin/logout">Вийти</a></li>
       </ul>
       <? if(false) { ?>
         <form class="navbar-form navbar-right">
@@ -50,6 +50,9 @@
 
         <li <?= $action=='albums' ? ' class="active" ': '' ?>>
         <a href="/admin/albums">Альбоми</a></li>
+
+        <li <?= $action=='comments' ? ' class="active" ': '' ?>>
+        <a href="/admin/comments">Коментарі</a></li>
 
       </ul>
     </div>
