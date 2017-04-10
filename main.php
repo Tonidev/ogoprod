@@ -133,15 +133,8 @@ JOIN photo p
       $start.css('background-position', 'center');
       $start.animate({'opacity':'1'},800);});
   }
-  appid = 5941079;
-  VK.init({
-    apiId: appid
-  });
+
 </script>
-
 <? include 'footer.php'; ?>
-
-<script src="/js/startscr.js"></script>
 </body>
-
 </html>
