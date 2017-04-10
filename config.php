@@ -63,6 +63,8 @@ include ('constants.php');
 
 class Helpers {
 
+  public static $jsTranslations = array();
+
   public static function jsonAnswer($status, $msg, $data = null, $echo = true, $htmlentities = true)
   {
     $statusTxt = $status ? 'ok' : 'error';
@@ -122,6 +124,19 @@ class Helpers {
     else
       $ipaddress = 'UNKNOWN';
     return $ipaddress;
+  }
+
+  public static function addTrans($key, $value) {
+    self::$jsTranslations[$key] = $value;
+  }
+
+  public static function getJsTranslations()
+  {
+    $text = '';
+    foreach (self::$jsTranslations as $key => $translation) {
+      $text .= "LANG[\"". addslashes($key) . "\"] = '" . addslashes($translation) . "' ;\n ";
+    }
+    return $text;
   }
 
 }

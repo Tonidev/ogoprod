@@ -16,6 +16,21 @@ $(document).ready(function () {
     stdAjax(data, null, $input);
   });
 
+  $('.mark_comment').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var data = {
+      ajax : 'ajax',
+      func : 'markComment',
+      id : $this.data('id'),
+      status : $this.data('status')
+    };
+    stdAjax(data, null, $this, null, function () {
+      $this.parents('.comment').remove();
+    });
+  });
+
   $(window).on('mouseup', function(e) {
     if(typeof window.position_increase_interval != 'undefined') {
       clearInterval(window.position_increase_interval);

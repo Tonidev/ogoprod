@@ -178,3 +178,17 @@ body {
   display: none;
 }
 
+.comment {
+  margin-bottom: 1em;
+}
+
+.comment .text {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+
+.author {
+  font-weight: 800;
+}
+

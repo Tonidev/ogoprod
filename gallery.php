@@ -63,13 +63,8 @@ ORDER BY a.date DESC ", Config::$ALBUM_STATUS_PUBLISHED);
 </div>
 
 
-<script type="text/javascript">
-  appid = 5941079;
-  VK.init({
-    apiId: appid
-  });
-</script>
-<script src="/js/startscr.js"></script>
+<? include 'footer.php'; ?>
+
 </body>
 
 </html>

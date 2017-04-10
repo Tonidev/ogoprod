@@ -74,24 +74,24 @@ $promo_sources = Config::$PROMO_SOURCES;
 
 ?>
 
-<h1 class="toggle_next page-header">Использованные промо</h1>
+<h1 class="toggle_next page-header">Використані промо</h1>
 <div class="table-responsive">
   <table class="table table-striped used_promo">
     <thead>
     <tr>
       <th>Дата</th>
       <th>Код</th>
-      <th>Имя</th>
+      <th>Ім'я</th>
       <th>Телефон</th>
       <th>Vk</th>
-      <th>Активирован</th>
-      <th>Оплачен</th>
-      <th>Удалить</th>
+      <th>Активований</th>
+      <th>Оплачений</th>
+      <th>Видалити</th>
     </tr>
     </thead>
     <tbody>
     <?
-    $totalstr = "Всего";
+    $totalstr = "Всього";
     foreach ( $promos as $promo ) {
       $date = date('m/Y', strtotime($promo['date']) );
       $dates = array(
@@ -115,7 +115,7 @@ $promo_sources = Config::$PROMO_SOURCES;
       $source = empty($promo_sources[$source_id])
           ? array()
           : $promo_sources[$source_id];
-      $source = empty($source) ? ' Не указано' : '  '.$source;
+      $source = empty($source) ? ' Не вказано' : '  '.$source;
 //      $source = empty($source_arr['name']) ? 'Не указано' : $source_arr['name'];
 //      $source_discount = empty($source_arr['discount']) ? '' : $source_arr['discount'];
       $sources = array(
@@ -150,7 +150,7 @@ $promo_sources = Config::$PROMO_SOURCES;
       <tr data-id="<?= $promo['id'] ?>">
         <td><?= date('d/m H:i', strtotime($promo['date']) ) ?></td>
         <td><?= $promo['code'] ?></td>
-        <td><?= $promo['name'] ?></td>
+        <td><input name="name" value="<?= $promo['name'] ?>"></td>
         <td><?= $promo['phone'] ?></td>
         <td><a href="//vk.com/id<?= $promo['vk_id'] ?>"><?= $promo['vk_id'] ?></a></td>
         <td><input name="activated"
@@ -163,14 +163,14 @@ $promo_sources = Config::$PROMO_SOURCES;
               <?= $promo['paid'] ? 'checked="checked" ' : '' ?>
           >
         </td>
-        <td><button name="status" value="0" type="button">Удалить</button> </td>
+        <td><button name="status" value="0" type="button">Видалити</button> </td>
       </tr>
     <? } ?>
     </tbody>
   </table>
 </div>
 
-<h2 class="toggle_next sub-header">Доступные промо</h2>
+<h2 class="toggle_next sub-header">Доступні промо</h2>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -194,7 +194,7 @@ $promo_sources = Config::$PROMO_SOURCES;
       <td><input name="vk_id" type="hidden" value=""></td>
       <td><input name="activated" type="hidden" value="0"></td>
       <td><input name="paid" type="hidden" value="0"></td>
-      <td><button name="status" value="1" type="button">Добавить</button> </td>
+      <td><button name="status" value="1" type="button">Додати</button> </td>
     </tr>
     </tbody>
     <tbody class="used_promo">
@@ -220,7 +220,7 @@ $promo_sources = Config::$PROMO_SOURCES;
               <?= $promo['paid'] ? 'checked="checked" ' : '' ?>
           >
         </td>
-        <td><button name="status" value="0" type="button">Удалить</button> </td>
+        <td><button name="status" value="0" type="button">Видалити</button> </td>
       </tr>
     <? } ?>
     </tbody>
@@ -232,7 +232,7 @@ $promo_sources = Config::$PROMO_SOURCES;
 <div class="container-fluid">
   <div class="row sub-header">
     <div class="col-xs-1">
-      Месяц
+      Місяць
     </div>
     <div class="col-xs-11">
       Статистика
@@ -257,10 +257,10 @@ $promo_sources = Config::$PROMO_SOURCES;
             <div class="col-xs-3"><?= $p_source ?></div>
             <div class="col-xs-9">
               <div class="row sub-header">
-                <div class="col-xs-3">Вид услуги</div>
+                <div class="col-xs-3">Вид послуги</div>
                 <div class="col-xs-3">Оплачено</div>
-                <div class="col-xs-3">Активировано</div>
-                <div class="col-xs-3">Всего</div>
+                <div class="col-xs-3">Активовано</div>
+                <div class="col-xs-3">Всього</div>
               </div>
               <?
               ksort($p_services);

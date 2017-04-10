@@ -58,7 +58,9 @@ JOIN photo p
 <div class="content">
   <div class="album">
     <div class="albumini">
-      <? foreach ( $photos as $photo) { ?>
+      <? foreach ( $photos as $photo) {
+        Helpers::addTrans('photo_' . $photo['id'], $photo['description']);
+        ?>
         <div class="mini-img" href="<?= $photo['url'] ?>" data-id="<?= $photo['id'] ?>" style="background-image: url('<?= $photo['url_mini'] ?>');"></div>
       <? } ?>
 
@@ -95,18 +97,10 @@ JOIN photo p
     </div>
   </div>
 </div>
-<!--
-<footer>
 
-</footer>
--->
-<script type="text/javascript">
-  appid = 5941079;
-  VK.init({
-    apiId: appid
-  });
-</script>
-<script src="/js/startscr.js"></script>
+
+<? include 'footer.php';?>
+
 </body>
 
 </html>

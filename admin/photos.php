@@ -73,6 +73,13 @@ if(is_numeric($ida)) {
   $ida_and = " AND p.id_album = $ida";
 }
 
+$idp_and = '';
+$idp = empty($_REQUEST['id_photo']) ? null : $_REQUEST['id_photo'];
+if(is_numeric($idp)) {
+  $idp_and = " AND p.id= $idp";
+}
+
+
 $sql = "
 SELECT p.*, a.name as album , a.date
 FROM photo p 
@@ -80,6 +87,7 @@ LEFT JOIN album a
   ON a.id = p.id_album
 WHERE p.status > 0
   $ida_and
+  $idp_and
 ORDER BY p.position ASC
 ";
 
@@ -117,7 +125,7 @@ unset($photo);
               <form class="album-image-form" method="post">
                 <input type="hidden" name="id" value="<?= $photo['id'] ?>">
                 <div class="form-group">
-                  <a target="_blank" class="parent_size album-photo" href="<?= empty($photo['url']) ?>" style="background-image: url('<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>')"></a>
+                  <a target="_blank" class="parent_size album-photo" href="<?= $photo['url'] ?>" style="background-image: url('<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>')"></a>
                 </div>
                 <div class="w100 text-center">
                   <div class="pull-left btn btn-default position-decrease" title="Перемістити ліворуч">

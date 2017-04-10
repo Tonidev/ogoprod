@@ -63,7 +63,9 @@ JOIN photo p
 
 <div class="content">
 
-  <? foreach(  $photos as $photo) { ?>
+  <? foreach(  $photos as $photo) {
+    Helpers::addTrans('photo_' . $photo['id'], $photo['description']);
+    ?>
     <div class="photo-block">
       <div class="photo">
         <img class="mobile-hide"
@@ -114,8 +116,7 @@ JOIN photo p
     </div>
   </div>
 </div>
-
-<script>
+<script type="text/javascript">
   function getSocTitle() {
     return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
   }
@@ -132,7 +133,13 @@ JOIN photo p
       $start.css('background-position', 'center');
       $start.animate({'opacity':'1'},800);});
   }
+  appid = 5941079;
+  VK.init({
+    apiId: appid
+  });
 </script>
+
+<? include 'footer.php'; ?>
 
 <script src="/js/startscr.js"></script>
 </body>
