@@ -35,21 +35,7 @@ JOIN photo p
 </head>
 <body class="main">
 <? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
-  <div class="vova1">
-    <div class="vova2">
 
-      <a href="" onclick="swal({
-  html : true,
-  title : getSocTitle(),
-  allowOutsideClick : true,
-  showConfirmButton: false
-}); return false;" id="but" class="button">oGo Production</a>
-
-      <div id="start"  width="2000" height="1200" ></div>
-
-
-    </div>
-  </div>
 <? }
 $_SESSION['no_index'] = time();
 ?>
