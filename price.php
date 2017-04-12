@@ -17,6 +17,9 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <!DOCTYPE html>
 <html>
 <? include ('header.php'); ?>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
 <body class="main">
 <script>
   jQuery("document").ready(function($) {
@@ -29,7 +32,19 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 </div>
 <? include 'left_menu.php'; ?>
 <div class="content">
-  <div id="vvod">
+  <div class="poslugi_block1">
+  <div class="spisok-poslug">
+    <UL id="spisok_poslug">
+    <li>1. Test poslugi</li>
+    <li>1. Test poslugi</li>
+    <li>1. Test poslugi</li>
+    <li>1. Test poslugi</li>
+    <li>1. Test poslugi</li>
+    <li>1. Test poslugi</li>
+    <li>1. Test poslugi</li>
+    </UL>
+  </div>
+  <div id="vvod" style="display: inline-block">
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>
@@ -54,6 +69,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <a href="price.php" style="margin-left:30px" class="send">Заказать</a>
     <a href="" class="send2">Вконтакте</a>
   </div>
+</div>
 </div>
 
 
