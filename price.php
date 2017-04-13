@@ -68,6 +68,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <a href="price.php" style="margin-left:30px" class="send">Заказать</a>
     <a href="" class="send2">Вконтакте</a>
   </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417.9923536919372!2d33.35976772773899!3d47.90532390999367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf63143ccca78764c!2z0KHQtdGA0LLQuNGB0L3Ri9C5INGG0LXQvdGC0YAgItCG0KLQoSI!5e0!3m2!1sru!2sua!4v1492103517647" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 </div>
 
