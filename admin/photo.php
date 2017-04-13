@@ -60,19 +60,24 @@ if (!empty($func)) {
                 $final_mini_path = $dir_name . $id_photo . '.min.' . $type;
                 rename($upload_path, $final_path);
 
-                $opacity = 0.5;
                 $yOffset =null;
                 $xOffset =null;
-                $watermarked = new SimpleImage();
-                $watermarked->fromFile($final_path);
-                $watermarked->overlay(Config::$WATERMARK_FILE, 'bottom right', $opacity, $xOffset, $yOffset );
-                $watermarked->toFile($final_path);
+
+                if($id_album) {
+                  $watermarked = new SimpleImage();
+                  $watermarked->fromFile($final_path);
+                  $watermarked->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
+                  $watermarked->toFile($final_path);
+                }
 
                 $mini = new SimpleImage();
                 $mini->fromFile($final_path);
                 $mini->resize('1024');
-                $mini->toFile($final_mini_path);
+                if($id_album) {
+                  $mini->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
+                }
 
+                $mini->toFile($final_mini_path);
 
                 $upload_url .= $id_photo . '.' . $type;
                 $upload_mini_url .= $id_photo . '.min.' . $type;
@@ -94,7 +99,7 @@ if (!empty($func)) {
           }
         }
         foreach($_FILES as $fs) {
-          if(empty($fs['name'])) {
+          if(empty($fs['name']) || (is_array($fs['name']) && empty($fs['name'][0]) ) ) {
             continue;
           }
           foreach ($fs as $k => $v) {
@@ -144,17 +149,22 @@ if (!empty($func)) {
               $final_mini_path = $dir_name . $id_photo . '.min.' . $type;
               rename($upload_path, $final_path);
 
-              $opacity = 0.5;
               $yOffset =null;
               $xOffset =null;
-              $watermarked = new SimpleImage();
-              $watermarked->fromFile($final_path);
-              $watermarked->overlay(Config::$WATERMARK_FILE, 'bottom right', $opacity, $xOffset, $yOffset );
-              $watermarked->toFile($final_path);
+
+              if($id_album) {
+                $watermarked = new SimpleImage();
+                $watermarked->fromFile($final_path);
+                $watermarked->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
+                $watermarked->toFile($final_path);
+              }
 
               $mini = new SimpleImage();
               $mini->fromFile($final_path);
               $mini->resize('1024');
+              if ($id_album) {
+                $mini->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
+              }
               $mini->toFile($final_mini_path);
 
               $upload_url .= $id_photo.'.'.$type;
