@@ -30,19 +30,20 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 </div>
 <? include 'left_menu.php'; ?>
 <div class="content">
+  <div style="text-align: center; "><span id="zakaz">Заказати послугу</span></div>
   <div class="poslugi_block1">
-  <div class="spisok-poslug">
-    <UL id="spisok_poslug">
-    <li>1. Test poslugi</li>
-    <li>1. Test poslugi</li>
-    <li>1. Test poslugi</li>
-    <li>1. Test poslugi</li>
-    <li>1. Test poslugi</li>
-    <li>1. Test poslugi</li>
-    <li>1. Test poslugi</li>
-    </UL>
-  </div>
-  <div id="vvod" style="display: inline-block">
+    <div class="spisok-poslug">
+      <ul id="spisok_poslug">
+        <li>1. Test poslugi</li>
+        <li>1. Test poslugi</li>
+        <li>1. Test poslugi</li>
+        <li>1. Test poslugi</li>
+        <li>1. Test poslugi</li>
+        <li>1. Test poslugi</li>
+        <li>1. Test poslugi</li>
+      </ul>
+    </div>
+    <div id="vvod" style="display: inline-block">
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>
