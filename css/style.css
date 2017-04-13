@@ -599,7 +599,7 @@ div#photo_popup_comments_list {
 {
   color: white;
   font-size: 14pt;
-  font-family: Warface;
+  font-family: PNG1;
 }
 .service
 {
@@ -984,15 +984,32 @@ list-style-type: square;
 
 .spisok-poslug {
 display: inline-block;
+  padding-right: 2em;
 }
 #spisok_poslug li
 {
   color:white;
-  font-size: 15px;
+  font-size: 19px;
   font-family: PNG1;
 }
 
 .poslugi_block1 {
-display:inline-block;
-  width:100%;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  padding-top: 1em;
+}
+
+
+#vvod {
+  padding-right: 6em;
+  padding-left: 4.5em;
+}
+
+#zakaz {
+  font-family: PNG1;
+  color:white;
+  padding-right:6em;
+  font-size: 23px;
+  text-shadow: rgba(8,204,171,1) 0 0 10px;
 }
