@@ -57,7 +57,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <span id="service_text" class="pricetext"></span>
   </div>
   <div class="fio">
-    <span class="pricetext" style="padding-right:1.95em;">Ф. И. О. : </span>
+    <span class="pricetext" style="padding-right:1.11em;">Ф. И. О. : </span>
     <input type="text" name="name" style="text-align: center; border-radius: 5px; width: 146px;">
 </div>
   <div class="phone">
