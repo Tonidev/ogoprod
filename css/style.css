@@ -820,12 +820,15 @@ box-sizing: border-box;
   outline: none;
   filter: brightness(55%);
   height: 600px;
+  line-height: 600px;
 }
 
 .port1 .slick-slide img {
   transition : all 0.5s;
    /*transform : scale(0.97);*/
   border: 15px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .port1 .slick-slide.slick-current  {

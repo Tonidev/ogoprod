@@ -18,6 +18,8 @@ WHERE status > 0
   AND (id_album = 0 OR id_album IS NULL)
 ORDER BY position ASC");
 
+$ph_ind = 0;
+
 $comments = $db->getAll("
 SELECT c.*
 FROM  comment c
@@ -31,12 +33,12 @@ JOIN photo p
 <html>
 <? include ("header.php");?>
 
-  <link rel="stylesheet" type="text/css" href="css/style.css"/>
-  <style>body.content
-    {
-      display: none;
-    }
-  </style>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<style>body.content
+  {
+    display: none;
+  }
+</style>
 <body style="overflow: auto"  class="main">
 <? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
   <div class="vova1">
@@ -72,14 +74,14 @@ $_SESSION['no_index'] = time();
 <div class="content" id="mainer" style="width: 75%">
  <span><p> <h1>Вітаємо на сайті oGo production студії:</h1></p>
 
-<p>  <h2>oGo production - це:</h2>
+   <p>  <h2>oGo production - це:</h2>
   <ul><li> Найновіше фото- та відеообладнання в місті;</li>
   <li> Професійна команда з багаторічним досвідом роботи;</li>
   <li> Широкий спектр послуг</li>
   <li> Індивідуальній підхід до кожного</li>
   <li> Цікаві пропозиції постійним клієнтам</li>
     </ul>
-</p>
+   </p>
    <h3>▪ Фотошкола</h3>
   <p>Навчання у школі справжнього фотографа розкриє секрети зйомки у різних жанрах з можливостю працевлаштування по закінченню курсу.
   Ти новачок або вже профі? Обирай свій "level" та приєднуйся до команди oGo production!
@@ -90,12 +92,12 @@ $_SESSION['no_index'] = time();
 
  </span>
   <div class="opisph">
-  <img src="/img/index1.jpg" style="width: 91%;">
-  <span id="opis"><p>Бездоганна якість фото&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
-  <img src="/img/index2.jpg" style="width: 91%;">
-  <span id="opis"><p>Креативні ідеї &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
+    <? if(!empty($photos[$ph_ind])) { ?> <img src="<?= $photos[$ph_ind++]['url'] ?>" style="width: 91%;"> <? } ?>
+    <span id="opis"><p>Бездоганна якість фото&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
+    <? if(!empty($photos[$ph_ind])) { ?> <img src="<?= $photos[$ph_ind++]['url'] ?>" style="width: 91%;"> <? } ?>
+    <span id="opis"><p>Креативні ідеї &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
   </div>
-  </div>
+</div>
 
 
 <div id="photo_popup"  data-image="">

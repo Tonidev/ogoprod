@@ -63,13 +63,6 @@ if (!empty($func)) {
                 $yOffset =null;
                 $xOffset =null;
 
-                if($id_album) {
-                  $watermarked = new SimpleImage();
-                  $watermarked->fromFile($final_path);
-                  $watermarked->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
-                  $watermarked->toFile($final_path);
-                }
-
                 $mini = new SimpleImage();
                 $mini->fromFile($final_path);
                 $mini->resize('1024');
@@ -78,6 +71,13 @@ if (!empty($func)) {
                 }
 
                 $mini->toFile($final_mini_path);
+
+                if($id_album) {
+                  $watermarked = new SimpleImage();
+                  $watermarked->fromFile($final_path);
+                  $watermarked->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
+                  $watermarked->toFile($final_path);
+                }
 
                 $upload_url .= $id_photo . '.' . $type;
                 $upload_mini_url .= $id_photo . '.min.' . $type;
@@ -152,13 +152,6 @@ if (!empty($func)) {
               $yOffset =null;
               $xOffset =null;
 
-              if($id_album) {
-                $watermarked = new SimpleImage();
-                $watermarked->fromFile($final_path);
-                $watermarked->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
-                $watermarked->toFile($final_path);
-              }
-
               $mini = new SimpleImage();
               $mini->fromFile($final_path);
               $mini->resize('1024');
@@ -166,6 +159,15 @@ if (!empty($func)) {
                 $mini->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
               }
               $mini->toFile($final_mini_path);
+
+              if($id_album) {
+                $watermarked = new SimpleImage();
+                $watermarked->fromFile($final_path);
+                $watermarked->overlay(Config::$WATERMARK_FILE, Config::$WATERMARK_POSITION, Config::$WATERMARK_OPACITY, $xOffset, $yOffset );
+                $watermarked->toFile($final_path);
+              }
+
+
 
               $upload_url .= $id_photo.'.'.$type;
               $upload_mini_url .= $id_photo . '.min.' . $type;
