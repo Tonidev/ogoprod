@@ -17,9 +17,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <!DOCTYPE html>
 <html>
 <? include ('header.php'); ?>
-<head>
-  <link rel="stylesheet" type="text/css" href="css/style.css"/>
-</head>
+
 <body class="main">
 <script>
   jQuery("document").ready(function($) {
