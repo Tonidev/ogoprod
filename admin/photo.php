@@ -5,7 +5,9 @@
  * Date: 30.03.17
  * Time: 17:14
  */
-require_once (BASE_DIR. 'classSimpleImage.php');
+
+use claviska\SimpleImage;
+require_once (BASE_DIR. 'SimpleImage.php');
 $func = empty($_REQUEST['func']) ? null : $_REQUEST['func'];
 if (!empty($func)) {
   if(!empty($_REQUEST['ajax'])) {
@@ -30,7 +32,7 @@ if (!empty($func)) {
               $content = $data;
 
               if(empty($content)) {
-                Helpers::jsonError($this->l('An error occurred during the image copy process.'));
+                Helpers::jsonError('An error occurred during the image copy process.');
                 die;
               }
 
@@ -58,10 +60,18 @@ if (!empty($func)) {
                 $final_mini_path = $dir_name . $id_photo . '.min.' . $type;
                 rename($upload_path, $final_path);
 
+                $opacity = 0.5;
+                $yOffset =null;
+                $xOffset =null;
+                $watermarked = new SimpleImage();
+                $watermarked->fromFile($final_path);
+                $watermarked->overlay(Config::$WATERMARK_FILE, 'bottom right', $opacity, $xOffset, $yOffset );
+                $watermarked->toFile($final_path);
+
                 $mini = new SimpleImage();
-                $mini->load($final_path);
-                $mini->resizeToWidth('1024');
-                $mini->save($final_mini_path, $mini->image_type, 100);
+                $mini->fromFile($final_path);
+                $mini->resize('1024');
+                $mini->toFile($final_mini_path);
 
 
                 $upload_url .= $id_photo . '.' . $type;
@@ -134,10 +144,18 @@ if (!empty($func)) {
               $final_mini_path = $dir_name . $id_photo . '.min.' . $type;
               rename($upload_path, $final_path);
 
+              $opacity = 0.5;
+              $yOffset =null;
+              $xOffset =null;
+              $watermarked = new SimpleImage();
+              $watermarked->fromFile($final_path);
+              $watermarked->overlay(Config::$WATERMARK_FILE, 'bottom right', $opacity, $xOffset, $yOffset );
+              $watermarked->toFile($final_path);
+
               $mini = new SimpleImage();
-              $mini->load($final_path);
-              $mini->resizeToWidth('1024');
-              $mini->save($final_mini_path, $mini->image_type, 100);
+              $mini->fromFile($final_path);
+              $mini->resize('1024');
+              $mini->toFile($final_mini_path);
 
               $upload_url .= $id_photo.'.'.$type;
               $upload_mini_url .= $id_photo . '.min.' . $type;

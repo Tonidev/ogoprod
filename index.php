@@ -30,15 +30,14 @@ JOIN photo p
 <!DOCTYPE html>
 <html>
 <? include ("header.php");?>
-<head>
+
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
   <style>body.content
     {
       display: none;
     }
   </style>
-</head>
-<body style="overflow: auto" class="main">
+<body style="overflow: auto"  class="main">
 <? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
   <div class="vova1">
     <div class="vova2">

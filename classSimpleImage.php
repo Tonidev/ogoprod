@@ -1,6 +1,6 @@
 <?php
 
-class SimpleImage {
+class SimpleImage2 {
 
   /**
    * @var image

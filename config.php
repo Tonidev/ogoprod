@@ -4,7 +4,7 @@ require_once (BASE_DIR .'safemysql.class.php');
 
 class Config {
 
-  static $db_connection_string = array('user' => 'root', 'pass' => '1204', 'db' => 'ogoprod');
+  static $db_connection_string = array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod');
   public static $ADMIN_SHORT_SESSION_TIME = 900; //15 min = 60*15;
   public static $ADMIN_SESSION_TIME = 1468800; //1 week = 60*60*24*7;
   public static $siteName = 'OGO Production';
@@ -33,6 +33,7 @@ class Config {
       'G' => 'Geometria',
       'F' => 'Миталлстилл',
   );
+  public static $WATERMARK_FILE = BASE_DIR . 'photo' .DIRECTORY_SEPARATOR . 'watermark.png';
 
 }
 
@@ -139,3 +140,4 @@ class Helpers {
   }
 
 }
+

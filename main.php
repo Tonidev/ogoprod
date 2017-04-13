@@ -30,13 +30,8 @@ JOIN photo p
 <!DOCTYPE html>
 <html>
 <? include ("header.php");?>
-<head>
-  <link rel="stylesheet" type="text/css" href="css/style.css"/>
-</head>
 <body class="main">
-<? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
-
-<? }
+<?
 $_SESSION['no_index'] = time();
 ?>
 
