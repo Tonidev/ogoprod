@@ -38,7 +38,7 @@ JOIN photo p
     }
   </style>
 </head>
-<body class="main">
+<body style="overflow: auto" class="main">
 <? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
   <div class="vova1">
     <div class="vova2">

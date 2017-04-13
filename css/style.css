@@ -980,3 +980,18 @@ list-style-type: square;
   box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
 
 }
+
+.spisok-poslug {
+display: inline-block;
+}
+#spisok_poslug li
+{
+  color:white;
+  font-size: 15px;
+  font-family: PNG1;
+}
+
+.poslugi_block1 {
+display:inline-block;
+  width:100%;
+}
