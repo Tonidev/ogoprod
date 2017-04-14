@@ -89,7 +89,7 @@ $_SESSION['no_index'] = time();
     <div id="teamblock">
         <div style="width: 240px; padding-right: 20px;">
             <img style="width:100%; border-radius: 50px;" src="img/team/anna-mini.jpg">
-            <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Анна Яцина</p>
+            <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Анна Vie</p>
         </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
 <h3>Адміністратор.</h3>
