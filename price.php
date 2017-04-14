@@ -30,20 +30,20 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 </div>
 <? include 'left_menu.php'; ?>
 <div class="content">
-  <div style="text-align: center; "><span id="zakaz">Заказати послугу</span></div>
+
   <div class="poslugi_block1">
     <div class="spisok-poslug">
-      <ul id="spisok_poslug">
-        <li>1. Test poslugi</li>
-        <li>1. Test poslugi</li>
-        <li>1. Test poslugi</li>
-        <li>1. Test poslugi</li>
-        <li>1. Test poslugi</li>
-        <li>1. Test poslugi</li>
-        <li>1. Test poslugi</li>
+      <div style="text-align: center;padding-left: 3em;"><span id="zakaz">Перелiк послуг</span></div>
+      <ul id="spisok_poslug" style="text-align: initial">
+        <li onclick="document.getElementById('photo-usluga').style.visibility='visible';">Студійна фотозйомка <span class="detal">(Детальнiше)</span></li>
+        <li onclick="document.getElementById('photo-usluga2').style.visibility='visible';">Виїздна фотозйомка <span class="detal">(Детальнiше)</span></li>
+        <li onclick="document.getElementById('photo-usluga3').style.visibility='visible';">Відеозйомка <span class="detal">(Детальнiше)</span></li>
+        <li>Обробка \ ретушування фотографій </li>
+        <li>Фотошкола oGo Production</li>
       </ul>
     </div>
     <div id="vvod" style="display: inline-block">
+      <div style="text-align: center;padding-left: 8em;padding-bottom: 2.3em;"><span id="zakaz">Заказати послугу</span></div>
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>
@@ -68,12 +68,64 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <a href="price.php" style="margin-left:30px" class="send">Заказать</a>
     <a href="" class="send2">Вконтакте</a>
   </div>
-</div>
+    <div class="poslugi_block2">
+      <span style="font-family: PNG1;font-size:17px;color:white">
+        <h2>Контактнi даннi:</h2>
+        <p>Адмiнiстратор: <seo style=" text-shadow: rgba(8,204,171,1) 0 0 3px; font-size: 20px;">Анна Vie</seo>
+        Номер телефону: +380986130909</p>
+        <p>Telegramm: +380986130909
+        Viber: +380986130909</p>
+
+      </span>
+    </div><iframe id="frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.7312379156301!2d33.35960000000001!3d47.90536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf63143ccca78764c!2z0KHQtdGA0LLQuNGB0L3Ri9C5INGG0LXQvdGC0YAgItCG0KLQoSI!5e1!3m2!1sru!2sua!4v1492166000228" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+
 </div>
 
 
 <? include 'footer.php'; ?>
 
+<div id="photo-usluga" class="overlay">
+  <div class="popup" style="width: 350px;">
+    <h2>Студійна фотозйомка:</h2>
+    <p>
+    <li style="padding-top: 1em;">Студійна фотозйомка:
+    <li style="padding-top: 1em;">Зйомка портфоліо
+    <li style="padding-top: 1em;">"Love story"
+    <li style="padding-top: 1em;">Рекламна зйомка
+    <li style="padding-top: 1em;">Бізнес-портрет
+    </p>
+    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga').style.visibility='hidden';"></button>
+  </div>
+</div>
+
+<div id="photo-usluga2" class="overlay">
+  <div class="popup" style="width: 365px;">
+    <h2>Виїздна фотозйомка:
+    </h2>
+    <p>
+      <li style="padding-top: 1em;">Весілля і "Love story"
+      <li style="padding-top: 1em;">"En plein air" - зйомка на відкритому повітрі
+      <li style="padding-top: 1em;">Корпоративи
+      <li style="padding-top: 1em;">Репортажна фотозйомка подій
+    <li style="padding-top: 1em;">Рекламна фотозйомка
+    </p>
+    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga2').style.visibility='hidden';"></button>
+  </div>
+</div>
+
+<div id="photo-usluga3" class="overlay">
+  <div class="popup" style="width: 350px;">
+    <h2>Відеозйомка:
+    </h2>
+    <p>
+    <li style="padding-top: 1em;">Весілля
+    <li style="padding-top: 1em;">Промо-роліки
+    <li style="padding-top: 1em;">Відеоогляди
+    <li style="padding-top: 1em;">Відеоуроки
+    </p>
+    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga3').style.visibility='hidden';"></button>
+  </div>
+</div>
 </body>
 
 </html>
