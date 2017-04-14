@@ -4,7 +4,7 @@ require_once (BASE_DIR .'safemysql.class.php');
 
 class Config {
 
-  static $db_connection_string = array('user' => 'root', 'pass' => '1204', 'db' => 'ogoprod');
+  static $db_connection_string = array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod');
   public static $ADMIN_SHORT_SESSION_TIME = 900; //15 min = 60*15;
   public static $ADMIN_SESSION_TIME = 1468800; //1 week = 60*60*24*7;
   public static $siteName = 'OGO Production';
@@ -16,6 +16,7 @@ class Config {
   public static $ALBUM_STATUS_PUBLISHED = 1;
   public static $ALBUM_STATUS_PORTFOLIO_VADIM = 2;
   public static $ALBUM_STATUS_PORTFOLIO_ARCHIL = 3;
+  public static $ALBUM_STATUS_BLOG = 4;
 
   public static $PROMO_SERVICES = array (
       'D' => array(

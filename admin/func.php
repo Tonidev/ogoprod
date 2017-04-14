@@ -30,7 +30,7 @@ function check_admin_granted() {
   ) {
     return false;
   }
-  $_SESSION['admin_granted'] = time() + ADMIN_SHORT_SESSION_TIME;
+  $_SESSION['admin_granted'] = max( time() + ADMIN_SHORT_SESSION_TIME, $_SESSION['admin_granted']);
   return $_SESSION['login'];
 }
 

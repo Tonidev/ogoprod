@@ -28,6 +28,17 @@ JOIN photo p
   AND (p.id_album = 0 OR p.id_album IS NULL)
   AND c.id_photo = p.id
 ");
+
+function indexPhotoHtml($photo) {
+  ob_start();
+  ?>
+  <img class="index_photo" href="<?= $photo['url'] ?>" src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>" style="width: 91%;" data-id_photo="<?= $photo['id'] ?>">
+  <?
+  $html = ob_get_contents();
+  ob_end_clean();
+  return $html;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -92,9 +103,9 @@ $_SESSION['no_index'] = time();
 
  </span>
   <div class="opisph">
-    <? if(!empty($photos[$ph_ind])) { ?> <img src="<?= $photos[$ph_ind++]['url'] ?>" style="width: 91%;"> <? } ?>
+    <? if(!empty($photos[$ph_ind])) { echo indexPhotoHtml($photos[$ph_ind]); $ph_ind++; } ?>
     <span id="opis"><p>Бездоганна якість фото&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
-    <? if(!empty($photos[$ph_ind])) { ?> <img src="<?= $photos[$ph_ind++]['url'] ?>" style="width: 91%;"> <? } ?>
+    <? if(!empty($photos[$ph_ind])) { echo indexPhotoHtml($photos[$ph_ind]); $ph_ind++; } ?>
     <span id="opis"><p>Креативні ідеї &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
   </div>
 </div>

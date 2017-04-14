@@ -161,6 +161,9 @@ GROUP BY a.id
             <option value="<?= Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL ?>"  >
               Портфоліо Арчіла
             </option>
+            <option value="<?= Config::$ALBUM_STATUS_BLOG?>"  >
+              Блог
+            </option>
           </select>
           <input class="form-control" name="chpu" placeholder="URL">
           <button class="btn-default btn add">Додати</button>
@@ -195,6 +198,9 @@ GROUP BY a.id
               </option>
               <option value="<?= Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL ?>"  <?= ($album['status'] == Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL) ? 'selected' : '' ?> >
                 Портфоліо Арчіла
+              </option>
+              <option value="<?= Config::$ALBUM_STATUS_BLOG ?>"  <?= ($album['status'] == Config::$ALBUM_STATUS_BLOG) ? 'selected' : '' ?> >
+                Блог
               </option>
             </select>
             <input  class="form-control" type="date" name="date" value="<?= date('Y-m-d', strtotime($album['date'])) ?>">

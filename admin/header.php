@@ -54,6 +54,9 @@
         <li <?= $action=='comments' ? ' class="active" ': '' ?>>
         <a href="/admin/comments">Коментарі</a></li>
 
+        <li <?= $action=='blog' ? ' class="active" ': '' ?>>
+        <a href="/admin/blog">Блог</a></li>
+
       </ul>
     </div>
 
