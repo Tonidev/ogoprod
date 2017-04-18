@@ -138,7 +138,7 @@ class Helpers {
   {
     $text = '';
     foreach (self::$jsTranslations as $key => $translation) {
-      $text .= "LANG[\"". addslashes($key) . "\"] = '" . addslashes($translation) . "' ;\n ";
+      $text .= "LANG[\"". addslashes($key) . "\"] = '" . addslashes(preg_replace('/[\r\n]+/', '\n',$translation )) . "' ;\n ";
     }
     return $text;
   }

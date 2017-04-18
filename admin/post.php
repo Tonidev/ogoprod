@@ -18,9 +18,10 @@ $album_id = $blog_album['id'];
 
 if(!empty($_REQUEST['func']) ) {
   switch ($_REQUEST['func']) {
+    case  'edit' :
     case 'add':
       $post = array(
-          'id' =>'',
+          'id' => empty($_REQUEST['id']) ? '' : $_REQUEST['id'],
           'title' => empty($_REQUEST['title']) ? '' : $_REQUEST['title'],
           'description' => empty($_REQUEST['description']) ? '' : $_REQUEST['description'],
           'chpu' => empty($_REQUEST['chpu']) ? '' : $_REQUEST['chpu'],
@@ -28,7 +29,8 @@ if(!empty($_REQUEST['func']) ) {
           'content' => empty($_REQUEST['content']) ? '' : $_REQUEST['content'],
           'status' => empty($_REQUEST['status']) ? 0 : $_REQUEST['status'],
           'url' => empty($_REQUEST['url']) ? '' : $_REQUEST['url'],
-          'url_mini' => empty($_REQUEST['url_mini']) ? '' : $_REQUEST['url_mini']
+          'url_mini' => empty($_REQUEST['url_mini']) ? '' : $_REQUEST['url_mini'],
+          'date' => empty($_REQUEST['date']) ? date('Y-m-d H:i:s') : date('Y-m-d H:i:s', strtotime($_REQUEST['date']))
       );
       if(!empty($_REQUEST['submit'])) {
 
@@ -39,6 +41,13 @@ if(!empty($_REQUEST['func']) ) {
 
         if(empty($post['chpu'])) {
           $errors[]= 'Не вказаний URL';
+        } else {
+          $existing_chpu = Db::i()->getRow("SELECT * FROM post WHERE chpu = ?s", $post['chpu']);
+         if (!empty($existing_chpu)) {
+           if(empty($post['id']) || ($post['id'] != $existing_chpu['id']) ) {
+             $errors[] = 'URL вже зайнято';
+           }
+         }
         }
 
 
@@ -119,44 +128,74 @@ if(!empty($_REQUEST['func']) ) {
                 $watermarked->toFile($final_path);
               }
 
-
-
               $upload_url .= $id_photo.'.'.$type;
               $upload_mini_url .= $id_photo . '.min.' . $type;
               $upload_url = preg_replace('@/+@', '/', $upload_url);
               $upload_mini_url = preg_replace('@/+@', '/', $upload_mini_url);
 
               if(!Db::i()->query("UPDATE photo SET url = ?s, url_mini = ?s WHERE id = ?i", $upload_url, $upload_mini_url, $id_photo )) {
-                Helpers::jsonError("Невозможно добавить фото в базу");
-                die;
+                $errors[] = "Невозможно добавить фото в базу";
               }
             } else {
-              Helpers::jsonError('Можно загрузить фото только с расширением jpg, gif, jpeg или png');
-              die;
+              $errors[] = 'Можно загрузить фото только с расширением jpg, gif, jpeg или png';
             }
           }
         }
-        $inserted = Db::i()->query("
+        if (empty($post['id'])) {
+          $inserted = Db::i()->query("
 INSERT INTO post 
-(title, description, author, status, content, id_photo, chpu) 
+(title, description, author, `status`, content, id_photo, chpu, `date`) 
 VALUES 
-( ?s, ?s, ?s, ?i, ?s, ?i, ?s )",
-            $post['title'],
-            $post['description'],
-            Config::$DEFAULT_AUTHOR,
-            $post['status'],
-            $post['content'],
-            $id_photo,
-            $post['chpu']);
-        if($inserted) {
-          $pid = Db::i()->insertId();
+( ?s, ?s, ?s, ?i, ?s, ?i, ?s, ?s )",
+              $post['title'],
+              $post['description'],
+              Config::$DEFAULT_AUTHOR,
+              $post['status'],
+              $post['content'],
+              $id_photo,
+              $post['chpu'],
+              $post['date']
+          );
+          if($inserted) {
+            $pid = Db::i()->insertId();
 //          $post['id'] = $pid;
-          if(empty($_REQUEST['getResultData'])) {
-            Helpers::redirect('/admin/post/'.$pid);
+            if(empty($_REQUEST['getResultData'])) {
+              Helpers::redirect('/admin/post/'.$pid);
+            }
+          } else {
+            $errors[] = 'Неможливо додати запис, перевірте правильність полів';
           }
         } else {
-          $errors[] = 'Неможливо додати запис, перевірте правильність полів';
+          $id_photo_sql = '';
+          if(!empty($id_photo)) {
+            $id_photo_sql = Db::i()->parse(' id_photo = ?i , ', $id_photo);
+          }
+          $updated = Db::i()->query("
+UPDATE post 
+SET 
+title = ?s, description = ?s, 
+author = ?s, `status` = ?i, 
+content = ?s, $id_photo_sql 
+chpu = ?s , `date` = ?s
+WHERE id = ?i",
+              $post['title'],
+              $post['description'],
+              Config::$DEFAULT_AUTHOR,
+              $post['status'],
+              $post['content'],
+              $post['chpu'],
+              $post['date'],
+              $post['id']
+          );
+          if($updated) {
+            if(empty($_REQUEST['getResultData'])) {
+              Helpers::redirect('/admin/post/'.$post['id']);
+            }
+          } else {
+            $errors[] = 'Неможливо додати запис, перевірте правильність полів';
+          }
         }
+
         break;
       }
       break;
@@ -209,10 +248,18 @@ WHERE p.id = $id ");
 
 
 <form method="post" id="post_form" enctype="multipart/form-data">
+  <? if(!empty($post['id'])) { ?>
+      <input type="hidden" name="func" value="edit">
+      <input type="hidden" name="id" value="<?= $post['id'] ?>">
+  <? } ?>
   <div class="col-xs-12 col-md-9 post panel">
     <div class="panel-heading post_title translit">
-      <input class="form-control" data-target="chpu" name="title" value="<?= $post['title'] ?>" placeholder="Заголовок">
-      <input class="form-control" data-source="title" name="chpu" value="<?= $post['chpu'] ?>" placeholder="URL">
+      <label for="title">Заголовок</label>
+      <input class="form-control" id="title" data-target="chpu" name="title" value="<?= $post['title'] ?>" placeholder="Заголовок">
+      <label for="chpu">URL</label>
+      <input class="form-control" id="chpu" data-source="title" name="chpu" value="<?= $post['chpu'] ?>" placeholder="URL">
+      <label for="date">Дата публікації</label>
+      <input class="form-control" id="date" type="date" name="date" value="<?= date('Y-m-d', strtotime($post['date'])) ?>" placeholder="Дата публікації">
     </div>
     <div class="panel-body">
       <div class="post_photo" style="background-image: url('<?= empty($post['url_mini']) ? $post['url'] : $post['url_mini'] ?>')">
@@ -224,7 +271,7 @@ WHERE p.id = $id ");
       </div>
       <div class="post_description">
         <label for="description">Опис</label>
-        <textarea class="form-control" id="description" name="description" maxlength="255"><?= $post['description'] ?></textarea>
+        <textarea class="form-control tinymce" id="description" name="description" ><?= $post['description'] ?></textarea>
       </div>
       <div class="post_content">
         <label for="content">Текст статті</label>
@@ -239,10 +286,10 @@ WHERE p.id = $id ");
     </div>
     <div class="panel-footer post_actions">
       <? if(!empty($post['id'])) { ?>
-        <a href="/admin/post/<?= $post['id'] ?>" class="btn btn-default edit">Редагувати</a>
+        <button name="submit" value="1" type="submit" class="btn btn-default add">Зберегти</button>
         <button class="btn btn-danger delete">Видалити</button>
       <? } else { ?>
-        <button name="submit" value="1" type="submit" class="btn btn-danger add">Додати</button>
+        <button name="submit" value="1" type="submit" class="btn btn-default add">Додати</button>
       <? } ?>
     </div>
   </div>

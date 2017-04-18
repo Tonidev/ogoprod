@@ -1,8 +1,4 @@
 <?php
-/**
- * Date: 13.03.17
- * Time: 18:47
- */
 
 if(!defined('BASE_DIR')) {
   define('BASE_DIR', __DIR__ .DIRECTORY_SEPARATOR);
@@ -11,12 +7,12 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 
-$photos = $db->getAll("
-SELECT * 
-FROM  photo 
-WHERE status > 0 
-  AND (id_album = 0 OR id_album IS NULL) 
-ORDER BY position ASC");
+$posts = $db->getAll("
+SELECT p.* , ph.url, ph.url_mini
+FROM post p 
+LEFT JOIN photo ph
+  ON p.id_photo = ph.id
+WHERE p.status > 0");
 
 $comments = $db->getAll("
 SELECT c.* 
@@ -25,12 +21,18 @@ JOIN photo p
   ON c.`status` > 0
   AND (p.id_album = 0 OR p.id_album IS NULL) 
   AND c.id_photo = p.id
+JOIN post 
+    ON p.id = post.id_photo
+    AND post.status > 0
 ");
 ?>
 <!DOCTYPE html>
 <html>
 <? include ("header.php");?>
-<body class="main">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body class="main blog">
 <?
 $_SESSION['no_index'] = time();
 ?>
@@ -48,26 +50,35 @@ $_SESSION['no_index'] = time();
 
 <div class="content">
 
-  <? foreach(  $photos as $photo) {
-    Helpers::addTrans('photo_' . $photo['id'], $photo['description']);
+  <? foreach($posts as $post) {
+    Helpers::addTrans('photo_' . $post['id'], $post['description']);
     ?>
     <div class="photo-block">
-      <div class="photo">
-        <img class="mobile-hide"
-             href="<?= $photo['url'] ?>"
-             src="<?= $photo['url'] ?>"
-             data-id="<?= $photo['id'] ?>">
-        <img class="desktop-hide"
-             href="<?= $photo['url'] ?>"
-             src="<?= empty($photo['url_mini'])
-                 ? $photo['url']
-                 : $photo['url_mini'] ?>"
-             data-id="<?= $photo['id'] ?>">
+      <div class="post_header">
+        <h1 class="title"><?= $post['title'] ?></h1>
+        <div class="f-right date"><?= date('d/m/Y', strtotime($post['date']) ) ?></div>
       </div>
-      <div class="description"><?= $photo['description'] ?></div>
+      <div class="photo blog-cover">
+        <a class="mobile-hide" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>"><img
+              href="<?= $post['url'] ?>"
+              src="<?= $post['url'] ?>"
+              data-id="<?= $post['id'] ?>">
+        </a>
+        <a class="desktop-hide" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>"><img
+             href="<?= $post['url'] ?>"
+             src="<?= empty($post['url_mini'])
+                 ? $post['url']
+                 : $post['url_mini'] ?>"
+             data-id="<?= $post['id'] ?>">
+        </a>
+      </div>
+      <div class="description"><?= $post['description'] ?><span class="eliplse">&hellip;</span><a class="read_full" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>">Читати далі</a> </div>
+
     </div>
   <? } ?>
-
+  <!--margin: 0 auto;
+  display: inline-block;
+  float: left;-->
 
 </div>
 
@@ -101,25 +112,7 @@ $_SESSION['no_index'] = time();
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  function getSocTitle() {
-    return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
-  }
 
-  var backgi=1;
-  setInterval(function(){backg()},8000);
-  function backg()
-  {
-    backgi=backgi%3+1;
-    var $start = $("#start");
-    $start.animate({'opacity':'0'},800,function(){
-      $start.css('background-image', 'url(/backgrounds/'+backgi+'.jpg)');
-      $start.css('background-size', 'contain');
-      $start.css('background-position', 'center');
-      $start.animate({'opacity':'1'},800);});
-  }
-
-</script>
 <? include 'footer.php'; ?>
 </body>
 </html>

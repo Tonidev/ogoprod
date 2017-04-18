@@ -5,7 +5,7 @@
     tinymce.init({
       selector : '.tinymce',
       language : 'uk',
-      height: 500,
+//      height: 500,
       theme: 'modern',
       plugins: [
         'advlist autolink lists link image charmap print preview hr anchor pagebreak',
