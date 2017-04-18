@@ -17,6 +17,7 @@ class Config {
   public static $ALBUM_STATUS_PORTFOLIO_VADIM = 2;
   public static $ALBUM_STATUS_PORTFOLIO_ARCHIL = 3;
   public static $ALBUM_STATUS_BLOG = 4;
+  public static $ALBUM_STATUS_TEAM = 5;
 
   public static $PROMO_SERVICES = array (
       'D' => array(

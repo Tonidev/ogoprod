@@ -33,7 +33,7 @@ $(document).ready(function () {
     $('#photo_popup_menu').removeClass('opened');
   });
 
-  $('.photo:not(.gallery-photo):not(.blog-cover) img, .albumini .mini-img, .port1 img, img.index_photo').click(function(e) {
+  $('.photo:not(.gallery-photo):not(.blog-cover) img, .albumini .mini-img, .port1 img, img.index_photo, .team img').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);

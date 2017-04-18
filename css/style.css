@@ -413,6 +413,7 @@ body.main .left-menu {
   /* color: white; */
 }
 
+
 .blog .description {
   display: inline;
   /*float: left;*/
@@ -424,7 +425,12 @@ body.main .left-menu {
   word-wrap: break-word;
 }
 
-.blog .photo {
+.blog .description p {
+  margin: 0 0 0.5em 0;
+}
+
+
+.blog .photo.blog-cover {
   width: 400px;
   /* clear: both; */
   float: left;
@@ -432,6 +438,10 @@ body.main .left-menu {
   margin: 0 1em;
   overflow: hidden;
   max-width: 100%;
+}
+
+#blog_post .photo.blog-cover {
+  max-height: none;
 }
 
 .blog .photo img {
