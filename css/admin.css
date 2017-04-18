@@ -192,3 +192,17 @@ body {
   font-weight: 800;
 }
 
+.post_photo.opened {
+  height: 500px;
+}
+
+.post_photo {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  background: transparent no-repeat left top;
+  background-size: contain;
+}
+
+
+

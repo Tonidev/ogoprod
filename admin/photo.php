@@ -184,7 +184,11 @@ if (!empty($func)) {
             }
           }
         }
-        Helpers::redirect('/admin/photos');
+        if(empty($_REQUEST['getResultData'])) {
+          Helpers::redirect('/admin/photos');
+        } else {
+          Helpers::jsonOk('OK', array('id' => $id_photo, 'url' => $upload_url, 'url_mini' => $upload_mini_url));
+        }
         break;
 
     }

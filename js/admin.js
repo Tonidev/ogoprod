@@ -68,6 +68,104 @@ $(document).ready(function () {
     initButtons();
   });
 
+  $('#ajax_image_upload_form').submit(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    var data = new FormData($this[0]);
+    stdAjax(data, $this.attr('action'), $this.find('button'), null, function (res) {
+      var $popup = $('#ajax_image_upload_popup');
+      if(!$popup.length) {
+        $popup = $('<div id="ajax_image_upload_popup"></div>');
+        $popup.appendTo('#ajax_image_upload_form');
+      }
+      var $id_pre = $popup.find('#ajax_image_upload_id_pre');
+      if(!$id_pre.length) {
+        $id_pre = $('<div id="ajax_image_upload_id_pre">ID фото</div>');
+        $id_pre.appendTo($popup);
+      }
+      var $id = $popup.find('#ajax_image_upload_id');
+      if(!$id.length) {
+        $id = $('<div id="ajax_image_upload_id"></div>');
+        $id.appendTo($popup);
+      }
+
+      var $url_pre = $popup.find('#ajax_image_upload_url_pre');
+      if(!$url_pre.length) {
+        $url_pre = $('<div id="ajax_image_upload_url_pre">Фото повного розміру</div>');
+        $url_pre.appendTo($popup);
+      }
+      var $url = $popup.find('#ajax_image_upload_url');
+      if(!$url.length) {
+        $url = $('<div id="ajax_image_upload_url"></div>');
+        $url.appendTo($popup);
+      }
+      var $url_mini_pre = $popup.find('#ajax_image_upload_url_mini_pre');
+      if(!$url_mini_pre.length) {
+        $url_mini_pre = $('<div id="ajax_image_upload_url_mini_pre">Мініатюра</div>');
+        $url_mini_pre.appendTo($popup);
+      }
+      var $url_mini = $popup.find('#ajax_image_upload_url_mini');
+      if(!$url_mini.length) {
+        $url_mini = $('<div id="ajax_image_upload_url_mini"></div>');
+        $url_mini.appendTo($popup);
+      }
+
+      var $msg = $popup.find('#ajax_image_upload_msg');
+      if(!$msg.length) {
+        $msg = $('<div id="ajax_image_upload_msg"></div>');
+        $msg.appendTo($popup);
+      }
+
+      $id.text(res.id);
+      $url.text(res.url);
+      $url_mini.text(res.url_mini);
+
+      // selectText($url);
+      // try {
+      //   var successful = document.execCommand('copy');
+      //   $msg.text(successful ? 'URL фото сбережено у буфері обміну' : 'Ви можете скопіювати URL фото для додавання його до тексту');
+      // } catch (err) {
+      //   console.log('Oops, unable to copy');
+      // }
+
+      var urlClickHandler = function(e) {
+        var $this = $(this);
+        selectText($this);
+        try {
+          var successful = document.execCommand('copy');
+          $msg.text(successful ? 'URL фото сбережено у буфері обміну' : 'Ви можете скопіювати URL фото для додавання його до тексту');
+        } catch (err) {
+          console.log('Oops, unable to copy');
+        }
+      };
+
+      $($url).off('click').on('click', urlClickHandler );
+      $($url_mini).off('click').on('click', urlClickHandler );
+
+      $url.click();
+
+    }, true);
+  } );
+
+  $('.translit').each(function (i, el) {
+    var $el = $(el);
+    var $source = $el.find('[data-target]');
+    var $target = $el.find('[data-source]');
+    var target = $source.data('target');
+    var source = $target.data('source');
+    $source.liTranslit({
+      elAlias: $target,
+      reg: '"ё"="yo"'
+    });
+  });
+
+  $('.post_photo').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var $this = $(this);
+    $this.toggleClass('opened');
+  } );
 
   initButtons();
 
@@ -171,6 +269,7 @@ function initButtons() {
       reg: '"ё"="yo"'
     });
   });
+
 }
 
 function editPromoHandler() {
@@ -192,9 +291,12 @@ function editPromoHandler() {
   stdAjax(data, null, $this);
 }
 
-function stdAjax(data, url, $object, err_cb, success_cb) {
+function stdAjax(data, url, $object, err_cb, success_cb, filetransfer) {
   if(typeof data == 'undefined') {
     data = {ajax : 'ajax'};
+  }
+  if(typeof filetransfer == 'undefined') {
+    filetransfer = false;
   }
   if(typeof url == 'undefined' || !url || !url.length) {
     url = null;
@@ -207,7 +309,7 @@ function stdAjax(data, url, $object, err_cb, success_cb) {
   var $icon = $('<a class="glyphicon glyphicon-repeat spinning"></a>');
   $icon.prependTo($indicator);
   $indicator.prependTo('#navbar ul');
-  $.ajax({
+  var ajaxParams = {
     url : url,
     data : data,
     type : 'post',
@@ -281,8 +383,12 @@ function stdAjax(data, url, $object, err_cb, success_cb) {
       console.dir(ans);
       console.dir(err);
     }
-  });
-
+  };
+  if(filetransfer) {
+    ajaxParams.contentType = false;
+    ajaxParams.processData = false;
+  }
+  $.ajax(ajaxParams);
 }
 
 function stdErrorCb(data, $object, $indicator, ans) {
@@ -310,5 +416,23 @@ function stdErrorCb(data, $object, $indicator, ans) {
       var $this = $(this);
       $this.remove();
     });
+  }
+}
+
+function selectText($element) {
+  var doc = document
+    , text = $element[0]
+    , range, selection
+    ;
+  if (doc.body.createTextRange) {
+    range = document.body.createTextRange();
+    range.moveToElementText(text);
+    range.select();
+  } else if (window.getSelection) {
+    selection = window.getSelection();
+    range = document.createRange();
+    range.selectNodeContents(text);
+    selection.removeAllRanges();
+    selection.addRange(range);
   }
 }

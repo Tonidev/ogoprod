@@ -20,12 +20,14 @@
   <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="/css/bootstrap/css/bootstrap-theme.css">
   <link rel="stylesheet" href="/css/admin.css">
+
 <!--  <link rel="stylesheet" href="/css/style.css">-->
 
   <script type="text/javascript" src="/css/bootstrap/js/jquery-1.12.4.js"></script>
   <script type="text/javascript" src="/css/bootstrap/js/bootstrap.js"></script>
   <script type="text/javascript" src="/js/sweetalert.min.js"></script>
   <script type="text/javascript" src="/js/liTranslit/jquery.liTranslit.js"></script>
+  <script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
   <script type="text/javascript" src="/js/admin.js"></script>
 </head>
 <body class="<?= $action ?>">

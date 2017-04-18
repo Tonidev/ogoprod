@@ -36,7 +36,8 @@ class Config {
   );
   public static $WATERMARK_FILE = BASE_DIR . 'photo' .DIRECTORY_SEPARATOR . 'watermark.png';
   public static $WATERMARK_OPACITY = 0.95; //от 0 до 1
-  public static $WATERMARK_POSITION = 'bottom right'; // 'center', 'top', 'bottom', 'left', 'right', 'top left', 'top right', 'bottom left', 'bottom right' (default 'center')
+  public static $WATERMARK_POSITION = 'bottom right';// 'center', 'top', 'bottom', 'left', 'right', 'top left', 'top right', 'bottom left', 'bottom right' (default 'center')
+  public static $DEFAULT_AUTHOR = "Вадим Оголяр";
 
 }
 
@@ -140,6 +141,10 @@ class Helpers {
       $text .= "LANG[\"". addslashes($key) . "\"] = '" . addslashes($translation) . "' ;\n ";
     }
     return $text;
+  }
+
+  public static function jsHistoryBackError($error, $timeout = 5000) {
+    return "<!DOCTYPE html><html><head></head><body>$error<script type=\"text/javascript\">setTimeout('history.back()', $timeout)</script></body></html>";
   }
 
 }

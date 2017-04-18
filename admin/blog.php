@@ -5,6 +5,7 @@ $func = empty($_REQUEST['func']) ? null : $_REQUEST['func'];
 if (!empty($func)) {
   if(!empty($_REQUEST['ajax'])) {
     switch ($func) {
+
       default :
         Helpers::jsonError("Невідома функція");
     }
