@@ -162,7 +162,7 @@ $_SESSION['no_index'] = time();
 </script>
 <div id="photo-usluga5" class="overlay" style="">
     <div class="popup kurs" style="top:10%;">
-        <h2 style="text-align: center">Advance курс</h2>
+        <h2 style="text-align: center; color:white">Advance курс</h2>
 
         <div class="schoolblock" style="height:110px"><span><a style="padding-bottom: 1em;padding-left:2.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">INTRODUCTION. WEEK NO. 1 </a>
 
