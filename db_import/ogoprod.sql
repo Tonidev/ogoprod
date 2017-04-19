@@ -86,7 +86,7 @@ INSERT INTO `photo` (`id`, `id_album`, `url`, `url_mini`, `description`, `timest
   (53, 0, '/photo/0/53.jpg', '/photo/0/53.min.jpg', '', '2017-04-13 16:26:26', 1, 1),
   (54, 0, '/photo/0/54.jpg', '/photo/0/54.min.jpg', '', '2017-04-13 16:31:04', 1, 1),
   (76, 13, '/img/team/vad.jpg', '/img/team/vad-mini.jpg', 'Вадим Оголяр', '2017-04-18 18:29:08', 1, 1),
-  (77, 13, '/img/team/arch.jpg', '/img/team/arch-mini.jpg', 'Арчіл Сванидзе', '2017-04-18 18:29:42', 1, 2),
+  (77, 13, '/img/team/arch.jpg', '/img/team/arch-mini.jpg', 'Арчіл Сванідзе', '2017-04-18 18:29:42', 1, 2),
   (78, 13, '/img/team/anna.jpg', '/img/team/anna-mini.jpg', 'Анна Vie', '2017-04-18 18:30:15', 1, 3);
 
 
