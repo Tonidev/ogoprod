@@ -1136,7 +1136,7 @@ list-style-type: square;
   /*transition-delay: 0s;*/
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.88);
   z-index: 999;
   overflow: auto;
   transition: all 0.5s;
@@ -1155,8 +1155,7 @@ list-style-type: square;
   max-width: 600px;
   position: absolute;
   padding: 15px 20px;
-  border: 1px solid #383838;
-  background: #fefefe;
+  background: transparent;
   z-index: 1000;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -1291,8 +1290,13 @@ h1.title {
   padding-bottom: 2em;
   border-style: outset;
   margin: 4px;
+  background-color: white;
 }
 .schoolblock:hover
 {
   box-shadow: rgba(8,204,171,1) 0 0 10px;;
+}
+.kurs:not(.div)
+{
+  opacity: 1;
 }
