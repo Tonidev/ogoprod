@@ -77,7 +77,7 @@ $_SESSION['no_index'] = time();
 <li>Можливе подальше працевлаштування
 </span>
     <p></p>
-    <a href="#" class="totton">Повний опис</a>
+    <a data-usluga="photo-usluga5" onclick="$('#photo-usluga5').show();return false;" href="#" class="totton">Повний опис</a>
     <p></p>
 <span style="font-family: PNG1;font-size: 18px;color: white;">
             <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Elementary курс</h3>
@@ -187,7 +187,43 @@ $_SESSION['no_index'] = time();
 
 
 </script>
-<? include 'footer.php'; ?>
+<div id="photo-usluga5" class="overlay" style="">
+    <div class="popup kurs" style="top:10%;">
+        <h2 style="text-align: center">Advance курс</h2>
+
+        <div class="schoolblock" style="height:110px"><span><a style="padding-bottom: 1em;padding-left:2.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">INTRODUCTION. WEEK NO. 1 </a>
+
+        <br>&nbsp;<a onclick="return false;" style="padding-top:2em ">Знайомство. Вступний практичний урок. </a>
+    <br>&nbsp;Тест на рівень професійності.
+    <br>&nbsp;Індивідуальна робота з учнями.
+            </span></div>
+        <div class="schoolblock" style="height:110px"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">WEEK NO. 2 </a>
+<br>&nbsp;Схеми розташування світла. Свiтлотiнь.
+<br>&nbsp;Курс роботи зі студійним освітленням
+<br>&nbsp;Логіка замовника. Ракурси у фотографії.
+<br>&nbsp;Золотий перетин і його використання.
+<br>&nbsp;Види зйомок, розподіл по жанрах, вибір  &nbsp;потрібного обладнання
+</span></div>
+        <div class="schoolblock" style="height:110px"> <span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">WEEK NO. 3</a>
+        <br>&nbsp;Використання на практиці отриманих знань
+                      <br>&nbsp;Відшліфування навичок
+                      <br>&nbsp;Студійна зйомок. Beauty-зйомка
+                      <br>&nbsp;Лав сторі. Зйомка за містом
+                      <br>&nbsp;Особливості весільної зйомки
+                      <br>&nbsp;Предметна зйомка для каталогу.
+                </span></div>
+        <div class="schoolblock" style="height:110px"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">WEEK NO. 4</a>
+                    <br>&nbsp;Весільна зйомка. Практичний урок
+                    <br>&nbsp;Зйомка для магазину одягу
+                    <br>&nbsp;Зйомка на виїзді
+                    <br>&nbsp;Зйомка білизни</span></div>
+
+
+        <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga4').style.display='none';"></button>
+        <div>
+        </div>
+</div>
+        <? include 'footer.php'; ?>
 <div id="photo-usluga4" class="overlay" style="">
     <div class="popup kurs" style="top:10%;">
         <h2 style="text-align: center">Elementary курс</h2>
@@ -235,5 +271,9 @@ $_SESSION['no_index'] = time();
         <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga4').style.display='none';"></button>
     <div>
 </div>
+
+
+
+
 </body>
 </html>
