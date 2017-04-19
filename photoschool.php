@@ -201,7 +201,7 @@ $_SESSION['no_index'] = time();
 
     <div id="photo-usluga4" class="overlay" style="">
         <div class="popup kurs" style="top:10%;">
-            <h2 style="text-align: center">Elementary курс</h2>
+            <h2 style="text-align: center; color:white;">Elementary курс</h2>
 
             <div class="schoolblock"><span><a style="padding-bottom: 1em;padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №1</a>
         <br>&nbsp;<a onclick="return false;" style="padding-top:2em ">- Принципи використання фотокамери</a>
