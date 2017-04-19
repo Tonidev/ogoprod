@@ -50,7 +50,7 @@ function indexPhotoHtml($photo) {
     display: none;
   }
 </style>
-<body style="overflow: auto"  class="main">
+<body style="overflow: auto"  class="main index">
 <? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
   <div class="vova1">
     <div class="vova2">
@@ -82,10 +82,10 @@ $_SESSION['no_index'] = time();
 
 <? include 'left_menu.php'; ?>
 
-<div class="content" id="mainer" style="width: 75%">
- <span><p> <h1>Вітаємо на сайті oGo production студії:</h1></p>
+<div class="content" id="main_text">
+ <span><p> <h1 style="  text-shadow: rgba(8,204,171,1) 0 0 10px;">Вітаємо на сайті oGo production студії:</h1></p>
 
-   <p>  <h2>oGo production - це:</h2>
+   <p>  <h2 style="  text-shadow: rgba(8,204,171,2) 0 0 10px;">oGo production - це:</h2>
   <ul><li> Найновіше фото- та відеообладнання в місті;</li>
   <li> Професійна команда з багаторічним досвідом роботи;</li>
   <li> Широкий спектр послуг</li>
@@ -93,20 +93,20 @@ $_SESSION['no_index'] = time();
   <li> Цікаві пропозиції постійним клієнтам</li>
     </ul>
    </p>
-   <h3>▪ Фотошкола</h3>
+   <h3 style="  text-shadow: rgba(8,204,171,1) 0 0 10px;">▪ Фотошкола</h3>
   <p>Навчання у школі справжнього фотографа розкриє секрети зйомки у різних жанрах з можливостю працевлаштування по закінченню курсу.
   Ти новачок або вже профі? Обирай свій "level" та приєднуйся до команди oGo production!
 </p>
-  <h3>▪ Модельна школа</h3>
+  <h3 style="  text-shadow: rgba(8,204,171,1) 0 0 10px;">▪ Модельна школа</h3>
   <p>Стань універсальною моделлю безкоштовно з oGo production!</p>
    <p>Ми гарантуємо якісний продукт за короткий термін. Навіщо чекати? Дзвони 0986130909</p>
 
  </span>
   <div class="opisph">
     <? if(!empty($photos[$ph_ind])) { echo indexPhotoHtml($photos[$ph_ind]); $ph_ind++; } ?>
-    <span id="opis"><p>Бездоганна якість фото&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
+    <span id="opis"><p style="text-align: center">Бездоганна якість фото&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
     <? if(!empty($photos[$ph_ind])) { echo indexPhotoHtml($photos[$ph_ind]); $ph_ind++; } ?>
-    <span id="opis"><p>Креативні ідеї &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
+    <span id="opis"><p style="text-align: center">Креативні ідеї &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></span>
   </div>
 </div>
 

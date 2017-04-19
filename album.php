@@ -78,7 +78,7 @@ JOIN photo p
           <div id="photo_popup_menu_btn">Комментарии</div>
         <? } ?>
       </div>
-      <div id="photo_popup_comments">
+      <div class="photo_com" id="photo_popup_comments">
         <div id="photo_popup_comments_header">Это не мнение, я просто правду говорю</div>
         <div id="photo_popup_comments_list">
           <? foreach( $comments as $comment) { ?>

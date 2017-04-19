@@ -1,5 +1,28 @@
 $(document).ready(function () {
 
+  $('#spisok_poslug li').click(function(e) {
+    var $this = $(this);
+    var usluga = document.getElementById($this.data('usluga'));
+    usluga.style.display='block';
+    setTimeout(function(){usluga.style.opacity='1';
+    },100);
+  });
+
+  $('.totton').click(function(e) {
+    var $this = $(this);
+    var usluga = document.getElementById($this.data('usluga'));
+    usluga.style.display='block';
+    setTimeout(function(){usluga.style.opacity='1';
+    },100);
+  });
+
+  $('.overlay .close').click(function(e) {
+    var $this = $(this);
+    var usluga = $this.parents('.overlay');
+    usluga.css('display','none');
+    usluga.css('opacity','0');
+  });
+
   $('.port_album').click(function(e) {
     e.preventDefault();
     e.stopPropagation();

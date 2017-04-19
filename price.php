@@ -18,6 +18,9 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <html>
 <? include ('header.php'); ?>
 
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
 <body class="main">
 <script>
   jQuery("document").ready(function($) {
@@ -35,15 +38,15 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <div class="spisok-poslug">
       <div style="text-align: center;padding-left: 3em;"><span id="zakaz">Перелiк послуг</span></div>
       <ul id="spisok_poslug" style="text-align: initial">
-        <li onclick="document.getElementById('photo-usluga').style.visibility='visible';">Студійна фотозйомка <span class="detal">(Детальнiше)</span></li>
-        <li onclick="document.getElementById('photo-usluga2').style.visibility='visible';">Виїздна фотозйомка <span class="detal">(Детальнiше)</span></li>
-        <li onclick="document.getElementById('photo-usluga3').style.visibility='visible';">Відеозйомка <span class="detal">(Детальнiше)</span></li>
+        <li data-usluga="photo-usluga1" >Студійна фотозйомка <span class="detal">(Детальнiше)</span></li>
+        <li data-usluga="photo-usluga2" >Виїздна фотозйомка <span class="detal">(Детальнiше)</span></li>
+        <li data-usluga="photo-usluga3" >Відеозйомка <span class="detal">(Детальнiше)</span></li>
         <li>Обробка \ ретушування фотографій </li>
         <li>Фотошкола oGo Production</li>
       </ul>
     </div>
     <div id="vvod" style="display: inline-block">
-      <div style="text-align: center;padding-left: 8em;padding-bottom: 2.3em;"><span id="zakaz">Заказати послугу</span></div>
+      <div style="text-align: center;padding-left: 8em;padding-bottom: 1.8em;"><span id="zakaz2">Заказати послугу</span></div>
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>
@@ -61,7 +64,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <input type="text" name="name" style="text-align: center; border-radius: 5px; width: 146px;">
 </div>
   <div class="phone">
-    <span class="pricetext" style="padding-right:1.05em;">Телефон : </span>
+    <span class="pricetext" style="padding-right: 0.75em;">Телефон : </span>
     <input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
   </div>
 
@@ -84,7 +87,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 
 <? include 'footer.php'; ?>
 
-<div id="photo-usluga" class="overlay">
+<div id="photo-usluga1" class="overlay">
   <div class="popup" style="width: 350px;">
     <h2>Студійна фотозйомка:</h2>
     <p>
@@ -94,7 +97,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <li style="padding-top: 1em;">Рекламна зйомка
     <li style="padding-top: 1em;">Бізнес-портрет
     </p>
-    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga').style.visibility='hidden';"></button>
+    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga').style.display='none';"></button>
   </div>
 </div>
 
@@ -109,7 +112,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
       <li style="padding-top: 1em;">Репортажна фотозйомка подій
     <li style="padding-top: 1em;">Рекламна фотозйомка
     </p>
-    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga2').style.visibility='hidden';"></button>
+    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga2').style.display='none';"></button>
   </div>
 </div>
 
@@ -123,7 +126,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <li style="padding-top: 1em;">Відеоогляди
     <li style="padding-top: 1em;">Відеоуроки
     </p>
-    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga3').style.visibility='hidden';"></button>
+    <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga3').style.display='none';"></button>
   </div>
 </div>
 </body>

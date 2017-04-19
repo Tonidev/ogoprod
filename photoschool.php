@@ -77,7 +77,7 @@ $_SESSION['no_index'] = time();
 <li>Можливе подальше працевлаштування
 </span>
     <p></p>
-            <a href="#" class="totton"/>Повний опис</a>
+    <a href="#" class="totton">Повний опис</a>
     <p></p>
 <span style="font-family: PNG1;font-size: 18px;color: white;">
             <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Elementary курс</h3>
@@ -92,7 +92,7 @@ $_SESSION['no_index'] = time();
 <li>Групи до 10 чоловік, кожен учень отримує достатньо уваги
 </span>
     <p></p>
-    <a href="#" class="totton"/>Повний опис</a>
+    <a  data-usluga="photo-usluga4" onclick="return false;" href="#" class="totton">Повний опис</a>
     <p></p>
 <span style="font-family: PNG1;font-size: 18px;color: white;">
         <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Курс ретушування Light</h3>
@@ -104,7 +104,7 @@ $_SESSION['no_index'] = time();
 <li>Теоретичні знання
             </span>
     <p></p>
-    <a href="#" class="totton"/>Повний опис</a>
+    <a href="#" class="totton">Повний опис</a>
     <p></p>
 <span style="font-family: PNG1;font-size: 18px;color: white;">
         <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Курс ретушування Pro</h3>
@@ -115,7 +115,7 @@ $_SESSION['no_index'] = time();
 <li>Основи компоузингу
             </span>
     <p></p>
-    <a href="#" class="totton"/>Повний опис</a>
+    <a href="#" class="totton">Повний опис</a>
     <p></p>
 <span style="font-family: PNG1;font-size: 18px;color: white;">
 
@@ -188,5 +188,52 @@ $_SESSION['no_index'] = time();
 
 </script>
 <? include 'footer.php'; ?>
+<div id="photo-usluga4" class="overlay" style="">
+    <div class="popup kurs" style="top:10%;">
+        <h2 style="text-align: center">Elementary курс</h2>
+
+        <div class="schoolblock"><span><a style="padding-bottom: 1em;padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №1</a>
+        <br>&nbsp;<a onclick="return false;" style="padding-top:2em ">- Принципи використання фотокамери</a>
+        <br>&nbsp;- Особливості режимів зйомки
+        <br>&nbsp;- Crop factor
+        <br>&nbsp;- Основні поняття про мануальний режим
+        <br>&nbsp;- Чому треба знімати в Raw
+            </span></div>
+    <div class="schoolblock"><span>
+           <a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №2</a>
+        <br>&nbsp;- ISO
+        <br>&nbsp;- Витримка
+        <br>&nbsp;- Apertura
+        <br>&nbsp;- Експозиція та робота з гістограмою
+        <br>&nbsp;- Фокусна відстань об'єктивів</span></div>
+<div class="schoolblock"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №3</a>
+        <br>&nbsp;- Фокусування
+        <br>&nbsp;- Глибина різкості
+        <br>&nbsp;- Практика</span></div>
+<div class="schoolblock"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №4</a>
+        <br>&nbsp;- Робота з витримкою
+        <br>&nbsp;- Практика на вулиці</span></div>
+<div class="schoolblock"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №5</a>
+        <br>&nbsp;- White balance
+        <br>&nbsp;- Кращі кольори сприйняття людським оком
+        <br>&nbsp;- Знайомство з Лайтрумом</span></div>
+<div class="schoolblock"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №6</a>
+        <br>&nbsp;- Вертикальне або горизонтальне фото
+        <br>&nbsp;- Правило третин
+        <br>&nbsp;- Можливості передачи простору та руху, статики та динамикі
+        <br>&nbsp;- Емоції в кадрі
+        <br>&nbsp;- Практика</span></div>
+<div class="schoolblock"> <span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №7</a>
+        <br>&nbsp;- Знайомство зі студійним світлом
+        <br>&nbsp;- Особливості зйомки у студії
+        <br>&nbsp;- Практика + д/з</span></div>
+<div class="schoolblock"><span><a style="padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №8</a>
+        <br>&nbsp;- Аналіз робіт учасників
+        <br>&nbsp;- Закріплення матеріалу
+        <br>&nbsp;- Відповіді на запитання</span></div>
+
+        <button class="close" title="Закрыть" onclick="document.getElementById('photo-usluga4').style.display='none';"></button>
+    <div>
+</div>
 </body>
 </html>

@@ -4,7 +4,7 @@ require_once (BASE_DIR .'safemysql.class.php');
 
 class Config {
 
-  static $db_connection_string = array('user' => 'root', 'pass' => 'kane-ga', 'db' => 'ogoprod');
+  static $db_connection_string = array('user' => 'root', 'pass' => '1204', 'db' => 'ogoprod');
   public static $ADMIN_SHORT_SESSION_TIME = 900; //15 min = 60*15;
   public static $ADMIN_SESSION_TIME = 1468800; //1 week = 60*60*24*7;
   public static $siteName = 'OGO Production';
@@ -20,19 +20,32 @@ class Config {
 
   public static $PROMO_SERVICES = array (
       'D' => array(
-          'name' => 'Фотосессия',
+          'name' => 'Студійна фотозйомка',
           'discount' => 'Скидка по промокоду 15%'
           ),
       'Y' => array(
+          'name' => 'Виїздна фотозйомка',
+          'discount' => 'Скидка по промокоду 25%'
+      ),
+      'V' => array(
+          'name' => 'Відеозйомка',
+          'discount' => 'Скидка по промокоду 25%'
+      ),
+      'R' => array(
+          'name' => 'Обробка\ретушування',
+          'discount' => 'Скидка по промокоду 25%'
+      ),
+      'J' => array(
           'name' => 'Фотошкола',
           'discount' => 'Скидка по промокоду 25%'
       )
+
   );
   public static $PROMO_SOURCES = array(
       'K' => 'Vk',
       'X' => 'Instagram',
       'G' => 'Geometria',
-      'F' => 'Миталлстилл',
+      'F' => 'Митталстилл',
   );
   public static $WATERMARK_FILE = BASE_DIR . 'photo' .DIRECTORY_SEPARATOR . 'watermark.png';
   public static $WATERMARK_OPACITY = 0.95; //от 0 до 1
