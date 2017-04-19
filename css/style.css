@@ -420,6 +420,7 @@ body.main .left-menu {
   width: auto;
   vertical-align: top;
   /*max-width: calc(100% - 450px);*/
+  font-family: Warface;
   padding: 0;
   font-size: 22px;
   word-wrap: break-word;
@@ -1234,12 +1235,11 @@ text-align: center;
 
 
 .read_full {
-  color: wheat;
+  color: white;
   text-decoration: none;
 }
 
 .read_full:hover {
-  text-decoration: underline;
   color: #7fe5ff;
   text-shadow: 1px 0px 0px white, 0 0 1px white;
   transition: all 0.2s;

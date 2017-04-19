@@ -100,7 +100,7 @@ $_SESSION['no_index'] = time();
     ?>
     <div class="photo-block">
       <div class="post_header">
-        <h1 class="title"><?= $post['title'] ?></h1>
+        <h1 class="title" style="padding-left:2em;"><?= $post['title'] ?></h1>
         <div class="f-right date"><?= date('d/m/Y', strtotime($post['date']) ) ?></div>
       </div>
       <div class="photo blog-cover">
