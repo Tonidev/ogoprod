@@ -9,11 +9,15 @@ $(document).ready(function () {
   });
 
   $('.totton').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     var $this = $(this);
     var usluga = document.getElementById($this.data('usluga'));
-    usluga.style.display='block';
-    setTimeout(function(){usluga.style.opacity='1';
-    },100);
+    if(typeof usluga != 'undefined' && usluga) {
+      usluga.style.display='block';
+      setTimeout(function(){usluga.style.opacity='1';
+      },100);
+    }
   });
 
   $('.overlay .close').click(function(e) {
