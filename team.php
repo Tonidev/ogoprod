@@ -11,11 +11,12 @@ require_once (BASE_DIR . 'config.php');
 
 $db = Db::i();
 
+$ph_ind = 0;
 $photos = $db->getAll("
 SELECT *
 FROM  photo
 WHERE status > 0
-  AND (id_album = 0 OR id_album IS NULL)
+  AND (id_album = 13 )
 ORDER BY position ASC");
 
 $comments = $db->getAll("
@@ -23,7 +24,7 @@ SELECT c.*
 FROM  comment c
 JOIN photo p
   ON c.`status` > 0
-  AND (p.id_album = 0 OR p.id_album IS NULL)
+  AND p.id_album = 13
   AND c.id_photo = p.id
 ");
 ?>
@@ -34,7 +35,7 @@ JOIN photo p
     <? include ("header.php");?>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
-<body class="main">
+<body class="main team">
 <? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
 <? }
 $_SESSION['no_index'] = time();
@@ -54,7 +55,11 @@ $_SESSION['no_index'] = time();
 <div class="content">
     <div id="teamblock">
     <div style="width: 240px; padding-right: 20px;">
-    <img style="width:100%; border-radius: 50px;" src="img/team/vad-mini.jpg">
+    <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
+      <?
+      Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
+      $ph_ind++; ?>
+<!--    <img style="width:100%; border-radius: 50px;" src="img/team/vad-mini.jpg">-->
     <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Вадим Оголяр</p>
     </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
@@ -74,7 +79,11 @@ $_SESSION['no_index'] = time();
 <p></p>
     <div id="teamblock">
         <div style="width: 240px; padding-right: 20px;">
-            <img style="width:100%; border-radius: 50px;" src="img/team/arch-mini.jpg">
+          <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
+          <?
+          Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
+          $ph_ind++; ?>
+<!--          <img style="width:100%; border-radius: 50px;" src="img/team/arch-mini.jpg">-->
             <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Арчил Сванидзе</p>
         </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
@@ -88,7 +97,11 @@ $_SESSION['no_index'] = time();
 
     <div id="teamblock">
         <div style="width: 240px; padding-right: 20px;">
-            <img style="width:100%; border-radius: 50px;" src="img/team/anna-mini.jpg">
+          <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
+          <?
+          Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
+          $ph_ind++; ?>
+<!--          <img style="width:100%; border-radius: 50px;" src="img/team/anna-mini.jpg">-->
             <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Анна Vie</p>
         </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
@@ -102,35 +115,8 @@ $_SESSION['no_index'] = time();
 
     </div>
 
-<div id="photo_popup"  data-image="">
-    <div id="photo_popup_container">
-        <div id="photo_popup_image">
-            <span id="photo_popup_close">&times;</span>
-            <img id="photo_popup_img" src="/backgrounds/3.jpg">
-            <div id="photo_popup_menu">
-                <? if(false) { ?>
-                    <div id="photo_popup_menu_btn">Комментарии</div>
-                <? } ?>
-            </div>
-            <div id="photo_popup_comments">
-                <div id="photo_popup_comments_header">Это не мнение, я просто правду говорю</div>
-                <div id="photo_popup_comments_list">
-                    <? foreach( $comments as $comment) { ?>
-                        <div class="comment" data-id_photo="<?= $comment['id_photo'] ?>">
-                            <div class="avatar" style="background-image: url('<?= $comment['avatar']?>')"></div>
-                            <div class="author"><?= $comment['author']?></div>
-                            <div class="text"><?= $comment['text']?></div>
-                        </div>
-                    <? } ?>
-                </div>
-                <div id="add_comment">
-                    <textarea name="comment"></textarea>
-                    <button class="button1" type="button">Отправить комментарий</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<? include (BASE_DIR . 'photo_popup.php')?>
+
 <script type="text/javascript">
     function getSocTitle() {
         return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
