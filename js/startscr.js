@@ -31,7 +31,15 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
     var $this = $(this);
-    $('.port-popup[data-status=' + $this.data('status') + ']').show();
+    var $port_popup = $('.port-popup[data-status=' + $this.data('status') + ']');
+    $port_popup.show();
+    $port_popup.find('.port1').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      adaptiveHeight : false,
+      variableWidth : true,
+      slidesToShow: 1
+    });
   });
 
 
