@@ -135,13 +135,7 @@ JOIN photo p
 
 
     <script type="text/javascript">
-    $('.port1').slick({
-      centerMode: true,
-      centerPadding: '60px',
-      adaptiveHeight : false,
-      variableWidth : true,
-      slidesToShow: 1
-    });
+
     /*
      $('.port2').slick({
      centerMode: true,

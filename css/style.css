@@ -11,6 +11,10 @@
   src: url('/css/fonts/png.ttf');
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 #start
 {
   z-index: 6666;
@@ -1242,6 +1246,7 @@ h1.title {
 {
   opacity: 1;
 }
+
 .port_img:hover
 {
   box-shadow: rgba(8,204,171,1) 0 0 10px;
