@@ -1117,7 +1117,7 @@ list-style-type: square;
 #zakaz, #zakaz2 {
   font-family: PNG1;
   color:white;
-  padding-right:6em;
+  padding-right:5em;
   font-size: 23px;
   text-shadow: rgba(8,204,171,1) 0 0 10px;
 }
@@ -1294,9 +1294,13 @@ h1.title {
 }
 .schoolblock:hover
 {
-  box-shadow: rgba(8,204,171,1) 0 0 10px;;
+  box-shadow: rgba(8,204,171,1) 0 0 10px;
 }
 .kurs:not(.div)
 {
   opacity: 1;
+}
+.port_img:hover
+{
+  box-shadow: rgba(8,204,171,1) 0 0 10px;
 }

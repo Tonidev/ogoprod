@@ -75,14 +75,14 @@ JOIN photo p
 
     <div class="port_album" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_VADIM ?>">
       <div class="port_photo">
-        <img class="port_img" src="img/VAD.jpg">
+        <img class="port_img" src="/img/team/vad-mini.jpg">
         <div class="port-line"><span class="port-text">Вадим Оголяр</span></div>
       </div>
     </div>
 
     <div class="port_album" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL ?>">
       <div class="port_photo">
-        <img class="port_img" src="img/AR.jpg">
+        <img class="port_img" src="/img/team/arch-mini.jpg">
         <div class="port-line"><span class="port-text">Арчил Сванидзе</span></div>
       </div>
     </div>

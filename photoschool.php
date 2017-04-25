@@ -100,7 +100,7 @@ $_SESSION['no_index'] = time();
 <li>Теоретичні знання
             </span>
   <p></p>
-  <a href="#" class="totton">Повний опис</a>
+    <span style="text-shadow: rgba(0, 178, 93, 0.9) 0 0 10px;"> Уточнувати повний опис за телефоном</span>
   <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
         <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Курс ретушування Pro</h3>
@@ -111,7 +111,7 @@ $_SESSION['no_index'] = time();
 <li>Основи компоузингу
             </span>
   <p></p>
-  <a href="#" class="totton">Повний опис</a>
+<span style="text-shadow: rgba(0, 178, 93, 0.9) 0 0 10px;"> Уточнувати повний опис за телефоном</span>
   <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
 
@@ -126,7 +126,7 @@ $_SESSION['no_index'] = time();
     <li>Практичні заняття</li>
             </span>
   <p></p>
-  <a href="#" class="totton">Повний опис</a>
+    <span style="text-shadow: rgba(0, 178, 93, 0.9) 0 0 10px;font-family: PNG1;font-size: 18px;color: white;"> Уточнувати повний опис за телефоном</span>
   <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
 <p>По закінченню курсів видається диплом.</p>

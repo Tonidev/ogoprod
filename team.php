@@ -63,15 +63,13 @@ $_SESSION['no_index'] = time();
     <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Вадим Оголяр</p>
     </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
-        <h3>Керівник студії. Викладач Elementary та Дитячого курсу</h3>
+        <h3 style="padding-left: 1em;">Керівник oGo production.</h3>
 <ul>
+<li>Викладач фотошколи (Курс Elementary, Дитяча фотошкола)</li>
+    <li>Студійна та рекламна зйомка</li>
+    <li>Ютюб відео-зйомка</li>
 <li>Питання по співпраці</li>
 <li>Взаємодія зі спонсорами і партнерами</li>
-<li>Прийом на работу фотографів</li>
-<li>Контроль над якісттю</li>
-<li>Робота з моделями</li>
-<li>Студійна та рекламна зйомка</li>
-<li>Ютюб відео-зйомка</li>
 </ul>
 
     </span>
@@ -87,14 +85,16 @@ $_SESSION['no_index'] = time();
             <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Арчил Сванидзе</p>
         </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
-<h3>Фотограф та відеограф. Викладач Advance курс та курсів ретушуванню.</h3>
-<li>Свадебна та сімейна зйомка</li>
-<li>Рекламна відео-зйомка</li>
-<li>Приватні уроки</li>
-
+<h3 style="padding-left: 1em;">Викладач фотошколи</h3>
+        <ul>
+        <li>Курси ретушування</li>
+        <li>Курс Advance</li>
+        <li>Вiдеограф</li>
+        <li>Фотограф</li>
+            </ul>
     </span>
     </div>
-
+<p></p>
     <div id="teamblock">
         <div style="width: 240px; padding-right: 20px;">
           <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
@@ -105,10 +105,12 @@ $_SESSION['no_index'] = time();
             <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Анна Vie</p>
         </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
-<h3>Адміністратор.</h3>
+<h3 style="padding-left: 1em;">Адміністратор.</h3>
+        <ul>
 <li>Прийом заказів</li>
 <li>Питання стосовно реклами</li>
 <li>Розміщення матеріалу на сайті</li>
+        </ul>
 
     </span>
     </div>

@@ -46,12 +46,12 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
       </ul>
     </div>
     <div id="vvod" style="display: inline-block">
-      <div style="text-align: center;padding-left: 8em;padding-bottom: 1.8em;"><span id="zakaz2">Заказати послугу</span></div>
+      <div style="text-align: center;padding-left: 8em;padding-bottom: 1.8em;"><span id="zakaz2" style="padding-right: 5em">Замовити послугу</span></div>
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>
   <div class="service">
-    <span class="pricetext">Вид услуги :</span>
+    <span class="pricetext">Вид послуги :</span>
     <select name="service">
       <? foreach( Config::$PROMO_SERVICES as $k => $s) { ?>
         <option  value="<?= $k ?>"> <?= $s['name'] ?></option>
@@ -73,7 +73,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
   </div>
     <div class="poslugi_block2">
       <span style="font-family: PNG1;font-size:17px;color:white">
-        <h2>Контактнi даннi:</h2>
+        <h2>Контактнi данi:</h2>
         <p>Адмiнiстратор: <seo style=" text-shadow: rgba(8,204,171,1) 0 0 3px; font-size: 20px;">Анна Vie</seo>
         Номер телефону: +380986130909</p>
         <p>Telegramm: +380986130909
