@@ -62,7 +62,7 @@ function indexPhotoHtml($photo) {
   showConfirmButton: false
 }); return false;" id="but" class="button">oGo Production</a>
 
-      <div id="start"  width="2000" height="1200" ></div>
+      <div onclick="entermain();" id="start"  width="2000" height="1200" ></div>
 
 
     </div>

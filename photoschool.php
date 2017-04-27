@@ -47,7 +47,7 @@ $_SESSION['no_index'] = time();
 
 <? include 'left_menu.php'; ?>
 
-<div class="content">
+<div class="content" id="photoschool_cont">
 
   <div style="text-align: center; width: 90%;">
     <img style="border-radius: 30px;width: 65%;" src="img/photoschool/DSC_0681.jpg">

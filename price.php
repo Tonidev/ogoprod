@@ -32,7 +32,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
   <a href="/"></a>
 </div>
 <? include 'left_menu.php'; ?>
-<div class="content">
+<div class="content" id="price_cont">
 
   <div class="poslugi_block1">
     <div class="spisok-poslug">
@@ -46,7 +46,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
       </ul>
     </div>
     <div id="vvod" style="display: inline-block">
-      <div id="vvod_logo"><span id="zakaz2" style="padding-right: 5em">Замовити послугу</span></div>
+      <div id="vvod_logo"><span id="zakaz2" style="padding-right: 2em">Замовити послугу</span></div>
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>

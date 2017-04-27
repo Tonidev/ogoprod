@@ -91,7 +91,7 @@ $_SESSION['no_index'] = time();
 
 <? include 'left_menu.php'; ?>
 
-<div class="content">
+<div class="content" id="blog_cont">
 
   <?
   if(empty($post)) {

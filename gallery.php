@@ -45,7 +45,7 @@ ORDER BY a.date DESC ", Config::$ALBUM_STATUS_PUBLISHED);
   <a href="/"></a>
 </div>
 <? include 'left_menu.php'; ?>
-<div class="content">
+<div class="content" id="gall_cont1">
   <div class="albumslist">
 
     <? foreach ( $albums as $album) { ?>

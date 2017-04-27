@@ -55,7 +55,7 @@ JOIN photo p
 
 <? include 'left_menu.php'; ?>
 
-<div class="content">
+<div class="content" id="gall_cont2">
   <div class="album">
     <div class="albumini">
       <? foreach ( $photos as $photo) {

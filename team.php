@@ -52,9 +52,9 @@ $_SESSION['no_index'] = time();
 
 <? include 'left_menu.php'; ?>
 
-<div class="content">
+<div class="content" id="team_cont">
     <div id="teamblock">
-    <div style="width: 240px; padding-right: 20px;">
+    <div style="width: 240px; padding-right: 0px;">
     <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
       <?
       Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
@@ -65,9 +65,9 @@ $_SESSION['no_index'] = time();
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
         <h3 style="padding-left: 1em;">Керівник oGo production.</h3>
 <ul>
-<li>Викладач фотошколи (Курс Elementary, Дитяча фотошкола)</li>
+<li>Викладач фотошколи (Курс Elementary)</li>
     <li>Студійна та рекламна зйомка</li>
-    <li>Ютюб відео-зйомка</li>
+    <li>YouTube відео-зйомка</li>
 <li>Питання по співпраці</li>
 <li>Взаємодія зі спонсорами і партнерами</li>
 </ul>
@@ -76,7 +76,7 @@ $_SESSION['no_index'] = time();
     </div>
 <p></p>
     <div id="teamblock">
-        <div style="width: 240px; padding-right: 20px;">
+        <div style="width: 240px; padding-right: 0px;">
           <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
           <?
           Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
@@ -96,7 +96,7 @@ $_SESSION['no_index'] = time();
     </div>
 <p></p>
     <div id="teamblock">
-        <div style="width: 240px; padding-right: 20px;">
+        <div style="width: 240px; padding-right: 0px;">
           <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
           <?
           Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
@@ -107,9 +107,9 @@ $_SESSION['no_index'] = time();
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
 <h3 style="padding-left: 1em;">Адміністратор.</h3>
         <ul>
-<li>Прийом заказів</li>
-<li>Питання стосовно реклами</li>
-<li>Розміщення матеріалу на сайті</li>
+            <li>Консультування клієнтів</li>
+            <li>Прийом замовлень</li>
+            <li>Рекламні питання</li>
         </ul>
 
     </span>
