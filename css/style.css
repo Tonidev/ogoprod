@@ -15,6 +15,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+#schoolstart
+{
+  border-radius: 30px;width: 65%;
+}
+
 .menumob
 {
   background-color: white;
@@ -43,6 +48,10 @@ html,body
   background: url("/backgrounds/0.jpg") center;);
 }
 
+.vvod_block
+{
+  padding-left:5em;
+}
 
 body {
 
@@ -51,8 +60,11 @@ body {
   background-attachment: fixed;
 }
 
-body.main {
-  background-image: url("/backgrounds/metal.jpg");
+body.main {background: url("/backgrounds/metal.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #but{
@@ -1240,6 +1252,16 @@ h1.title {
 
 @media (max-width: 375px)
 {
+
+  #schoolstart
+  {
+    border-radius: 30px;width: 100%;
+  }
+
+  .main .logo a{
+    height:110px;
+  }
+
   #photo_popup_menu {
     width: 1.5em;
     height: 10em;
@@ -1291,10 +1313,10 @@ h1.title {
   {padding-left:0em;}
 
   .left-menu li a span.text {
-    display: initial;
+    display: none;
   }
   .left-menu:hover li a span.text {
-    display: inline-block;
+    display: none;
   }
 }
 
@@ -1304,50 +1326,7 @@ h1.title {
     padding-left: 70px;
   }
 
-  .spisok-poslug
-  {
-    width:46%;}
 
-  #price_cont
-  {
-    padding-right: 0px;
-    padding-left:113px;
-  }
-  #team_cont
-  {
-    padding-right: 0px;
-    padding-left: 172px;
-    max-width: 100%;
-  }
-
-  #gall_cont1
-  {
-    padding-right: 0px;
-    padding-left: 180px;
-
-  }
-
-  #gall_cont2
-  {
-    padding-right: 0px;
-    padding-left: 180px;
-
-  }
-#main_text
-{
-  padding-right: 0px;
-  padding-left: 175px;
-}
-#cont_port
-{
-  padding-right: 0px;
-  padding-left: 157px;
-}
-#photoschool_cont
-{
-  padding-right: 0px;
-  padding-left: 173px;
-}
   .poslugi_block1 {
     font-size: 4px;
   }
@@ -1369,11 +1348,6 @@ h1.title {
     width: 75%;
   }
 
-  #blog_cont
-  {
-    padding-right: 12px;
-    padding-left: 163px;
-  }
 
   #zakaz2
   {
@@ -1395,6 +1369,28 @@ h1.title {
 
 @media (max-width: 425px) {
 
+#schoolstart
+{
+  border-radius: 30px;width: 100%;
+}
+
+  .main .logo a{
+    height:110px;
+  }
+
+  .schoolblock
+  {
+    width: 90%;
+  }
+  .popup
+  {
+    width:85%;
+  }
+
+  #vvod{
+
+    width: 100%;
+  }
   #frame
   {
     max-width:100%;
@@ -1444,7 +1440,7 @@ h1.title {
     display: block;
   }
   .left-menu li a span.text {
-    display: initial;}
+    display: none;}
   .left-menu
   {
     display:none;

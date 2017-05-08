@@ -50,7 +50,7 @@ $_SESSION['no_index'] = time();
 <div class="content" id="photoschool_cont">
 
   <div style="text-align: center; width: 90%;">
-    <img style="border-radius: 30px;width: 65%;" src="img/photoschool/DSC_0681.jpg">
+    <img id="schoolstart" src="img/photoschool/DSC_0681.jpg">
   </div>
 
   <span style="font-family: PNG1;font-size: 18px;color: white;">
@@ -74,6 +74,7 @@ $_SESSION['no_index'] = time();
 </span>
   <p></p>
   <a data-usluga="photo-usluga5" href="#" class="totton">Повний опис</a>
+    <a data-usluga="photo-usluga6" style="background-image: -webkit-linear-gradient(top, #919191 0%, #07C014 100%);" href="#" class="totton">Замовити</a>
   <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
             <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Elementary курс</h3>
@@ -89,7 +90,8 @@ $_SESSION['no_index'] = time();
 </span>
   <p></p>
   <a data-usluga="photo-usluga4" href="#" class="totton">Повний опис</a>
-  <p></p>
+    <a data-usluga="photo-usluga6" style="background-image: -webkit-linear-gradient(top, #919191 0%, #07C014 100%);" href="#" class="totton">Замовити</a>
+    <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
         <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Курс ретушування Light</h3>
 
@@ -101,7 +103,9 @@ $_SESSION['no_index'] = time();
             </span>
   <p></p>
     <span style="text-shadow: rgba(0, 178, 93, 0.9) 0 0 10px;"> Уточнувати повний опис за телефоном</span>
-  <p></p>
+    <p></p>
+    <a data-usluga="photo-usluga6" style="background-image: -webkit-linear-gradient(top, #919191 0%, #07C014 100%);" href="#" class="totton">Замовити</a>
+    <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
         <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Курс ретушування Pro</h3>
 
@@ -127,14 +131,50 @@ $_SESSION['no_index'] = time();
             </span>
   <p></p>
     <span style="text-shadow: rgba(0, 178, 93, 0.9) 0 0 10px;font-family: PNG1;font-size: 18px;color: white;"> Уточнувати повний опис за телефоном</span>
-  <p></p>
+    <p></p>
+    <a data-usluga="photo-usluga6" style="background-image: -webkit-linear-gradient(top, #919191 0%, #07C014 100%);" href="#" class="totton">Замовити</a>
+    <p></p>
   <span style="font-family: PNG1;font-size: 18px;color: white;">
+      <p></p>
 <p>По закінченню курсів видається диплом.</p>
 
     </span>
 </div>
 
 <? include(BASE_DIR . 'photo_popup.php') ?>
+
+<div id="photo-usluga6" class="overlay" style="">
+    <div class="popup kurs" style="width: 464px;">
+        <div id="vvod" style="display: inline-block">
+            <div id="vvod_logo" style="padding-left: 4em;"><span id="zakaz2" style="padding-right: 0em">Замовити послугу</span></div>
+            <div class="vvod_block"><span class="pricetext">Промо-код : </span>
+            <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
+            <span id="discount_text" class="pricetext"></span>
+            <div class="service">
+                <span class="pricetext" style="font-size: 12.5pt">Вид послуги :</span>
+                <select name="service">
+                    <? foreach( Config::$PROMO_SERVICES as $k => $s) { ?>
+                        <option  value="<?= $k ?>"> <?= $s['name'] ?></option>
+                    <? } ?>
+                </select>
+                <span id="service_text" class="pricetext" style="font-size: 13pt;"></span>
+            </div>
+            <div class="fio">
+                <span class="pricetext" style="padding-right:0.45em;">Ваше iм'я : </span>
+                <input type="text" name="name" style="text-align: center; border-radius: 5px; width: 146px;">
+            </div>
+            <div class="phone">
+                <span class="pricetext" style="padding-right: 0.75em;">Телефон : </span>
+                <input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
+            </div>
+
+            <a href="price.php" style="margin-left:5px" class="send">Замовити</a>
+            <a href="" class="send2">Вконтакте</a>
+            </div>
+            </div>
+        <button class="close" title="Закрыть"></button>
+    </div>
+</div>
 
 <div id="photo-usluga5" class="overlay" style="">
     <div class="popup kurs" style="top:10%;">
@@ -181,7 +221,7 @@ $_SESSION['no_index'] = time();
 
 
     <div id="photo-usluga4" class="overlay" style="">
-        <div class="popup kurs" style="top:10%;">
+        <div class="popup kurs"  style="top:10%;">
             <h2 style="text-align: center; color:white;">Elementary курс</h2>
 
             <div class="schoolblock"><span><a style="padding-bottom: 1em;padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №1</a>
