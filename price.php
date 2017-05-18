@@ -46,7 +46,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
       </ul>
     </div>
     <div id="vvod" style="display: inline-block">
-      <div id="vvod_logo"><span id="zakaz2" style="padding-right: 2em">Замовити послугу</span></div>
+      <div id="vvod_logo"><span id="zakaz2">Замовити послугу</span></div>
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>

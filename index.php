@@ -32,7 +32,7 @@ JOIN photo p
 function indexPhotoHtml($photo) {
   ob_start();
   ?>
-  <img class="index_photo" href="<?= $photo['url'] ?>" src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>" style="width: 91%;" data-id_photo="<?= $photo['id'] ?>">
+  <img oncontextmenu="return false;" class="index_photo" href="<?= $photo['url'] ?>" src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>" style="width: 91%;" data-id_photo="<?= $photo['id'] ?>">
   <?
   $html = ob_get_contents();
   ob_end_clean();
@@ -115,7 +115,7 @@ $_SESSION['no_index'] = time();
 
 <script type="text/javascript">
   function getSocTitle() {
-    return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
+    return '<img oncontextmenu="return false;" class="social" src="img/soc-vk.png"/><img oncontextmenu="return false;" class="social" src="img/soc-facebook.png"/><img oncontextmenu="return false;" class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
   }
 
   var backgi=1;

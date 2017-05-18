@@ -50,7 +50,7 @@ $_SESSION['no_index'] = time();
 <div class="content" id="photoschool_cont">
 
   <div style="text-align: center; width: 90%;">
-    <img id="schoolstart" src="img/photoschool/DSC_0681.jpg">
+    <img oncontextmenu="return false;" id="schoolstart" src="img/photoschool/DSC_0681.jpg">
   </div>
 
   <span style="font-family: PNG1;font-size: 18px;color: white;">
@@ -80,8 +80,7 @@ $_SESSION['no_index'] = time();
             <h3 style="text-shadow: rgba(8,204,171,1) 0 0 10px;">Elementary курс</h3>
 
 Хоча маркетологи і кажуть що "авто" режим зможе більше, ніж людина, але це, звісно, не так.
-Якщо ви бажаєте вміти більше, ніж просто натискати на кнопку, втілити свої творчі ідеї в життя, не плануєте стати фотографом, тим не менш, маєте бажання навчитись фотографувати, то наш Elementary курс - саме для вас.
-В программі курсу:
+Якщо ви бажаєте вміти більше, ніж просто натискати на кнопку, втілити свої творчі ідеї в життя, не плануєте стати фотографом, тим не менш, маєте бажання навчитись фотографувати, то наш Elementary курс - саме для вас. В програмі курсу:
 <li>Знайомство з камерою
 <li>Два блоки навчання
 <li>Цікава і зрозуміла подача інформації для новачків від провідних фотографів міста
@@ -97,7 +96,7 @@ $_SESSION['no_index'] = time();
 
 Маєш гарні кадри, але ти не знаешь що з ними робити після експорту? Ти десь чув про слова Lightroom та Photoshop, але не вмієш працювати з цими програмами, тоді до твоєї уваги уроки ретушування, курс Light:
 
-<li>Корекціякольору
+<li>Корекція кольору
 <li>Швидке ретушування знімку
 <li>Теоретичні знання
             </span>
@@ -111,7 +110,7 @@ $_SESSION['no_index'] = time();
 
 Ти вже досить досвідчений фотограф, але твоя ретуш тобі не подобається? Завдяки курсу ретушування Pro твої кадри будуть якісно відрізнятися від фотографій інших. Ми розкриємо вам усі секрети.
 
-<li>Журнальная ретуш
+<li>Журнальне ретушування
 <li>Основи компоузингу
             </span>
   <p></p>
@@ -144,14 +143,14 @@ $_SESSION['no_index'] = time();
 <? include(BASE_DIR . 'photo_popup.php') ?>
 
 <div id="photo-usluga6" class="overlay" style="">
-    <div class="popup kurs" style="width: 464px;">
-        <div id="vvod" style="display: inline-block">
+    <div class="popup kurs kursich" id="gog321" style="">
+        <div id="vvod" class="gog333" style="display: inline-block">
             <div id="vvod_logo" style="padding-left: 4em;"><span id="zakaz2" style="padding-right: 0em">Замовити послугу</span></div>
             <div class="vvod_block"><span class="pricetext">Промо-код : </span>
             <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
             <span id="discount_text" class="pricetext"></span>
             <div class="service">
-                <span class="pricetext" style="font-size: 12.5pt">Вид послуги :</span>
+                <span id="gog123" class="pricetext" style="font-size: 12.5pt">Вид послуги :</span>
                 <select name="service">
                     <? foreach( Config::$PROMO_SERVICES as $k => $s) { ?>
                         <option  value="<?= $k ?>"> <?= $s['name'] ?></option>
@@ -164,7 +163,7 @@ $_SESSION['no_index'] = time();
                 <input type="text" name="name" style="text-align: center; border-radius: 5px; width: 146px;">
             </div>
             <div class="phone">
-                <span class="pricetext" style="padding-right: 0.75em;">Телефон : </span>
+                <span class="pricetext" style="padding-right: 0.95em;">Телефон : </span>
                 <input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
             </div>
 
@@ -177,7 +176,7 @@ $_SESSION['no_index'] = time();
 </div>
 
 <div id="photo-usluga5" class="overlay" style="">
-    <div class="popup kurs" style="top:10%;">
+    <div class="popup kurs kursich" style="top:10%;">
         <h2 style="text-align: center; color:white">Advance курс</h2>
 
     <div class="schoolblock" style="height:110px"><span><a
@@ -221,7 +220,7 @@ $_SESSION['no_index'] = time();
 
 
     <div id="photo-usluga4" class="overlay" style="">
-        <div class="popup kurs"  style="top:10%;">
+        <div class="popup kurs kursich"  style="top:10%;">
             <h2 style="text-align: center; color:white;">Elementary курс</h2>
 
             <div class="schoolblock"><span><a style="padding-bottom: 1em;padding-left:5.3em;font-size: 18px;text-shadow: rgba(8,204,171,2) 0 0 10px;" onclick="return false;">Заняття №1</a>
