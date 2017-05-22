@@ -31,16 +31,7 @@ JOIN photo p
 <html>
 <? include("header.php"); ?>
 <body class="main">
-<? if (empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60 * 60 * 24) { ?>
-<? }
-$_SESSION['no_index'] = time();
-?>
 
-<DIV id="logobg">
-  <div id="logotmp">
-    <div id="start" width="2000" height="1200"></div>
-  </div>
-</DIV>
 <div class="logo">
   <a href="/"></a>
 </div>

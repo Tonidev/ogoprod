@@ -42,42 +42,20 @@ function indexPhotoHtml($photo) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <? include ("header.php");?>
 
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
-<style>body.content
-  {
-    display: none;
-  }
-</style>
+
 <body style="overflow: auto"  class="main index">
-<? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
-  <div class="vova1">
-    <div class="vova2">
-
-      <a href="" onclick="swal({
-  html : true,
-  title : getSocTitle(),
-  allowOutsideClick : true,
-  showConfirmButton: false
-}); return false;" id="but" class="button">oGo Production</a>
-
-      <div onclick="entermain();" id="start"  width="2000" height="1200" ></div>
 
 
-    </div>
-  </div>
-<? }
-$_SESSION['no_index'] = time();
-?>
 
-<DIV id="logobg">
-  <div id="logotmp">
-    <div id="start"  width="2000" height="1200" ></div>
-  </div>
-</DIV>
+
+
 <div class="logo">
-  <a href="/"></a>
+  <a href="/"> </a>
+
 </div>
 
 <? include 'left_menu.php'; ?>
@@ -132,5 +110,15 @@ $_SESSION['no_index'] = time();
   }
 </script>
 <? include 'footer.php'; ?>
+<!--Openstat-->
+<script type="text/javascript">
+    var openstat = { counter: FIX-COUNTER-ID, image: FIX-IMAGE, next: openstat };
+    (function(d, t, p) {
+        var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+        j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
+        var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+    })(document, "script", document.location.protocol);
+</script>
+<span id="openstatFIX-COUNTER-ID"></span>
 </body>
 </html>

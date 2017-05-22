@@ -24,7 +24,6 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <body class="main">
 <script>
   jQuery("document").ready(function($) {
-
   });
 </script>
 
