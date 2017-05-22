@@ -45,14 +45,14 @@ ORDER BY a.date DESC ", Config::$ALBUM_STATUS_PUBLISHED);
   <a href="/"></a>
 </div>
 <? include 'left_menu.php'; ?>
-<div class="content">
+<div class="content" id="gall_cont1">
   <div class="albumslist">
 
     <? foreach ( $albums as $album) { ?>
       <a href="/album/<?= empty($album['chpu']) ? $album['id'] : $album['chpu'] ?>">
         <div class="album-block">
           <div class="photo gallery-photo">
-            <img class="album-img" src="<?= $album['url_mini'] ?>">
+            <img oncontextmenu="return false;" class="album-img" src="<?= $album['url_mini'] ?>">
             <div class="album-line"><span class="album-text"><?= $album['name'] ?></span></div>
           </div>
         </div>

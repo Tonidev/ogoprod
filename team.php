@@ -36,26 +36,17 @@ JOIN photo p
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body class="main team">
-<? if(empty($_SESSION['no_index']) || (time() - $_SESSION['no_index']) > 60*60*24) { ?>
-<? }
-$_SESSION['no_index'] = time();
-?>
 
-<DIV id="logobg">
-    <div id="logotmp">
-        <div id="start"  width="2000" height="1200" ></div>
-    </div>
-</DIV>
 <div class="logo">
     <a href="/"></a>
 </div>
 
 <? include 'left_menu.php'; ?>
 
-<div class="content">
+<div class="content" id="team_cont">
     <div id="teamblock">
-    <div style="width: 240px; padding-right: 20px;">
-    <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
+    <div style="width: 240px; padding-right: 0px;">
+    <img oncontextmenu="return false;" href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
       <?
       Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
       $ph_ind++; ?>
@@ -65,9 +56,9 @@ $_SESSION['no_index'] = time();
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
         <h3 style="padding-left: 1em;">Керівник oGo production.</h3>
 <ul>
-<li>Викладач фотошколи (Курс Elementary, Дитяча фотошкола)</li>
+<li>Викладач фотошколи (Курс Elementary)</li>
     <li>Студійна та рекламна зйомка</li>
-    <li>Ютюб відео-зйомка</li>
+    <li>YouTube відео-зйомка</li>
 <li>Питання по співпраці</li>
 <li>Взаємодія зі спонсорами і партнерами</li>
 </ul>
@@ -76,8 +67,8 @@ $_SESSION['no_index'] = time();
     </div>
 <p></p>
     <div id="teamblock">
-        <div style="width: 240px; padding-right: 20px;">
-          <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
+        <div style="width: 240px; padding-right: 0px;">
+          <img oncontextmenu="return false;" href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
           <?
           Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
           $ph_ind++; ?>
@@ -96,20 +87,20 @@ $_SESSION['no_index'] = time();
     </div>
 <p></p>
     <div id="teamblock">
-        <div style="width: 240px; padding-right: 20px;">
-          <img href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
+        <div style="width: 240px; padding-right: 0px;">
+          <img oncontextmenu="return false;" href="<?= $photos[$ph_ind]['url'] ?>" data-id="<?= $photos[$ph_ind]['id'] ?>" style="width:100%; border-radius: 50px;" src="<?= $photos[$ph_ind]['url_mini'] ?>">
           <?
           Helpers::addTrans('photo_' . $photos[$ph_ind]['id'], $photos[$ph_ind]['description']);
           $ph_ind++; ?>
-<!--          <img style="width:100%; border-radius: 50px;" src="img/team/anna-mini.jpg">-->
+<!--          <img oncontextmenu="return false;" style="width:100%; border-radius: 50px;" src="img/team/anna-mini.jpg">-->
             <p style="text-align: center;font-family: PNG1;font-size: 23px; color: white;position: relative;top: -18px;">Анна Vie</p>
         </div>
     <span style="padding-left:15px;font-family: PNG1;font-size: 18px;color: white;position: relative;top: -28px;">
 <h3 style="padding-left: 1em;">Адміністратор.</h3>
         <ul>
-<li>Прийом заказів</li>
-<li>Питання стосовно реклами</li>
-<li>Розміщення матеріалу на сайті</li>
+            <li>Консультування клієнтів</li>
+            <li>Прийом замовлень</li>
+            <li>Рекламні питання</li>
         </ul>
 
     </span>
@@ -121,7 +112,7 @@ $_SESSION['no_index'] = time();
 
 <script type="text/javascript">
     function getSocTitle() {
-        return '<img class="social" src="img/soc-vk.png"/><img class="social" src="img/soc-facebook.png"/><img class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
+        return '<img oncontextmenu="return false;"  class="social" src="img/soc-vk.png"/><img oncontextmenu="return false;" class="social" src="img/soc-facebook.png"/><img oncontextmenu="return false;" class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
     }
 
     var backgi=1;

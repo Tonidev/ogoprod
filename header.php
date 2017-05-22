@@ -5,7 +5,9 @@
         }
     </script>
   <meta name="charset" content="utf-8">
+  <meta http-equiv="imagetoolbar" content="no" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Keywords" content="ого студия, ого фотошкола, фотошкола, студия, ого фото, ого, фотостудия, кривой рог, кривбас, оголяр вадим, арчил, ogolyar, dreamshot, камера, инстаграмм, вк, вконтакте, photo, photostudio, studio, nikon, cannon, kr, кр, photoschool">
   <base href="/">
   <title>oGo Production</title>
   <!--  <link rel="stylesheet" href="css/style.css">-->

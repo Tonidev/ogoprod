@@ -32,7 +32,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
   <a href="/"></a>
 </div>
 <? include 'left_menu.php'; ?>
-<div class="content">
+<div class="content" id="price_cont">
 
   <div class="poslugi_block1">
     <div class="spisok-poslug">
@@ -46,7 +46,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
       </ul>
     </div>
     <div id="vvod" style="display: inline-block">
-      <div style="text-align: center;padding-left: 8em;padding-bottom: 1.8em;"><span id="zakaz2" style="padding-right: 5em">Замовити послугу</span></div>
+      <div id="vvod_logo"><span id="zakaz2">Замовити послугу</span></div>
     <span class="pricetext">Промо-код : </span>
     <input type="text" name="code" style="border-radius: 5px; width: 146px; text-align: center">
     <span id="discount_text" class="pricetext"></span>
@@ -60,7 +60,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <span id="service_text" class="pricetext"></span>
   </div>
   <div class="fio">
-    <span class="pricetext" style="padding-right:1.11em;">Ф. И. О. : </span>
+    <span class="pricetext" style="padding-right:0.45em;">Ваше iм'я : </span>
     <input type="text" name="name" style="text-align: center; border-radius: 5px; width: 146px;">
 </div>
   <div class="phone">
@@ -68,7 +68,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
     <input id="tel" onkeyup="return proverka(this);" onchange="return proverka(this);" type="text" name="phone" style="text-align: center;border-radius: 5px; width: 146px;">
   </div>
 
-    <a href="price.php" style="margin-left:30px" class="send">Заказать</a>
+    <a href="price.php" style="margin-left:5px" class="send">Замовити</a>
     <a href="" class="send2">Вконтакте</a>
   </div>
     <div class="poslugi_block2">
@@ -88,7 +88,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 <? include 'footer.php'; ?>
 
 <div id="photo-usluga1" class="overlay">
-  <div class="popup" style="width: 350px;">
+  <div class="popup" style="width: 350px;background-color: white;">
     <h2>Студійна фотозйомка:</h2>
     <p>
     <li style="padding-top: 1em;">Студійна фотозйомка:
@@ -102,7 +102,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 </div>
 
 <div id="photo-usluga2" class="overlay">
-  <div class="popup" style="width: 365px;">
+  <div class="popup" style="width: 365px;background-color: white;">
     <h2>Виїздна фотозйомка:
     </h2>
     <p>
@@ -117,7 +117,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
 </div>
 
 <div id="photo-usluga3" class="overlay">
-  <div class="popup" style="width: 350px;">
+  <div class="popup" style="width: 350px;background-color: white;">
     <h2>Відеозйомка:
     </h2>
     <p>

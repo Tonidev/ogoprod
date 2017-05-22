@@ -76,22 +76,14 @@ JOIN post
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body class="main blog">
-<?
-$_SESSION['no_index'] = time();
-?>
 
-<DIV id="logobg">
-  <div id="logotmp">
-    <div id="start"  width="2000" height="1200" ></div>
-  </div>
-</DIV>
 <div class="logo">
   <a href="/"></a>
 </div>
 
 <? include 'left_menu.php'; ?>
 
-<div class="content">
+<div class="content" id="blog_cont">
 
   <?
   if(empty($post)) {
@@ -105,11 +97,13 @@ $_SESSION['no_index'] = time();
       </div>
       <div class="photo blog-cover">
         <a class="mobile-hide" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>"><img
+              oncontextmenu="return false;"
               href="<?= $post['url'] ?>"
               src="<?= $post['url'] ?>"
               data-id="<?= $post['id'] ?>">
         </a>
         <a class="desktop-hide" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>"><img
+              oncontextmenu="return false;"
              href="<?= $post['url'] ?>"
              src="<?= empty($post['url_mini'])
                  ? $post['url']
@@ -130,11 +124,13 @@ $_SESSION['no_index'] = time();
         </div>
         <div class="photo blog-cover">
           <a class="mobile-hide" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>"><img
+                oncontextmenu="return false;"
                 href="<?= $post['url'] ?>"
                 src="<?= $post['url'] ?>"
                 data-id="<?= $post['id'] ?>">
           </a>
           <a class="desktop-hide" href="/blog/<?= empty($post['chpu']) ? $post['id'] : $post['chpu'] ?>"><img
+                oncontextmenu="return false;"
                 href="<?= $post['url'] ?>"
                 src="<?= empty($post['url_mini'])
                     ? $post['url']

@@ -68,21 +68,21 @@ JOIN photo p
 
 <? include ('left_menu.php'); ?>
 
-<div class="content">
+<div class="content" id="cont_port">
 
   <div class="port_block">
 
 
     <div class="port_album" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_VADIM ?>">
       <div class="port_photo">
-        <img class="port_img" src="/img/team/vad-mini.jpg">
+        <img oncontextmenu="return false;" class="port_img" src="/img/team/vad-mini.jpg">
         <div class="port-line"><span class="port-text">Вадим Оголяр</span></div>
       </div>
     </div>
 
     <div class="port_album" data-status="<?= Config::$ALBUM_STATUS_PORTFOLIO_ARCHIL ?>">
       <div class="port_photo">
-        <img class="port_img" src="/img/team/arch-mini.jpg">
+        <img oncontextmenu="return false;" class="port_img" src="/img/team/arch-mini.jpg">
         <div class="port-line"><span class="port-text">Арчил Сванидзе</span></div>
       </div>
     </div>
@@ -98,7 +98,7 @@ JOIN photo p
           continue;
           ?>
           <div>
-            <img href="<?= $photo['url'] ?>"
+            <img oncontextmenu="return false;" href="<?= $photo['url'] ?>"
                  src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>"
                  data-id="<?= $photo['id'] ?>"
             >
@@ -119,7 +119,7 @@ JOIN photo p
                 continue;
               ?>
               <div>
-                <img href="<?= $photo['url'] ?>"
+                <img oncontextmenu="return false;" href="<?= $photo['url'] ?>"
                      src="<?= empty($photo['url_mini']) ? $photo['url'] : $photo['url_mini'] ?>"
                      data-id="<?= $photo['id'] ?>"
                 >
@@ -135,7 +135,13 @@ JOIN photo p
 
 
     <script type="text/javascript">
-
+    $('.port1').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      adaptiveHeight : false,
+      variableWidth : true,
+      slidesToShow: 1
+    });
     /*
      $('.port2').slick({
      centerMode: true,
