@@ -61,6 +61,15 @@ WHERE id = ?i", $descr, $id_album, $status, $id);
           Helpers::jsonOk();
         }
         break;
+      case 'makeCover' :
+        if(!empty($id) && isset($ida)) {
+          Db::i()->query("UPDATE photo SET `status` = 1 WHERE `status` > 0 AND id_album = $ida");
+          Db::i()->query("UPDATE photo SET `status` = 2 WHERE  id = $id");
+          Helpers::jsonOk();
+        } else {
+          Helpers::jsonError("Не вказаний ID фото або альбому");
+        }
+        break;
       default :
         Helpers::jsonError("Невідома функція");
     }

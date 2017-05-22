@@ -5,7 +5,15 @@ $func = empty($_REQUEST['func']) ? null : $_REQUEST['func'];
 if (!empty($func)) {
   if(!empty($_REQUEST['ajax'])) {
     switch ($func) {
-
+      case "delete":
+        $pid = intval($_REQUEST['id']);
+        if(empty($pid)) {
+          Helpers::jsonError("Не вказаний  ID поста");
+        } else {
+          Db::i()->query("UPDATE post SET status = -1 WHERE id = $pid");
+          Helpers::jsonOk();
+        }
+        break;
       default :
         Helpers::jsonError("Невідома функція");
     }
@@ -25,7 +33,7 @@ WHERE p.status >= 0 ");
 <div><a class="btn btn-default" href="/admin/post/add">Додати запис</a></div>
 
 <? foreach( $posts as $post) { ?>
-  <div class="col-xs-12 col-md-6 post panel">
+  <div class="col-xs-12 col-md-6 post panel" data-id="<?= $post['id'] ?>">
     <div class="panel-heading post_title">
       <?= $post['title'] ?>
     </div>

@@ -167,6 +167,18 @@ $(document).ready(function () {
     $this.toggleClass('opened');
   } );
 
+  $('.post.panel .delete').click(function(e) {
+    e.preventDefault(); e.stopPropagation(); var $this = $(this);
+    var $post = $this.parents('.post');
+    stdAjax({
+      func : 'delete',
+      id : $post.data('id'),
+      ajax : 'ajax'
+    },null, $this, null, function () {
+      $post.remove();
+    });
+  } );
+
   initButtons();
 
 });
