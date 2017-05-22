@@ -42,6 +42,7 @@ $_SESSION['no_index'] = time();
   </div>
 </DIV>
 <div class="logo">
+  <? include "mobmenu.php"?>
   <a href="/"></a>
 </div>
 
