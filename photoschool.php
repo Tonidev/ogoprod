@@ -33,6 +33,7 @@ JOIN photo p
 <body class="main">
 
 <div class="logo">
+  <? include "mobmenu.php"?>
   <a href="/"></a>
 </div>
 
