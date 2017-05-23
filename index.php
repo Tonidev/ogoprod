@@ -49,10 +49,6 @@ function indexPhotoHtml($photo) {
 
 <body style="overflow: auto"  class="main index">
 
-
-
-
-
 <div class="logo">
   <a href="/"> </a>
 
@@ -91,34 +87,8 @@ function indexPhotoHtml($photo) {
 
 <? include (BASE_DIR . 'photo_popup.php')?>
 
-<script type="text/javascript">
-  function getSocTitle() {
-    return '<img oncontextmenu="return false;" class="social" src="img/soc-vk.png"/><img oncontextmenu="return false;" class="social" src="img/soc-facebook.png"/><img oncontextmenu="return false;" class="social" src="img/soc-instagram.png"/><div><a onclick="entermain(); return false;" class="button1" style="margin-right: 19%;">ВХОД</a></div>';
-  }
-
-  var backgi=1;
-  setInterval(function(){backg()},8000);
-  function backg()
-  {
-    backgi=backgi%3+1;
-    var $start = $("#start");
-    $start.animate({'opacity':'0'},800,function(){
-      $start.css('background-image', 'url(/backgrounds/'+backgi+'.jpg)');
-      $start.css('background-size', 'contain');
-      $start.css('background-position', 'center');
-      $start.animate({'opacity':'1'},800);});
-  }
-</script>
 <? include 'footer.php'; ?>
-<!--Openstat-->
-<script type="text/javascript">
-    var openstat = { counter: FIX-COUNTER-ID, image: FIX-IMAGE, next: openstat };
-    (function(d, t, p) {
-        var j = d.createElement(t); j.async = true; j.type = "text/javascript";
-        j.src = ("https:" == p ? "https:" : "http:") + "//openstat.net/cnt.js";
-        var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
-    })(document, "script", document.location.protocol);
-</script>
-<span id="openstatFIX-COUNTER-ID"></span>
+<? include ("log1n.php");?>
+
 </body>
 </html>

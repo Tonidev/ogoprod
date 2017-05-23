@@ -58,6 +58,9 @@
         <a href="/admin/blog">Блог</a></li>
 
         <li <?= $action=='' ? ' class="active" ': '' ?>>
+          <a href="/admin/stat">Стата</a></li>
+
+        <li <?= $action=='' ? ' class="active" ': '' ?>>
           <a href="https://drive.google.com/drive/folders/0B_Vm0qXFYIw4blZBX3hCMmVuY2M">Касса</a></li>
 
       </ul>

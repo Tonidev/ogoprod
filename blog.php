@@ -144,9 +144,6 @@ JOIN post
     </div>
   <?  }
   ?>
-  <!--margin: 0 auto;
-  display: inline-block;
-  float: left;-->
 
 </div>
 

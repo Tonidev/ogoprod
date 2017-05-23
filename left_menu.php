@@ -5,6 +5,7 @@
     <li><a class="photoschool" href="/photoschool"><span class="ico"></span><span class="text">фотошкола</span></a></li>
     <li><a class="team" href="/team"><span class="ico"></span><span class="text">команда</span></a></li>
     <li><a class="gallery" href="/gallery"><span class="ico"></span><span class="text">альбоми</span></a></li>
+    <li><a class="video" href="/video.php"><span class="ico"></span><span class="text">вiдео</span></a></li>
     <li><a class="services" href="/price"><span class="ico"></span><span class="text">послуги</span></a></li>
     <p></p>
     <p>&nbsp;</p>

@@ -68,7 +68,7 @@ $comments = $db->getAll("SELECT * FROM  comment WHERE status > 0");
   </div>
 
     <a href="price.php" style="margin-left:5px" class="send">Замовити</a>
-    <a href="" class="send2">Вконтакте</a>
+    <a href="" style="display:none" class="send2">Вконтакте</a>
   </div>
     <div class="poslugi_block2">
       <span style="font-family: PNG1;font-size:17px;color:white">

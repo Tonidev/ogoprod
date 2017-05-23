@@ -22,7 +22,6 @@
   <script src="/js/dropdown.js"></script>
   <script src="/js/slick/slick.min.js"></script>
   <script src="/js/sweetalert.min.js"></script>
-  <script src="https://vk.com/js/api/openapi.js?142" type="text/javascript"></script>
   <script type="text/javascript">
     function proverka(tel) {
       tel.value = tel.value.replace(/[^\d ]/g, '');

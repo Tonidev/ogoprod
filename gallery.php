@@ -1,8 +1,4 @@
 <?php
-/**
- * Date: 13.03.17
- * Time: 18:47
- */
 
 if(!defined('BASE_DIR')) {
   define('BASE_DIR', __DIR__ .DIRECTORY_SEPARATOR);
